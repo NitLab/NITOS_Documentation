@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Wireless Example &mdash; test_nit 0.1 documentation</title>
+    <title>WiFi Example &mdash; Nitlab 1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.1',
+        VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,8 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="test_nit 0.1 documentation" href="index.html" />
+    <link rel="top" title="Nitlab 1.0 documentation" href="index.html" />
+    <link rel="next" title="WiMax Example" href="wiMax.html" />
     <link rel="prev" title="Simple OMF Example" href="omf_example.html" /> 
   </head>
   <body>
@@ -36,9 +37,12 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
+          <a href="wiMax.html" title="WiMax Example"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
           <a href="omf_example.html" title="Simple OMF Example"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">test_nit 0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Nitlab 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -47,8 +51,8 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="wireless-example">
-<h1>Wireless Example<a class="headerlink" href="#wireless-example" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="wifi-example">
+<h1>WiFi Example<a class="headerlink" href="#wifi-example" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="basics">
 <h2>1.Basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h2>
 <p>This simple tutorial presents all the basic steps to develop, run, and access the result of a wireless network experiment with OMF 6.</p>
@@ -80,7 +84,141 @@
 <div class="section" id="developing-the-experiment">
 <h2>3. Developing the Experiment<a class="headerlink" href="#developing-the-experiment" title="Permalink to this headline">¶</a></h2>
 <p>To run an experiment with OMF, you first need to describe it into an Experiment Description (ED). An ED is a file/script that is supplied as an input to the Experiment Controller (EC). It contains a detailed description of the resources involved in an experiment and the sets of actions to perform in order to realize that experiment. An ED is written using the OMF Experiment Description Language (OEDL).</p>
-<p>The ED for our experiment: <a class="reference download internal" href="_downloads/tutorial01.rb"><tt class="xref download docutils literal"><span class="pre">ED_script</span></tt></a>.</p>
+<p>The ED for our experiment:</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="line-block">
+<div class="line">defApplication(&#8216;otr2&#8217;) do | a |</div>
+</div>
+<div class="line-block">
+<div class="line-block">
+<div class="line">a.binary_path = &#8220;/usr/bin/otr2&#8221;</div>
+<div class="line">a.description = &lt;&lt;TEXT</div>
+</div>
+<div class="line">otr is a configurable traffic sink. It contains port to receive</div>
+<div class="line">packet streams via various transport options, such as TCP and UDP.</div>
+<div class="line">This version 2 is compatible with OMLv2.</div>
+<div class="line">TEXT</div>
+</div>
+<div class="line-block">
+<div class="line-block">
+<div class="line">a.defProperty(&#8216;udp_local_host&#8217;, &#8216;IP address of this Destination node&#8217;, &#8216;&#8211;udp:local_host&#8217;, {:type =&gt; :string, :dynamic =&gt; false})</div>
+<div class="line">a.defProperty(&#8216;udp_local_port&#8217;, &#8216;Receiving Port of this Destination node&#8217;, &#8216;&#8211;udp:local_port&#8217;, {:type =&gt; :integer, :dynamic =&gt;</div>
+</div>
+<div class="line">false})</div>
+<div class="line-block">
+<div class="line">a.defMeasurement(&#8216;udp_in&#8217;) do | m |</div>
+<div class="line-block">
+<div class="line">m.defMetric(&#8216;ts&#8217;,:float)</div>
+<div class="line">m.defMetric(&#8216;flow_id&#8217;,:long)</div>
+<div class="line">m.defMetric(&#8216;seq_no&#8217;,:long)</div>
+<div class="line">m.defMetric(&#8216;pkt_length&#8217;,:long)</div>
+<div class="line">m.defMetric(&#8216;dst_host&#8217;,:string)</div>
+<div class="line">m.defMetric(&#8216;dst_port&#8217;,:long)</div>
+</div>
+<div class="line">end</div>
+</div>
+<div class="line">end</div>
+</div>
+<div class="line-block">
+<div class="line">defApplication(&#8216;otg2&#8217;) do | a |</div>
+</div>
+<div class="line-block">
+<div class="line-block">
+<div class="line">a.binary_path = &#8220;/usr/bin/otg2&#8221;</div>
+<div class="line">a.description = &lt;&lt;TEXT</div>
+</div>
+<div class="line">OTG is a configurable traffic generator. It contains generators</div>
+<div class="line">producing various forms of packet streams and port for sending</div>
+<div class="line">these packets via various transports, such as TCP and UDP.</div>
+<div class="line">This version 2 is compatible with OMLv2</div>
+<div class="line">TEXT</div>
+</div>
+<div class="line-block">
+<div class="line-block">
+<div class="line">a.defProperty(&#8216;generator&#8217;, &#8216;Type of packet generator to use (cbr or expo)&#8217;, &#8216;-g&#8217;, {:type =&gt; :string, :dynamic =&gt; false})</div>
+<div class="line">a.defProperty(&#8216;udp_broadcast&#8217;, &#8216;Broadcast&#8217;, &#8216;&#8211;udp:broadcast&#8217;, {:type =&gt; :integer, :dynamic =&gt; false})</div>
+<div class="line">a.defProperty(&#8216;udp_dst_host&#8217;, &#8216;IP address of the Destination&#8217;, &#8216;&#8211;udp:dst_host&#8217;, {:type =&gt; :string, :dynamic =&gt; false})</div>
+<div class="line">a.defProperty(&#8216;udp_dst_port&#8217;, &#8216;Destination Port to send to&#8217;, &#8216;&#8211;udp:dst_port&#8217;, {:type =&gt; :integer, :dynamic =&gt; false})</div>
+<div class="line">a.defProperty(&#8216;udp_local_host&#8217;, &#8216;IP address of this Source node&#8217;, &#8216;&#8211;udp:local_host&#8217;, {:type =&gt; :string, :dynamic =&gt; false})</div>
+<div class="line">a.defProperty(&#8216;udp_local_port&#8217;, &#8216;Local Port of this source node&#8217;, &#8216;&#8211;udp:local_port&#8217;, {:type =&gt; :integer, :dynamic =&gt; false})</div>
+<div class="line">a.defProperty(&#8220;cbr_size&#8221;, &#8220;Size of packet [bytes]&#8221;, &#8216;&#8211;cbr:size&#8217;, {:dynamic =&gt; true, :type =&gt; :integer})</div>
+<div class="line">a.defProperty(&#8220;cbr_rate&#8221;, &#8220;Data rate of the flow [kbps]&#8221;, &#8216;&#8211;cbr:rate&#8217;, {:dynamic =&gt; true, :type =&gt; :integer})</div>
+<div class="line">a.defProperty(&#8220;exp_size&#8221;, &#8220;Size of packet [bytes]&#8221;, &#8216;&#8211;exp:size&#8217;, {:dynamic =&gt; true, :type =&gt; :integer})</div>
+<div class="line">a.defProperty(&#8220;exp_rate&#8221;, &#8220;Data rate of the flow [kbps]&#8221;, &#8216;&#8211;exp:rate&#8217;, {:dynamic =&gt; true, :type =&gt; :integer})</div>
+<div class="line">a.defProperty(&#8220;exp_ontime&#8221;, &#8220;Average length of burst [msec]&#8221;, &#8216;&#8211;exp:ontime&#8217;, {:dynamic =&gt; true, :type =&gt; :integer})</div>
+<div class="line">a.defProperty(&#8220;exp_offtime&#8221;, &#8220;Average length of idle time [msec]&#8221;, &#8216;&#8211;exp:offtime&#8217;, {:dynamic =&gt; true, :type =&gt; :integer})</div>
+<div class="line">a.defMeasurement(&#8216;udp_out&#8217;) do | m |</div>
+<div class="line-block">
+<div class="line">m.defMetric(&#8216;ts&#8217;,:float)</div>
+<div class="line">m.defMetric(&#8216;flow_id&#8217;,:long)</div>
+<div class="line">m.defMetric(&#8216;seq_no&#8217;,:long)</div>
+<div class="line">m.defMetric(&#8216;pkt_length&#8217;,:long)</div>
+<div class="line">m.defMetric(&#8216;dst_host&#8217;,:string)</div>
+<div class="line">m.defMetric(&#8216;dst_port&#8217;,:long)</div>
+</div>
+<div class="line">end</div>
+</div>
+<div class="line">end</div>
+</div>
+<div class="line-block">
+<div class="line">defGroup(&#8216;Sender&#8217;, &#8220;node006&#8221;) do | node |</div>
+<div class="line-block">
+<div class="line">node.addApplication(&#8220;otg2&#8221;) do | app |</div>
+<div class="line-block">
+<div class="line">app.setProperty(&#8216;udp_local_host&#8217;, &#8216;192.168.0.2&#8217;)</div>
+<div class="line">app.setProperty(&#8216;udp_dst_host&#8217;, &#8216;192.168.0.3&#8217;)</div>
+<div class="line">app.setProperty(&#8216;udp_dst_port&#8217;, 3000)</div>
+<div class="line">app.measure(&#8216;udp_out&#8217;, :interval =&gt; 3)</div>
+</div>
+<div class="line">end</div>
+<div class="line">node.net.w0.mode = &#8220;adhoc&#8221;</div>
+<div class="line">node.net.w0.type = &#8216;g&#8217;</div>
+<div class="line">node.net.w0.channel = &#8220;6&#8221;</div>
+<div class="line">node.net.w0.essid = &#8220;helloworld&#8221;</div>
+<div class="line">node.net.w0.ip = &#8220;192.168.0.2/24&#8221;</div>
+</div>
+<div class="line">end</div>
+</div>
+<div class="line-block">
+<div class="line">defGroup(&#8216;Receiver&#8217;, &#8220;node007&#8221;) do | node |</div>
+<div class="line-block">
+<div class="line">node.addApplication(&#8220;otr2&#8221;) do | app |</div>
+<div class="line-block">
+<div class="line">app.setProperty(&#8216;udp_local_host&#8217;, &#8216;192.168.0.3&#8217;)</div>
+<div class="line">app.setProperty(&#8216;udp_local_port&#8217;, 3000)</div>
+<div class="line">app.measure(&#8216;udp_in&#8217;, :interval =&gt; 3)</div>
+</div>
+<div class="line">end</div>
+<div class="line">node.net.w0.mode = &#8220;adhoc&#8221;</div>
+<div class="line">node.net.w0.type = &#8216;g&#8217;</div>
+<div class="line">node.net.w0.channel = &#8220;6&#8221;</div>
+<div class="line">node.net.w0.essid = &#8220;helloworld&#8221;</div>
+<div class="line">node.net.w0.ip = &#8220;192.168.0.3/24&#8221;</div>
+</div>
+<div class="line">end</div>
+</div>
+<div class="last line-block">
+<div class="line">onEvent(:ALL_UP_AND_INSTALLED) do | event |</div>
+<div class="line-block">
+<div class="line">info &#8220;This is my first OMF experiment-simos&#8221;</div>
+<div class="line">after 5 do</div>
+<div class="line-block">
+<div class="line">allGroups.startApplications</div>
+<div class="line">info &#8220;All my Applications are started now...&#8221;</div>
+</div>
+<div class="line">end</div>
+<div class="line">after 40 do</div>
+<div class="line-block">
+<div class="line">allGroups.stopApplications</div>
+<div class="line">info &#8220;All my Applications are stopped now.&#8221;</div>
+<div class="line">Experiment.done</div>
+</div>
+<div class="line">end</div>
+</div>
+<div class="line">end</div>
+</div>
+</div>
 <p>You can see <a class="reference external" href="http://omf.mytestbed.net/projects/omf6/wiki/OEDLOMF6">here</a>  more about (OMF6-OEDL)</p>
 </div>
 <div class="section" id="running-experiment">
@@ -91,7 +229,7 @@
 <blockquote>
 <div><ul>
 <li><dl class="first docutils">
-<dt>save its description in a file on your computer, thus either</dt>
+<dt><strong>save its description in a file on your computer, thus either</strong></dt>
 <dd><ul class="first last simple">
 <li>cut-and-paste the above ED listing into a new file named &#8216;tutorial01.rb&#8217;</li>
 <li>download the ED directly: <a class="reference download internal" href="_downloads/tutorial01.rb"><tt class="xref download docutils literal"><span class="pre">ED_script</span></tt></a></li>
@@ -99,9 +237,9 @@
 </dd>
 </dl>
 </li>
-<li><p class="first">open a terminal and navigate to the folder/directory where you saved that file</p>
+<li><p class="first"><strong>open a terminal and navigate to the folder/directory where you saved that file</strong></p>
 </li>
-<li><p class="first">start the EC software and tell it to execute the experiment described in your ED file, using the command line:</p>
+<li><p class="first"><strong>start the EC software and tell it to execute the experiment described in your ED file, using the command line:</strong></p>
 <blockquote>
 <div><p>omf_ec -u xmpp://usr:pwd&#64;my_xmpp.com exec &#8211;oml_uri tcp:srv:port tutorial000.rb</p>
 <ul class="simple">
@@ -110,7 +248,7 @@
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">So for our example, xmpp server and OML server run at nitlab.inf.uth.gr. Then you would use the command:</p>
+<li><p class="first"><strong>So for our example, xmpp server and OML server run at nitlab.inf.uth.gr. Then you would use the command:</strong></p>
 <blockquote>
 <div><p>omf_ec -u xmpp://nitlab.inf.uth.gr exec &#8211;oml_uri tcp:nitlab.inf.uth.gr:3003 tutorial000.rb</p>
 </div></blockquote>
@@ -127,99 +265,174 @@
 </div>
 <div class="section" id="b-what-will-happen-next">
 <h3><em>b) What will happen next?</em><a class="headerlink" href="#b-what-will-happen-next" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<caption><strong>Screen Output</strong></caption>
+<colgroup>
+<col width="100%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">When running the EC with the above command, you should see an output similar to this :</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>OMF Experiment Controller - Copyright (c) 2012-13 National ICT Australia Limited (NICTA)</td>
+</tr>
+<tr class="row-odd"><td>{:type=&gt;:xml, :authenticate=&gt;nil}</td>
+</tr>
+<tr class="row-even"><td>19:33:06 INFO  XMPP::Communicator: Connecting to &#8216;nitlab.inf.uth.gr&#8217; ...</td>
+</tr>
+<tr class="row-odd"><td>INFO OML4R Client 2.10.4 [OMSPv4; Ruby 1.9.3] Copyright 2009-2014, NICTA</td>
+</tr>
+<tr class="row-even"><td>INFO Collection URI is <a class="reference external" href="tcp:nitlab.inf.uth.gr:3003">tcp:nitlab.inf.uth.gr:3003</a></td>
+</tr>
+<tr class="row-odd"><td>19:33:07 INFO  XMPP::Communicator: Connected</td>
+</tr>
+<tr class="row-even"><td>19:33:07 INFO  Object: OMF Experiment Controller 6.1.1 - Start</td>
+</tr>
+<tr class="row-odd"><td>19:33:07 INFO  Object: Connected using {:proto=&gt;:xmpp, :user=&gt;simos-aspire-5739g-7586, :domain=&gt;nitlab.inf.uth.gr}</td>
+</tr>
+<tr class="row-even"><td>19:33:07 INFO  Object: Execute: /home/simos/Eidiko/tutorial01.rb</td>
+</tr>
+<tr class="row-odd"><td>19:33:07 INFO  Object: Properties: {}</td>
+</tr>
+<tr class="row-even"><td>19:33:07 INFO  OmfEc::Experiment: Experiment: 2014-08-02T16:33:05.420Z starts</td>
+</tr>
+<tr class="row-odd"><td>19:33:07 INFO  OmfEc::Experiment: Configure &#8216;node017&#8217; to join &#8216;Sender&#8217;</td>
+</tr>
+<tr class="row-even"><td>19:33:07 INFO  OmfEc::Experiment: Configure &#8216;node023&#8217; to join &#8216;Receiver&#8217;</td>
+</tr>
+<tr class="row-odd"><td>19:33:08 INFO  OmfEc::Experiment: Newly discovered resource &gt;&gt; xmpp://node023&#64;nitlab.inf.uth.gr</td>
+</tr>
+<tr class="row-even"><td>19:33:08 INFO  OmfEc::Experiment: Newly discovered resource &gt;&gt; xmpp://node017&#64;nitlab.inf.uth.gr</td>
+</tr>
+<tr class="row-odd"><td>19:33:08 INFO  OmfEc::Experiment: Event triggered: &#8216;ALL_NODES_UP, ALL_UP&#8217;</td>
+</tr>
+<tr class="row-even"><td>19:33:08 INFO  OmfEc::Experiment: Config xmpp://node023&#64;nitlab.inf.uth.gr to join Receiver</td>
+</tr>
+<tr class="row-odd"><td>19:33:08 INFO  OmfEc::Experiment: Config xmpp://node017&#64;nitlab.inf.uth.gr to join Sender</td>
+</tr>
+<tr class="row-even"><td>19:33:08 INFO  OmfEc::Experiment: Newly discovered resource &gt;&gt; xmpp://9f5677f9-590c-472b-8e46-f888b73e5c73&#64;nitlab.inf.uth.gr</td>
+</tr>
+<tr class="row-odd"><td>19:33:08 INFO  OmfEc::Experiment: Newly discovered resource &gt;&gt; xmpp://e6d3a0e5-5cca-44d1-b146-e49bc78b72e9&#64;nitlab.inf.uth.gr</td>
+</tr>
+<tr class="row-even"><td>19:33:08 INFO  OmfEc::Experiment: Newly discovered resource &gt;&gt; xmpp://62c416b5-f49e-426c-8cfe-276922443673&#64;nitlab.inf.uth.gr</td>
+</tr>
+<tr class="row-odd"><td>19:33:09 INFO  OmfEc::Experiment: Newly discovered resource &gt;&gt; xmpp://9071a6c8-222f-41c2-a410-439f49907607&#64;nitlab.inf.uth.gr</td>
+</tr>
+<tr class="row-even"><td>19:33:09 INFO  OmfEc::Experiment: Event triggered: &#8216;ALL_UP_AND_INSTALLED&#8217;</td>
+</tr>
+<tr class="row-odd"><td>19:33:09 INFO  Object: This is my first OMF experiment-simos</td>
+</tr>
+<tr class="row-even"><td>19:33:14 INFO  Object: All my Applications are started now...</td>
+</tr>
+<tr class="row-odd"><td>19:33:14 INFO  OmfEc: APP_EVENT STARTED from app otr2_cxt_0 - msg: env -i /usr/bin/otr2 &#8211;udp:local_host 192.168.0.3</td>
+</tr>
+<tr class="row-even"><td>&#8211;udp:local_port 3000   &#8211;oml-config /tmp/9f5677f9-590c-472b-8e46-f888b73e5c73-1406997194.xml</td>
+</tr>
+<tr class="row-odd"><td>19:33:14 INFO  OmfEc: APP_EVENT STDERR from app otr2_cxt_0 - msg: Aug 02 19:33:14 INFO      OTG2 Traffic Sink 2.10.0</td>
+</tr>
+<tr class="row-even"><td>19:33:14 INFO  OmfEc: APP_EVENT STDERR from app otg2_cxt_0 - msg: Aug 02 19:33:14 INFO      OTG2 Traffic Generator 2.10.0</td>
+</tr>
+<tr class="row-odd"><td>19:33:14 INFO  OmfEc: APP_EVENT STARTED from app otg2_cxt_0 - msg: env -i /usr/bin/otg2 &#8211;udp:dst_host 192.168.0.3</td>
+</tr>
+<tr class="row-even"><td>&#8211;udp:dst_port 3000 &#8211;   &#8220;udp:local_host 192.168.0.2 &#8211;oml-config /tmp/62c416b5-f49e-426c-8cfe-276922443673-1406997194.xml&#8221;</td>
+</tr>
+<tr class="row-odd"><td>19:33:14 INFO  OmfEc: APP_EVENT STDERR from app otg2_cxt_0 - msg: INFO OML Client 2.11.0 [OMSPv5] Copyright 2007-2014, NICTA</td>
+</tr>
+<tr class="row-even"><td>19:33:14 INFO  OmfEc: APP_EVENT STDERR from app otr2_cxt_0 - msg: INFO OML Client 2.11.0 [OMSPv5] Copyright 2007-2014, NICTA</td>
+</tr>
+<tr class="row-odd"><td>19:33:17 INFO  OmfEc: APP_EVENT STDERR from app otr2_cxt_0 - msg: INFO <a class="reference external" href="tcp:nitlab.inf.uth.gr:3003">tcp:nitlab.inf.uth.gr:3003</a>: Connected</td>
+</tr>
+<tr class="row-even"><td>19:33:17 INFO  OmfEc: APP_EVENT STDERR from app otg2_cxt_0 - msg: INFO <a class="reference external" href="tcp:nitlab.inf.uth.gr:3003">tcp:nitlab.inf.uth.gr:3003</a>: Connected</td>
+</tr>
+<tr class="row-odd"><td>19:33:49 INFO  Object: All my Applications are stopped now.</td>
+</tr>
+<tr class="row-even"><td>19:33:49 INFO  OmfEc::Experiment: Experiment: 2014-08-02T16:33:05.420Z finished</td>
+</tr>
+<tr class="row-odd"><td>19:33:49 INFO  OmfEc::Experiment: Release applications and network interfaces</td>
+</tr>
+<tr class="row-even"><td>19:33:49 INFO  OmfEc::Experiment: Exit in 15 seconds...</td>
+</tr>
+<tr class="row-odd"><td>19:33:53 INFO  OmfEc: APP_EVENT EXIT from app otr2_cxt_0 - msg: 0</td>
+</tr>
+<tr class="row-even"><td>19:33:53 INFO  OmfEc: APP_EVENT EXIT from app otg2_cxt_0 - msg: 0</td>
+</tr>
+<tr class="row-odd"><td>19:34:03 INFO  OmfEc::Experiment: OMF Experiment Controller 6.1.1 - Exit.</td>
+</tr>
+<tr class="row-even"><td>19:34:04 INFO  XMPP::Communicator: Disconnecting...</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="c-what-does-that-screen-output-mean">
+<h3><em>c) What does that screen output mean?</em><a class="headerlink" href="#c-what-does-that-screen-output-mean" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
 <div class="line-block">
-<div class="line">When running the EC with the above command, you should see an output similar to this :</div>
+<div class="line"><strong>First the EC provides us with some information about the parameters of this experiment (Experiment ID, XMPP server used, resourcesused,...):</strong></div>
 </div>
 <div class="line-block">
 <div class="line">OMF Experiment Controller - Copyright (c) 2012-13 National ICT Australia Limited (NICTA)</div>
 <div class="line">{:type=&gt;:xml, :authenticate=&gt;nil}</div>
-<div class="line">12:38:02 INFO  XMPP::Communicator: Connecting to &#8216;nitlab.inf.uth.gr&#8217; ...</div>
-<div class="line">INFO  OML4R Client 2.10.4 [OMSPv4; Ruby 1.9.3] Copyright 2009-2014, NICTA</div>
-<div class="line">INFO  Collection URI is <a class="reference external" href="tcp:nitlab.inf.uth.gr:3003">tcp:nitlab.inf.uth.gr:3003</a></div>
-<div class="line">12:38:03 INFO  XMPP::Communicator: Connected</div>
-<div class="line">12:38:03 INFO  Object: OMF Experiment Controller 6.1.1 - Start</div>
-<div class="line">12:38:03 INFO  Object: Connected using {:proto=&gt;:xmpp, :user=&gt;&#8221;simos-aspire-5739g-5621&#8221;, :domain=&gt;&#8221;nitlab.inf.uth.gr&#8221;}</div>
-<div class="line">12:38:03 INFO  Object: Execute: /home/simos/Eidiko/tutorial01.rb</div>
-<div class="line">12:38:03 INFO  Object: Properties: {}</div>
-<div class="line">12:38:03 INFO  OmfEc::Experiment: Experiment: 2014-06-24T09:38:02.141Z starts</div>
-<div class="line">12:38:03 INFO  OmfEc::Experiment: Configure &#8216;node006&#8217; to join &#8216;Sender&#8217;</div>
-<div class="line">12:38:03 INFO  OmfEc::Experiment: Configure &#8216;node007&#8217; to join &#8216;Receiver&#8217;</div>
-<div class="line">12:38:04 INFO  OmfEc::Experiment: Newly discovered resource &gt;&gt; xmpp://node006&#64;nitlab.inf.uth.gr</div>
-<div class="line">12:38:04 INFO  OmfEc::Experiment: Config xmpp://node006&#64;nitlab.inf.uth.gr to join Sender</div>
-<div class="line">12:38:04 INFO  OmfEc::Experiment: Newly discovered resource &gt;&gt; xmpp://node007&#64;nitlab.inf.uth.gr</div>
-<div class="line">12:38:04 INFO  OmfEc::Experiment: Config xmpp://node007&#64;nitlab.inf.uth.gr to join Receiver</div>
-<div class="line">12:38:05 INFO  OmfEc::Experiment: Event triggered: &#8216;ALL_NODES_UP, ALL_UP&#8217;</div>
-<div class="line">12:38:10 INFO  OmfEc::Experiment: Newly discovered resource &gt;&gt; xmpp://b246c2af-1e45-4b8f-99d4-fac1d8a9ea26&#64;nitlab.inf.uth.gr</div>
-<div class="line">12:38:11 INFO  OmfEc::Experiment: Newly discovered resource &gt;&gt; xmpp://d4b53e1a-aaf8-400a-b9c8-b6bacd2f3c86&#64;nitlab.inf.uth.gr</div>
-<div class="line">12:38:13 INFO  OmfEc::Experiment: Event triggered: &#8216;ALL_UP_AND_INSTALLED&#8217;</div>
-<div class="line">12:38:13 INFO  Object: This is my first OMF experiment-simos</div>
-<div class="line">12:41:02 INFO  Object: All my Applications are started now...</div>
-<div class="line">12:41:02 INFO  Object: All my Applications are stopped now.</div>
-<div class="line">12:41:02 INFO  OmfEc::Experiment: Experiment: 2014-06-24T09:38:02.141Z finished</div>
-<div class="line">12:41:02 INFO  OmfEc::Experiment: Release applications and network interfaces</div>
-<div class="line">12:41:02 INFO  OmfEc::Experiment: Exit in 15 seconds...</div>
-<div class="line">12:41:07 INFO  OmfEc: APP_EVENT STARTED from app otr2_cxt_0 - msg: env -i /usr/bin/otr2 &#8211;udp:local_host 192.168.0.3 &#8211;udp:local_port 3001&#8211; | oml-config /tmp/b246c2af-1e45-4b8f-99d4-fac1d8a9ea26-1403602863.xml</div>
-<div class="line">12:41:08 INFO  OmfEc: APP_EVENT STDERR from app otr2_cxt_0 - msg: Jun 24 09:41:03 INFO        OTG2 Traffic Sink 2.10.0</div>
-<div class="line">12:41:08 INFO  OmfEc: APP_EVENT STDERR from app otr2_cxt_0 - msg: INFO        OML Client 2.11.0 [OMSPv5] Copyright 2007-2014, NICTA</div>
-<div class="line">12:41:08 INFO  OmfEc: APP_EVENT STDERR from app otr2_cxt_0 - msg: ERROR       Socket Bind Error</div>
-<div class="line">12:41:08 INFO  OmfEc: APP_EVENT EXIT from app otr2_cxt_0 - msg: -127</div>
-<div class="line">12:41:16 INFO  OmfEc::Experiment: OMF Experiment Controller 6.1.1 - Exit.</div>
-<div class="line">12:41:17 INFO  XMPP::Communicator: Disconnecting...</div>
-</div>
-</div>
-<div class="section" id="c-what-does-that-screen-output-mean">
-<h3><em>c) What does that screen output mean?</em><a class="headerlink" href="#c-what-does-that-screen-output-mean" title="Permalink to this headline">¶</a></h3>
-<div class="line-block">
-<div class="line"><strong>First the EC provides us with some information about the parameters of this experiment (Experiment ID, XMPP server used, resources         | used,...):</strong></div>
-</div>
-<div class="line-block">
-<div class="line">12:38:02 INFO  XMPP::Communicator: Connecting to &#8216;nitlab.inf.uth.gr&#8217; ...</div>
-<div class="line">INFO  OML4R Client 2.10.4 [OMSPv4; Ruby 1.9.3] Copyright 2009-2014, NICTA</div>
-<div class="line">INFO  Collection URI is <a class="reference external" href="tcp:nitlab.inf.uth.gr:3003">tcp:nitlab.inf.uth.gr:3003</a></div>
-<div class="line">12:38:03 INFO  XMPP::Communicator: Connected</div>
-<div class="line">12:38:03 INFO  Object: OMF Experiment Controller 6.1.1 - Start</div>
-<div class="line">12:38:03 INFO  Object: Connected using {:proto=&gt;:xmpp, :user=&gt;&#8221;simos-aspire-5739g-5621&#8221;, :domain=&gt;&#8221;nitlab.inf.uth.gr&#8221;}</div>
-<div class="line">12:38:03 INFO  Object: Execute: /home/simos/Eidiko/tutorial01.rb</div>
-<div class="line">12:38:03 INFO  Object: Properties: {}</div>
-<div class="line">12:38:03 INFO  OmfEc::Experiment: Experiment: 2014-06-24T09:38:02.141Z starts</div>
-<div class="line">12:38:03 INFO  OmfEc::Experiment: Configure &#8216;node006&#8217; to join &#8216;Sender&#8217;</div>
+<div class="line">19:33:06 INFO  XMPP::Communicator: Connecting to &#8216;nitlab.inf.uth.gr&#8217; ...</div>
+<div class="line">INFO OML4R Client 2.10.4 [OMSPv4; Ruby 1.9.3] Copyright 2009-2014, NICTA</div>
+<div class="line">INFO Collection URI is <a class="reference external" href="tcp:nitlab.inf.uth.gr:3003">tcp:nitlab.inf.uth.gr:3003</a></div>
+<div class="line">19:33:07 INFO  XMPP::Communicator: Connected</div>
+<div class="line">19:33:07 INFO  Object: OMF Experiment Controller 6.1.1 - Start</div>
+<div class="line">19:33:07 INFO  Object: Connected using {:proto=&gt;:xmpp, :user=&gt;simos-aspire-5739g-7586, :domain=&gt;nitlab.inf.uth.gr}</div>
+<div class="line">19:33:07 INFO  Object: Execute: /home/simos/Eidiko/tutorial01.rb</div>
+<div class="line">19:33:07 INFO  Object: Properties: {}</div>
+<div class="line">19:33:07 INFO  OmfEc::Experiment: Experiment: 2014-08-02T16:33:05.420Z starts</div>
+<div class="line">19:33:07 INFO  OmfEc::Experiment: Configure &#8216;node017&#8217; to join &#8216;Sender&#8217;</div>
 </div>
 <div class="line-block">
 <div class="line"><strong>It also provides us some feedback about its communication with the XMPP server and other OMF entities:</strong></div>
 </div>
 <div class="line-block">
-<div class="line">12:38:04 INFO  OmfEc::Experiment: Newly discovered resource &gt;&gt; xmpp://node006&#64;nitlab.inf.uth.gr</div>
-<div class="line">12:38:04 INFO  OmfEc::Experiment: Config xmpp://node006&#64;nitlab.inf.uth.gr to join Sender</div>
-<div class="line">12:38:04 INFO  OmfEc::Experiment: Newly discovered resource &gt;&gt; xmpp://node007&#64;nitlab.inf.uth.gr</div>
-<div class="line">12:38:04 INFO  OmfEc::Experiment: Config xmpp://node007&#64;nitlab.inf.uth.gr to join Receiver</div>
+<div class="line">19:33:08 INFO  OmfEc::Experiment: Newly discovered resource &gt;&gt; xmpp://node023&#64;nitlab.inf.uth.gr</div>
+<div class="line">19:33:08 INFO  OmfEc::Experiment: Newly discovered resource &gt;&gt; xmpp://node017&#64;nitlab.inf.uth.gr</div>
 </div>
 <div class="line-block">
-<div class="line">12:41:17 INFO  XMPP::Communicator: Disconnecting...</div>
+<div class="line">19:33:08 INFO  OmfEc::Experiment: Newly discovered resource &gt;&gt; xmpp://9f5677f9-590c-472b-8e46-f888b73e5c73&#64;nitlab.inf.uth.gr</div>
+<div class="line">19:33:08 INFO  OmfEc::Experiment: Newly discovered resource &gt;&gt; xmpp://e6d3a0e5-5cca-44d1-b146-e49bc78b72e9&#64;nitlab.inf.uth.gr</div>
+<div class="line">19:33:08 INFO  OmfEc::Experiment: Newly discovered resource &gt;&gt; xmpp://62c416b5-f49e-426c-8cfe-276922443673&#64;nitlab.inf.uth.gr</div>
+<div class="line">19:33:09 INFO  OmfEc::Experiment: Newly discovered resource &gt;&gt; xmpp://9071a6c8-222f-41c2-a410-439f49907607&#64;nitlab.inf.uth.gr</div>
+</div>
+<div class="line-block">
+<div class="line">19:34:04 INFO  XMPP::Communicator: Disconnecting...</div>
 </div>
 <div class="line-block">
 <div class="line"><strong>Then it also informs us when a defined event has been triggered:</strong></div>
 </div>
 <div class="line-block">
-<div class="line">12:38:05 INFO  OmfEc::Experiment: Event triggered: &#8216;ALL_NODES_UP, ALL_UP&#8217;</div>
-<div class="line">12:38:13 INFO  OmfEc::Experiment: Event triggered: &#8216;ALL_UP_AND_INSTALLED&#8217;</div>
+<div class="line">19:33:08 INFO  OmfEc::Experiment: Event triggered: &#8216;ALL_NODES_UP, ALL_UP&#8217;</div>
+<div class="line">19:33:09 INFO  OmfEc::Experiment: Event triggered: &#8216;ALL_UP_AND_INSTALLED&#8217;&#8221;</div>
 </div>
 <div class="line-block">
-<div class="line"><strong>Finally, when an event is triggered (such as ALL_UP_AND_INSTALLED), it informs us about the tasks executed for that event, and their       | results/outputs:</strong></div>
+<div class="line"><strong>Finally, when an event is triggered (such as ALL_UP_AND_INSTALLED), it informs us about the tasks executed for that event, and   their results/outputs:</strong></div>
 </div>
-<div class="line-block">
-<div class="line">12:38:13 INFO  OmfEc::Experiment: Event triggered: &#8216;ALL_UP_AND_INSTALLED&#8217;</div>
-<div class="line">12:38:13 INFO  Object: This is my first OMF experiment-simos</div>
-<div class="line">12:41:02 INFO  Object: All my Applications are started now...</div>
-<div class="line">12:41:02 INFO  Object: All my Applications are stopped now.</div>
-<div class="line">12:41:02 INFO  OmfEc::Experiment: Experiment: 2014-06-24T09:38:02.141Z finished</div>
-<div class="line">12:41:02 INFO  OmfEc::Experiment: Release applications and network interfaces</div>
-<div class="line">12:41:02 INFO  OmfEc::Experiment: Exit in 15 seconds...</div>
-<div class="line">12:41:07 INFO  OmfEc: APP_EVENT STARTED from app otr2_cxt_0 - msg: env -i /usr/bin/otr2 &#8211;udp:local_host 192.168.0.3 &#8211;udp:local_port 3001&#8211; | oml-config /tmp/b246c2af-1e45-4b8f-99d4-fac1d8a9ea26-1403602863.xml</div>
-<div class="line">12:41:08 INFO  OmfEc: APP_EVENT STDERR from app otr2_cxt_0 - msg: Jun 24 09:41:03 INFO        OTG2 Traffic Sink 2.10.0</div>
-<div class="line">12:41:08 INFO  OmfEc: APP_EVENT STDERR from app otr2_cxt_0 - msg: INFO        OML Client 2.11.0 [OMSPv5] Copyright 2007-2014, NICTA</div>
-<div class="line">12:41:08 INFO  OmfEc: APP_EVENT STDERR from app otr2_cxt_0 - msg: ERROR       Socket Bind Error</div>
-<div class="line">12:41:08 INFO  OmfEc: APP_EVENT EXIT from app otr2_cxt_0 - msg: -127</div>
-<div class="line">12:41:16 INFO  OmfEc::Experiment: OMF Experiment Controller 6.1.1 - Exit.</div>
+<div class="last line-block">
+<div class="line">19:33:09 INFO  OmfEc::Experiment: Event triggered: &#8216;ALL_UP_AND_INSTALLED&#8217;</div>
+<div class="line">19:33:09 INFO  Object: This is my first OMF experiment-simos</div>
+<div class="line">19:33:14 INFO  Object: All my Applications are started now...</div>
+<div class="line">19:33:14 INFO  OmfEc: APP_EVENT STARTED from app otr2_cxt_0 - msg: env -i /usr/bin/otr2 &#8211;udp:local_host 192.168.0.3</div>
+<div class="line">&#8211;udp:local_port 3000   &#8211;oml-config /tmp/9f5677f9-590c-472b-8e46-f888b73e5c73-1406997194.xml</div>
+<div class="line">19:33:14 INFO  OmfEc: APP_EVENT STDERR from app otr2_cxt_0 - msg: Aug 02 19:33:14 INFO      OTG2 Traffic Sink 2.10.0</div>
+<div class="line">19:33:14 INFO  OmfEc: APP_EVENT STDERR from app otg2_cxt_0 - msg: Aug 02 19:33:14 INFO      OTG2 Traffic Generator 2.10.0</div>
+<div class="line">19:33:14 INFO  OmfEc: APP_EVENT STARTED from app otg2_cxt_0 - msg: env -i /usr/bin/otg2 &#8211;udp:dst_host 192.168.0.3</div>
+<div class="line">&#8211;udp:dst_port 3000 &#8211;&#8221;   &#8220;udp:local_host 192.168.0.2 &#8211;oml-config /tmp/62c416b5-f49e-426c-8cfe-276922443673-1406997194.xml</div>
+<div class="line">19:33:14 INFO  OmfEc: APP_EVENT STDERR from app otg2_cxt_0 - msg: INFO OML Client 2.11.0 [OMSPv5] Copyright 2007-2014, NICTA</div>
+<div class="line">19:33:14 INFO  OmfEc: APP_EVENT STDERR from app otr2_cxt_0 - msg: INFO OML Client 2.11.0 [OMSPv5] Copyright 2007-2014, NICTA</div>
+<div class="line">19:33:17 INFO  OmfEc: APP_EVENT STDERR from app otr2_cxt_0 - msg: INFO <a class="reference external" href="tcp:nitlab.inf.uth.gr:3003">tcp:nitlab.inf.uth.gr:3003</a>: Connected</div>
+<div class="line">19:33:17 INFO  OmfEc: APP_EVENT STDERR from app otg2_cxt_0 - msg: INFO <a class="reference external" href="tcp:nitlab.inf.uth.gr:3003">tcp:nitlab.inf.uth.gr:3003</a>: Connected</div>
+<div class="line">19:33:49 INFO  Object: All my Applications are stopped now.</div>
+<div class="line">19:33:49 INFO  OmfEc::Experiment: Experiment: 2014-08-02T16:33:05.420Z finished</div>
+<div class="line">19:33:49 INFO  OmfEc::Experiment: Release applications and network interfaces</div>
+<div class="line">19:33:49 INFO  OmfEc::Experiment: Exit in 15 seconds...</div>
+<div class="line">19:33:53 INFO  OmfEc: APP_EVENT EXIT from app otr2_cxt_0 - msg: 0</div>
+<div class="line">19:33:53 INFO  OmfEc: APP_EVENT EXIT from app otg2_cxt_0 - msg: 0</div>
+<div class="line">19:34:03 INFO  OmfEc::Experiment: OMF Experiment Controller 6.1.1 - Exit.</div>
+</div>
 </div>
 </div>
 </div>
@@ -236,7 +449,7 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Wireless Example</a><ul>
+<li><a class="reference internal" href="#">WiFi Example</a><ul>
 <li><a class="reference internal" href="#basics">1.Basics</a></li>
 <li><a class="reference internal" href="#prerequisties">2.Prerequisties</a><ul>
 <li><a class="reference internal" href="#a-accessing-provisioning-resources"><em>a) Accessing/Provisioning Resources</em></a></li>
@@ -257,6 +470,9 @@
   <h4>Previous topic</h4>
   <p class="topless"><a href="omf_example.html"
                         title="previous chapter">Simple OMF Example</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="wiMax.html"
+                        title="next chapter">WiMax Example</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/wireless_example.txt"
@@ -286,9 +502,12 @@
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
+          <a href="wiMax.html" title="WiMax Example"
+             >next</a> |</li>
+        <li class="right" >
           <a href="omf_example.html" title="Simple OMF Example"
              >previous</a> |</li>
-        <li><a href="index.html">test_nit 0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Nitlab 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

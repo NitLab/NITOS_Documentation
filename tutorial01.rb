@@ -51,7 +51,7 @@ TEXT
   end
 end
 
-defGroup('Sender', "node006") do |node|
+defGroup('Sender', "node017") do |node|
   node.addApplication("otg2") do |app|
     app.setProperty('udp_local_host', '192.168.0.2')
     app.setProperty('udp_dst_host', '192.168.0.3')
@@ -65,7 +65,7 @@ defGroup('Sender', "node006") do |node|
   node.net.w0.ip = "192.168.0.2/24"
 end
 
-defGroup('Receiver', "node007") do |node|
+defGroup('Receiver', "node023") do |node|
   node.addApplication("otr2") do |app|
     app.setProperty('udp_local_host', '192.168.0.3')
     app.setProperty('udp_local_port', 3000)

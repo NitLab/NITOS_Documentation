@@ -1,0 +1,122 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Controlling the status of the nodes &mdash; test_nit 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="test_nit 0.1 documentation" href="index.html" />
+    <link rel="next" title="Saving an OMF image from the resources to the server" href="save_OMFimage.html" />
+    <link rel="prev" title="Using your slice to run OMF experiments" href="runOMF.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="save_OMFimage.html" title="Saving an OMF image from the resources to the server"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="runOMF.html" title="Using your slice to run OMF experiments"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">test_nit 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="controlling-the-status-of-the-nodes">
+<h1>Controlling the status of the nodes<a class="headerlink" href="#controlling-the-status-of-the-nodes" title="Permalink to this headline">¶</a></h1>
+<p>In order to control the status of a node you can use the omf tell command. For example for rebooting the node 16:</p>
+<p><strong>$ omf tell -a reboot -t omf.nitos.node016</strong></p>
+<p>or for turning on node 16:</p>
+<p><strong>$ omf tell -a on -t omf.nitos.node016</strong></p>
+<p>You can also use the custom made command t_reboot for checking your reserved nodes:</p>
+<p><strong>$ t_reboot who</strong></p>
+<p>or for rebooting all of them:</p>
+<p><strong>$ t_reboot all hd</strong></p>
+<p>or for rebooting all of them in pxe mode:</p>
+<p><strong>$ t_reboot all pxe</strong></p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="runOMF.html"
+                        title="previous chapter">Using your slice to run OMF experiments</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="save_OMFimage.html"
+                        title="next chapter">Saving an OMF image from the resources to the server</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/control_Nodes_Status.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="save_OMFimage.html" title="Saving an OMF image from the resources to the server"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="runOMF.html" title="Using your slice to run OMF experiments"
+             >previous</a> |</li>
+        <li><a href="index.html">test_nit 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Simos Iordanidis.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,122 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Loading an OMF-compatible image on your resource &mdash; test_nit 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="test_nit 0.1 documentation" href="index.html" />
+    <link rel="next" title="Using your slice to run OMF experiments" href="runOMF.html" />
+    <link rel="prev" title="Connecting to NITOS Server" href="connectNITOS.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="runOMF.html" title="Using your slice to run OMF experiments"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="connectNITOS.html" title="Connecting to NITOS Server"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">test_nit 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="loading-an-omf-compatible-image-on-your-resource">
+<span id="label-name-2"></span><h1>Loading an OMF-compatible image on your resource<a class="headerlink" href="#loading-an-omf-compatible-image-on-your-resource" title="Permalink to this headline">¶</a></h1>
+<p>Ubuntu distributions, stored at the NITOS server as binary .ndz files, can be loaded on the resources overwriting any existing data on the disks of these resources.</p>
+<p>Beginners can load a &#8220;baseline&#8221; distribution on their resources and later modify it according to their needs. There are two types of nodes supporting hard drive images at NITOS, the older Orbit-like nodes (the &#8216;yellow&#8217; nodes) and the newer Commell nodes (the &#8216;grid&#8217; nodes). For Orbit-like nodes the user should load the&#8221;baseline_orbit.ndz&#8221; image. For the grid nodes, the user should  use&#8221;baseline_grid.ndz&#8221;.</p>
+<p>At any time you can look at <strong>MyReservations</strong>, to see all of your scheduled reservations, or at <strong>Node Status</strong> to see the status of your reserved nodes as well as to turn them on/off.</p>
+<p>You can then load a &#8220;baseline&#8221; image for nodes you have reserved using the omf load command. For example, to load the baseline_grid.ndz image to node 16 of NITOS, issue in a terminal where you are connected to the NITOS Server:</p>
+<p><strong>$ omf load -i baseline_grid.ndz -t omf.nitos.node016</strong></p>
+<p>You can load an image to many nodes simultaneously using a comma separated list, for example:</p>
+<p><strong>$ omf load -i baseline_grid.ndz -t omf.nitos.node016,omf.nitos.node017</strong></p>
+<p>Once the loading process of one of the &#8216;baseline&#8217; images is succesfully completed, you can ssh into these nodes as root with no password. In a terminal where you are connected to the NITOS console server, issue</p>
+<p><strong>$ ssh root&#64;node016</strong></p>
+<p>You can configure the image as you wish, since you have root privileges. One modification that you have to make is edit the file <em>/etc/omf-resctl-5.3/omf-resctl.yaml</em> and change the <em>:slice</em> section by putting your username instead of the entry <em>default_slice</em>. Another modification that you have to make to ensure no other user has access to your resource during your reservation is to add a root password to the image (using the <em>passwd command</em>). Note that you only need to do these changes once for each of the two types of nodes, since you can then save your modified image, so that you can load your &#8220;own&#8221; image each of the subsequent times you use some resources. This process of saving images is described in the next section.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="connectNITOS.html"
+                        title="previous chapter">Connecting to NITOS Server</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="runOMF.html"
+                        title="next chapter">Using your slice to run OMF experiments</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/loadOMF.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="runOMF.html" title="Using your slice to run OMF experiments"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="connectNITOS.html" title="Connecting to NITOS Server"
+             >previous</a> |</li>
+        <li><a href="index.html">test_nit 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Simos Iordanidis.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

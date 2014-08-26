@@ -1,0 +1,143 @@
+WiMax Example
+=================
+
+1.Basics-Prerequisties
+-----------------------
+*Accessing/Provisioning Resources*
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| **Accessing a Resource at NITOS**
+|
+| Firstly, you have to reserve a node at NITOS: :ref:`label-name`
+
+| In order to use the WiMAX testbed resources offered by the NITOS facility, you will have to reserve the WiMAX base station and the nodes
+  with WIMAX connectivity, offered by the testbed (**Icarus nodes41-49**).
+
+| Reserving the base station will render rights to the experimenter to access the WiMAXrf services of the testbed, used to configure and setup  the base station at the experimenter's will.
+
+| *After your reservation has started,login to Server.*
+
+.. warning:: You have to connect to **Nitos Server2**!
+
+You can use your NITlab account to access the Nitos Server2.Just open a secure shell,write **ssh slice_name@nitlab2.inf.uth.gr** (i.e syiordan@nitlab2.inf.uth.gr) and log into the server. 
+
+| **Provisioning a Resource at NITOS**
+|
+| You can use the method described on :ref:`label-name-2` for instruction on how to image resources at NITOS. Load on your resource a disk image that is compatitable for WiMax experimentation such as **fgre_2014.ndz**.
+
+2.Set up experimentation properties of the BS
+----------------------------------------------
+| Before user starts an experiment with WiMax he/she has to configure BS with the specific parameters he/she wants.There is a basic command
+  available to get or set the required parameters to BS.This is the  **'wget'** command.
+
+| As soon as the parameters set,the experimenter can submit a new Experiment Definition(ED) written in OMF Experiment Description Language
+  submit it to OMF's EC.
+
+| WiMax services are seperated in two categories.The first one to configure the BS and the other one to configure the mobile clients.A 
+  description of these services is available to user,through the command :
+  **' wget -qO- "http://wimaxrf:5054/wimaxrf/" '**
+
+Services for BS
+^^^^^^^^^^^^^^^^^^^^^^^
+| **bs/arq**
+  
+  .. note :: Set ARQ parameters
+
+| **bs/harq**
+  
+  .. note :: Set HARQ parameters
+
+| **bs/security**
+  
+  .. note :: Set SECURITY parameters
+
+| **bs/wireless**
+ 
+  .. note :: Set WIRELESS parameters
+
+| **bs/zone**
+  
+  .. note :: Set ZONE parameters
+
+| The above services show to the experimenter a sort description relative to functionality of the service which provide , permitted values and 
+  the name of parameters which the user can configure and provision to bs.
+
+
+| **bs/get**
+ 
+  .. note :: Get Basestation Static Parameter
+
+| **bs/set**
+  
+  .. note :: Set Basestation Static Parameter
+
+| **bs/get** and **bs/set** are two functions which required the name of parameter and value in order to configure the Base station.
+
+| For example if the user wants to change the transmission power of Base station to 40 db then he/she has to go to wireless service and there  
+  will find a parameter “txpower” .Then he/she has to write the wget command : 
+| **wget -qO- " http://wimaxrf:5054/wimaxrf/bs/set?txpower=40 "**
+  If the user wants to know the current transmission power then the only change he/she has to do in wget is replace the bs/set with bs/get   
+  and obviously no value required .
+| **wget -qO- " http://wimaxrf:5054/wimaxrf/bs/get?txpower "** 
+
+| **bs/default**
+
+  .. note :: In order to setup the BS to the default settings.
+             
+| **bs/info**
+    
+  .. note :: Get information about the Base Station  
+ 
+| **bs/inservice**
+    
+  .. note :: Set Base Station in service state
+  
+| **bs/maintenance**
+    
+  .. note :: Set Base Station to maintenance state
+  
+| **bs/restart**
+    
+  .. note :: Restart the base station.
+ 
+| **bs/status**
+  
+  .. note :: Get status of WiMAX RF service
+
+Services for mobile clients
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+| **mobileclient**
+  
+  .. note :: You can set/get MOBILE parameters using the mobileclient service only
+
+| **mobileclient/monitor**
+
+  .. note :: Get information about the mobile station
+
+| **mobileclient/reregister**
+
+  .. note :: Reregister Mobile station
+
+| **mobileclient/showregister**
+ 
+  .. note :: Get all register  mobiles stations
+  
+| Once you have logged in, you should setup the base station to the default settings, as its configuration might have been altered from its   
+  normal behavior by any previous experimenter. In order to setup the BS to the default settings you issue the following command:
+  **wget -qO- " http://wimaxrf:5054/wimaxrf/bs/default "** 
+
+| Since not all of the changes take place immediately, you will need to restart the base station for some of the changes to take effect. You  
+  can restart the BS with the following command:
+  **wget -qO- " http://wimaxrf:5054/wimaxrf/bs/restart "**
+
+| Since the BS is back to its default settings, you can start experimenting with the WiMAX testbed. 
+
+
+3.WiMAX experiment with OMF
+----------------------------
+
+To run an experiment with OMF, you first need to describe it into an Experiment Description (ED). An ED is a file/script that is supplied as an input to the Experiment Controller (EC). It contains a detailed description of the resources involved in an experiment and the sets of actions to perform in order to realize that experiment. An ED is written using the OMF Experiment Description Language (OEDL).
+
+The ED for our experiment:
+
+

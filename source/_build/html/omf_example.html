@@ -1,0 +1,314 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Simple OMF Example &mdash; test_nit 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="test_nit 0.1 documentation" href="index.html" />
+    <link rel="next" title="Wireless Example" href="wireless_example.html" />
+    <link rel="prev" title="NITlab Video Tutorials" href="video_tutorials.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="wireless_example.html" title="Wireless Example"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="video_tutorials.html" title="NITlab Video Tutorials"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">test_nit 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="simple-omf-example">
+<h1>Simple OMF Example<a class="headerlink" href="#simple-omf-example" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="basics">
+<h2>1.Basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h2>
+<p>This simple example introduces you to OMF6.It presents all the basic steps to develop, run, and access the result of an experiment with OMF 6.</p>
+<p><strong>Experiment Senario</strong></p>
+<blockquote>
+<div><p>This simple experiment involves a single resource of type PC, which has an active network interface. In this experiment, we will instruct that resource to start an instance of the &#8216;ping-oml2&#8217; application to probe another host on the network attached to that interface (e.g. another host on the Internet, the LAN, or the resource&#8217;s itself).</p>
+<p>This &#8216;ping-oml2&#8217; application is a wrapper around the traditional ping application. It captures the ping outputs and sends them as measurement streams to an OML2 collection point (an OML2 server in this case), which then stores them in a database available to the experimenter.</p>
+</div></blockquote>
+</div>
+<div class="section" id="prerequisties">
+<h2>2.Prerequisties<a class="headerlink" href="#prerequisties" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="a-accessing-provisioning-resources">
+<h3><em>a) Accessing/Provisioning Resources</em><a class="headerlink" href="#a-accessing-provisioning-resources" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line"><strong>Accessing a Resource at NITOS</strong></div>
+<div class="line"><br /></div>
+<div class="line">Firstly, you have to reserve a node at NITOS: <a class="reference internal" href="get_reserve.html#label-name"><em>Getting a Slice and Reserving Resources</em></a></div>
+</div>
+<div class="line-block">
+<div class="line"><strong>Provisioning a Resource at NITOS</strong></div>
+<div class="line"><br /></div>
+<div class="line">You can use the method described on <a class="reference internal" href="loadOMF.html#label-name-2"><em>Loading an OMF-compatible image on your resource</em></a> for instruction on how to image resources at NITOS. Load on your resource a disk image that contains OMF6. For example load the image <em>baseline_grid_omf6_1_1.ndz</em>.</div>
+</div>
+</div>
+<div class="section" id="b-installing-the-experiment-controller">
+<h3><em>b) Installing the Experiment Controller</em><a class="headerlink" href="#b-installing-the-experiment-controller" title="Permalink to this headline">¶</a></h3>
+<p>The OMF Experiment Controller (EC) is the software that will interpret your Experiment Description (ED) and interact with the resources to execute it accordingly.</p>
+<p>You can install your own EC on your machine, by following the instructions for users on <a class="reference external" href="http://mytestbed.net/doc/omf/file.INSTALLATION.html">OMF 6 Installation Guide</a></p>
+</div>
+</div>
+<div class="section" id="developing-the-experiment">
+<h2>3. Developing the Experiment<a class="headerlink" href="#developing-the-experiment" title="Permalink to this headline">¶</a></h2>
+<p>To run an experiment with OMF, you first need to describe it into an Experiment Description (ED). An ED is a file/script that is supplied as an input to the Experiment Controller (EC). It contains a detailed description of the resources involved in an experiment and the sets of actions to perform in order to realize that experiment. An ED is written using the OMF Experiment Description Language (OEDL).</p>
+<p>The ED for our experiment: <a class="reference download internal" href="_downloads/tutorial000.rb"><tt class="xref download docutils literal"><span class="pre">ED_script</span></tt></a>.</p>
+<p>You can see <a class="reference external" href="http://omf.mytestbed.net/projects/omf6/wiki/OEDLOMF6">here</a>  more about (OMF6-OEDL)</p>
+</div>
+<div class="section" id="running-experiment">
+<h2>4. Running Experiment<a class="headerlink" href="#running-experiment" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="a-how-do-you-run-it">
+<h3><em>a) How do you run it?</em><a class="headerlink" href="#a-how-do-you-run-it" title="Permalink to this headline">¶</a></h3>
+<p>To run your experiment you have to:</p>
+<blockquote>
+<div><ul>
+<li><dl class="first docutils">
+<dt>save its description in a file on your computer, thus either</dt>
+<dd><ul class="first last simple">
+<li>cut-and-paste the above ED listing into a new file named &#8216;tutorial000.rb&#8217;</li>
+<li>download the ED directly: <a class="reference download internal" href="_downloads/tutorial000.rb"><tt class="xref download docutils literal"><span class="pre">ED_script</span></tt></a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">open a terminal and navigate to the folder/directory where you saved that file</p>
+</li>
+<li><p class="first">start the EC software and tell it to execute the experiment described in your ED file, using the command line:</p>
+<blockquote>
+<div><p>omf_ec -u xmpp://usr:pwd&#64;my_xmpp.com exec &#8211;oml_uri tcp:srv:port tutorial000.rb</p>
+<ul class="simple">
+<li>replace xmpp://usr:pwd&#64;srv with the credentials for your user on the xmpp pubsub server that is used to communicate with the resources</li>
+<li>replace <a class="reference external" href="tcp:srv:port">tcp:srv:port</a> with the hostname/IP and port of the OML2 server which will collect the experiment&#8217;s measurement</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">So for our example, xmpp server and OML server run at nitlab.inf.uth.gr. Then you would use the command:</p>
+<blockquote>
+<div><p>omf_ec -u xmpp://nitlab.inf.uth.gr exec &#8211;oml_uri tcp:nitlab.inf.uth.gr:3003 tutorial000.rb</p>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+<p>If you would like to know more about the other options of the OMF EC software please run the commands:</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">omf_ec help</div>
+<div class="line">omf_ec help exec</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="b-what-will-happen-next">
+<h3><em>b) What will happen next?</em><a class="headerlink" href="#b-what-will-happen-next" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">When running the EC with the above command, you should see an output similar to this :</div>
+</div>
+<div class="line-block">
+<div class="line">OMF Experiment Controller - Copyright (c) 2012-13 National ICT Australia Limited (NICTA)</div>
+<div class="line">{:type=&gt;:xml, :authenticate=&gt;nil}</div>
+<div class="line">21:27:18 INFO  XMPP::Communicator: Connecting to &#8216;nitlab.inf.uth.gr&#8217; ...</div>
+<div class="line">INFO  OML4R Client 2.10.4 [OMSPv4; Ruby 1.9.3] Copyright 2009-2014, NICTA</div>
+<div class="line">INFO  Collection URI is <a class="reference external" href="tcp:nitlab.inf.uth.gr:3003">tcp:nitlab.inf.uth.gr:3003</a></div>
+<div class="line">21:27:20 INFO  XMPP::Communicator: Connected</div>
+<div class="line">21:27:20 INFO  Object: OMF Experiment Controller 6.1.1 - Start</div>
+<div class="line">21:27:20 INFO  Object: Connected using {:proto=&gt;:xmpp, :user=&gt;&#8221;simos-aspire-5739g-2891&#8221;, :domain=&gt;&#8221;nitlab.inf.uth.gr&#8221;}</div>
+<div class="line">21:27:20 INFO  Object: Execute: /home/simos/Eidiko/tutorial000.rb</div>
+<div class="line">21:27:20 INFO  Object: Properties: {}</div>
+<div class="line">21:27:20 INFO  OmfEc::Experiment: Experiment: 2014-05-28T18:27:18.121Z starts</div>
+<div class="line">21:27:20 INFO  OmfEc::Experiment: Configure &#8216;node016&#8217; to join &#8216;Sender&#8217;</div>
+<div class="line">21:27:20 INFO  OmfEc::Experiment: Newly discovered resource &gt;&gt; xmpp://node016&#64;nitlab.inf.uth.gr</div>
+<div class="line">21:27:20 INFO  OmfEc::Experiment: Event triggered: &#8216;ALL_NODES_UP, ALL_UP&#8217;</div>
+<div class="line">21:27:20 INFO  OmfEc::Experiment: Config xmpp://node016&#64;nitlab.inf.uth.gr to join Sender</div>
+<div class="line">21:27:21 INFO  OmfEc::Experiment: Newly discovered resource &gt;&gt; xmpp://4980cefe-0117-442f-b743-49e57614fbcf&#64;nitlab.inf.uth.gr</div>
+<div class="line">21:27:21 INFO  OmfEc::Experiment: Event triggered: &#8216;ALL_UP_AND_INSTALLED&#8217;</div>
+<div class="line">21:27:21 INFO  Object: This is my first OMF experiment-simos</div>
+<div class="line">21:27:21 INFO  OmfEc: APP_EVENT STARTED from app ping_oml2_cxt_0 - msg: env -i /usr/bin/ping-oml2  8.8.8.8 -c 3 &#8211;oml-config tmp/4980cefe-0117-442f-b743-49e57614fbcf-1401301641.xml</div>
+<div class="line">21:27:21 INFO  OmfEc: APP_EVENT STDERR from app ping_oml2_cxt_0 - msg:  INFO ping-oml2: V2.10.4</div>
+<div class="line">21:27:21 INFO  OmfEc: APP_EVENT STDERR from app ping_oml2_cxt_0 - msg: INFO   OML4R Client 2.10.4 [OMSPv4; Ruby 1.9.3] Copyright 2009-2014, NICTA</div>
+<div class="line">21:27:21 INFO  OmfEc: APP_EVENT STDERR from app ping_oml2_cxt_0 - msg: INFO   Collection URI is <a class="reference external" href="tcp:nitlab.inf.uth.gr:3003">tcp:nitlab.inf.uth.gr:3003</a></div>
+<div class="line">21:27:24 INFO  OmfEc: APP_EVENT STDOUT from app ping_oml2_cxt_0 - msg: 64 bytes from 8.8.8.8: icmp_req=1 ttl=45 time=58.6 ms</div>
+<div class="line">21:27:24 INFO  OmfEc: APP_EVENT STDOUT from app ping_oml2_cxt_0 - msg: PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.</div>
+<div class="line">21:27:24 INFO  OmfEc: APP_EVENT STDOUT from app ping_oml2_cxt_0 - msg: 64 bytes from 8.8.8.8: icmp_req=3 ttl=45 time=58.7 ms</div>
+<div class="line">21:27:24 INFO  OmfEc: APP_EVENT STDOUT from app ping_oml2_cxt_0 - msg: 64 bytes from 8.8.8.8: icmp_req=2 ttl=45 time=58.6 ms</div>
+<div class="line">21:27:24 INFO  OmfEc: APP_EVENT STDOUT from app ping_oml2_cxt_0 - msg:</div>
+<div class="line">21:27:24 INFO  OmfEc: APP_EVENT STDOUT from app ping_oml2_cxt_0 - msg: &#8212; 8.8.8.8 ping statistics &#8212;</div>
+<div class="line">21:27:25 INFO  OmfEc: APP_EVENT STDOUT from app ping_oml2_cxt_0 - msg: 3 packets transmitted, 3 received, 0% packet loss, time 2002ms</div>
+<div class="line">21:27:25 INFO  OmfEc: APP_EVENT STDOUT from app ping_oml2_cxt_0 - msg: rtt min/avg/max/mdev = 58.657/58.676/58.712/0.199 ms</div>
+<div class="line">21:27:25 INFO  OmfEc: APP_EVENT EXIT from app ping_oml2_cxt_0 - msg: 0</div>
+<div class="line">21:27:31 INFO  OmfEc::Experiment: Experiment: 2014-05-28T18:27:18.121Z finished</div>
+<div class="line">21:27:31 INFO  OmfEc::Experiment: Release applications and network interfaces</div>
+<div class="line">21:27:31 INFO  OmfEc::Experiment: Exit in 15 seconds...</div>
+<div class="line">21:27:45 INFO  OmfEc::Experiment: OMF Experiment Controller 6.1.1 - Exit.</div>
+<div class="line">21:27:46 INFO  XMPP::Communicator: Disconnecting...</div>
+</div>
+</div>
+<div class="section" id="c-what-does-that-screen-output-mean">
+<h3><em>c) What does that screen output mean?</em><a class="headerlink" href="#c-what-does-that-screen-output-mean" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line"><strong>First the EC provides us with some information about the parameters of this experiment:</strong></div>
+</div>
+<div class="line-block">
+<div class="line">OMF Experiment Controller - Copyright (c) 2012-13 National ICT Australia Limited (NICTA)</div>
+<div class="line">{:type=&gt;:xml, :authenticate=&gt;nil}</div>
+<div class="line">21:27:18 INFO  XMPP::Communicator: Connecting to &#8216;nitlab.inf.uth.gr&#8217; ...</div>
+<div class="line">INFO  OML4R Client 2.10.4 [OMSPv4; Ruby 1.9.3] Copyright 2009-2014, NICTA</div>
+<div class="line">INFO  Collection URI is <a class="reference external" href="tcp:nitlab.inf.uth.gr:3003">tcp:nitlab.inf.uth.gr:3003</a></div>
+<div class="line">21:27:20 INFO  XMPP::Communicator: Connected</div>
+<div class="line">21:27:20 INFO  Object: OMF Experiment Controller 6.1.1 - Start</div>
+<div class="line">21:27:20 INFO  Object: Connected using {:proto=&gt;:xmpp, :user=&gt;&#8221;simos-aspire-5739g-2891&#8221;, :domain=&gt;&#8221;nitlab.inf.uth.gr&#8221;}</div>
+<div class="line">21:27:20 INFO  Object: Execute: /home/simos/Eidiko/tutorial000.rb</div>
+<div class="line">21:27:20 INFO  Object: Properties: {}</div>
+<div class="line">21:27:20 INFO  OmfEc::Experiment: Experiment: 2014-05-28T18:27:18.121Z starts</div>
+<div class="line">21:27:20 INFO  OmfEc::Experiment: Configure &#8216;node016&#8217; to join &#8216;Sender&#8217;</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>It provides us some feedback about its communication with the xmpp server and other OMF entities.It also informs us when a defined event has been triggered:</strong></div>
+</div>
+<div class="line-block">
+<div class="line">21:27:20 INFO  OmfEc::Experiment: Newly discovered resource &gt;&gt; xmpp://node016&#64;nitlab.inf.uth.gr</div>
+<div class="line">21:27:20 INFO  OmfEc::Experiment: Event triggered: &#8216;ALL_NODES_UP, ALL_UP&#8217;</div>
+<div class="line">21:27:20 INFO  OmfEc::Experiment: Config xmpp://node016&#64;nitlab.inf.uth.gr to join Sender</div>
+<div class="line">21:27:21 INFO  OmfEc::Experiment: Newly discovered resource &gt;&gt; xmpp://4980cefe-0117-442f-b743-49e57614fbcf&#64;nitlab.inf.uth.gr</div>
+<div class="line">...</div>
+<div class="line">21:27:46 INFO  XMPP::Communicator: Disconnecting...</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>Finally, when an event is triggered (such as ALL_UP_AND_INSTALLED), it informs us about the tasks executed for that event, and their results/outputs:</strong></div>
+</div>
+<div class="line-block">
+<div class="line">21:27:21 INFO  OmfEc::Experiment: Event triggered: &#8216;ALL_UP_AND_INSTALLED&#8217;</div>
+<div class="line">21:27:21 INFO  Object: This is my first OMF experiment-simos</div>
+<div class="line">21:27:21 INFO  OmfEc: APP_EVENT STARTED from app ping_oml2_cxt_0 - msg: env -i /usr/bin/ping-oml2  8.8.8.8 -c 3 &#8211;oml-config tmp/4980cefe-0117-442f-b743-49e57614fbcf-1401301641.xml</div>
+<div class="line">21:27:21 INFO  OmfEc: APP_EVENT STDERR from app ping_oml2_cxt_0 - msg:  INFO ping-oml2: V2.10.4</div>
+<div class="line">21:27:21 INFO  OmfEc: APP_EVENT STDERR from app ping_oml2_cxt_0 - msg: INFO   OML4R Client 2.10.4 [OMSPv4; Ruby 1.9.3] Copyright 2009-2014, NICTA</div>
+<div class="line">21:27:21 INFO  OmfEc: APP_EVENT STDERR from app ping_oml2_cxt_0 - msg: INFO   Collection URI is <a class="reference external" href="tcp:nitlab.inf.uth.gr:3003">tcp:nitlab.inf.uth.gr:3003</a></div>
+<div class="line">21:27:24 INFO  OmfEc: APP_EVENT STDOUT from app ping_oml2_cxt_0 - msg: 64 bytes from 8.8.8.8: icmp_req=1 ttl=45 time=58.6 ms</div>
+<div class="line">21:27:24 INFO  OmfEc: APP_EVENT STDOUT from app ping_oml2_cxt_0 - msg: PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.</div>
+<div class="line">21:27:24 INFO  OmfEc: APP_EVENT STDOUT from app ping_oml2_cxt_0 - msg: 64 bytes from 8.8.8.8: icmp_req=3 ttl=45 time=58.7 ms</div>
+<div class="line">21:27:24 INFO  OmfEc: APP_EVENT STDOUT from app ping_oml2_cxt_0 - msg: 64 bytes from 8.8.8.8: icmp_req=2 ttl=45 time=58.6 ms</div>
+<div class="line">21:27:24 INFO  OmfEc: APP_EVENT STDOUT from app ping_oml2_cxt_0 - msg:</div>
+<div class="line">21:27:24 INFO  OmfEc: APP_EVENT STDOUT from app ping_oml2_cxt_0 - msg: &#8212; 8.8.8.8 ping statistics &#8212;</div>
+<div class="line">21:27:25 INFO  OmfEc: APP_EVENT STDOUT from app ping_oml2_cxt_0 - msg: 3 packets transmitted, 3 received, 0% packet loss, time 2002ms</div>
+<div class="line">21:27:25 INFO  OmfEc: APP_EVENT STDOUT from app ping_oml2_cxt_0 - msg: rtt min/avg/max/mdev = 58.657/58.676/58.712/0.199 ms</div>
+<div class="line">21:27:25 INFO  OmfEc: APP_EVENT EXIT from app ping_oml2_cxt_0 - msg: 0</div>
+<div class="line">21:27:31 INFO  OmfEc::Experiment: Experiment: 2014-05-28T18:27:18.121Z finished</div>
+<div class="line">21:27:31 INFO  OmfEc::Experiment: Release applications and network interfaces</div>
+<div class="line">21:27:31 INFO  OmfEc::Experiment: Exit in 15 seconds...</div>
+<div class="line">21:27:45 INFO  OmfEc::Experiment: OMF Experiment Controller 6.1.1 - Exit.</div>
+</div>
+</div>
+</div>
+<div class="section" id="accesing-results">
+<h2>5.Accesing Results<a class="headerlink" href="#accesing-results" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Simple OMF Example</a><ul>
+<li><a class="reference internal" href="#basics">1.Basics</a></li>
+<li><a class="reference internal" href="#prerequisties">2.Prerequisties</a><ul>
+<li><a class="reference internal" href="#a-accessing-provisioning-resources"><em>a) Accessing/Provisioning Resources</em></a></li>
+<li><a class="reference internal" href="#b-installing-the-experiment-controller"><em>b) Installing the Experiment Controller</em></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#developing-the-experiment">3. Developing the Experiment</a></li>
+<li><a class="reference internal" href="#running-experiment">4. Running Experiment</a><ul>
+<li><a class="reference internal" href="#a-how-do-you-run-it"><em>a) How do you run it?</em></a></li>
+<li><a class="reference internal" href="#b-what-will-happen-next"><em>b) What will happen next?</em></a></li>
+<li><a class="reference internal" href="#c-what-does-that-screen-output-mean"><em>c) What does that screen output mean?</em></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#accesing-results">5.Accesing Results</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="video_tutorials.html"
+                        title="previous chapter">NITlab Video Tutorials</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="wireless_example.html"
+                        title="next chapter">Wireless Example</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/omf_example.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="wireless_example.html" title="Wireless Example"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="video_tutorials.html" title="NITlab Video Tutorials"
+             >previous</a> |</li>
+        <li><a href="index.html">test_nit 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Simos Iordanidis.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

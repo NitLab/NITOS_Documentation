@@ -1,0 +1,358 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>WiMax Example &mdash; Nitlab 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Nitlab 1.0 documentation" href="index.html" />
+    <link rel="prev" title="WiFi Example" href="wireless_example.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="wireless_example.html" title="WiFi Example"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Nitlab 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="wimax-example">
+<h1>WiMax Example<a class="headerlink" href="#wimax-example" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="basics-prerequisties">
+<h2>1.Basics-Prerequisties<a class="headerlink" href="#basics-prerequisties" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="accessing-provisioning-resources">
+<h3><em>Accessing/Provisioning Resources</em><a class="headerlink" href="#accessing-provisioning-resources" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line"><strong>Accessing a Resource at NITOS</strong></div>
+<div class="line"><br /></div>
+<div class="line">Firstly, you have to reserve a node at NITOS: <a class="reference internal" href="get_reserve.html#label-name"><em>Getting a Slice and Reserving Resources</em></a></div>
+</div>
+<div class="line-block">
+<div class="line">In order to use the WiMAX testbed resources offered by the NITOS facility, you will have to reserve the WiMAX base station and the nodes
+with WIMAX connectivity, offered by the testbed (<strong>Icarus nodes41-49</strong>).</div>
+</div>
+<div class="line-block">
+<div class="line">Reserving the base station will render rights to the experimenter to access the WiMAXrf services of the testbed, used to configure and setup  the base station at the experimenter&#8217;s will.</div>
+</div>
+<div class="line-block">
+<div class="line"><em>After your reservation has started,login to Server.</em></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">You have to connect to <strong>Nitos Server2</strong>!</p>
+</div>
+<p>You can use your NITlab account to access the Nitos Server2.Just open a secure shell,write <strong>ssh slice_name&#64;nitlab2.inf.uth.gr</strong> (i.e <a class="reference external" href="mailto:syiordan&#37;&#52;&#48;nitlab2&#46;inf&#46;uth&#46;gr">syiordan<span>&#64;</span>nitlab2<span>&#46;</span>inf<span>&#46;</span>uth<span>&#46;</span>gr</a>) and log into the server.</p>
+<div class="line-block">
+<div class="line"><strong>Provisioning a Resource at NITOS</strong></div>
+<div class="line"><br /></div>
+<div class="line">You can use the method described on <a class="reference internal" href="loadOMF.html#label-name-2"><em>Loading an OMF-compatible image on your resource</em></a> for instruction on how to image resources at NITOS. Load on your resource a disk image that is compatitable for WiMax experimentation such as <strong>fgre_2014.ndz</strong>.</div>
+</div>
+</div>
+</div>
+<div class="section" id="set-up-experimentation-properties-of-the-bs">
+<h2>2.Set up experimentation properties of the BS<a class="headerlink" href="#set-up-experimentation-properties-of-the-bs" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">Before user starts an experiment with WiMax he/she has to configure BS with the specific parameters he/she wants.There is a basic command
+available to get or set the required parameters to BS.This is the  <strong>&#8216;wget&#8217;</strong> command.</div>
+</div>
+<div class="line-block">
+<div class="line">As soon as the parameters set,the experimenter can submit a new Experiment Definition(ED) written in OMF Experiment Description Language
+submit it to OMF&#8217;s EC.</div>
+</div>
+<div class="line-block">
+<div class="line">WiMax services are seperated in two categories.The first one to configure the BS and the other one to configure the mobile clients.A
+description of these services is available to user,through the command :
+<strong>&#8216; wget -qO- &#8220;http://wimaxrf:5054/wimaxrf/&#8221; &#8216;</strong></div>
+</div>
+<div class="section" id="services-for-bs">
+<h3>Services for BS<a class="headerlink" href="#services-for-bs" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line"><strong>bs/arq</strong></div>
+</div>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Set ARQ parameters</p>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><strong>bs/harq</strong></div>
+</div>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Set HARQ parameters</p>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><strong>bs/security</strong></div>
+</div>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Set SECURITY parameters</p>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><strong>bs/wireless</strong></div>
+</div>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Set WIRELESS parameters</p>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><strong>bs/zone</strong></div>
+</div>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Set ZONE parameters</p>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line">The above services show to the experimenter a sort description relative to functionality of the service which provide , permitted values and
+the name of parameters which the user can configure and provision to bs.</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>bs/get</strong></div>
+</div>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Get Basestation Static Parameter</p>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><strong>bs/set</strong></div>
+</div>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Set Basestation Static Parameter</p>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><strong>bs/get</strong> and <strong>bs/set</strong> are two functions which required the name of parameter and value in order to configure the Base station.</div>
+</div>
+<div class="line-block">
+<div class="line">For example if the user wants to change the transmission power of Base station to 40 db then he/she has to go to wireless service and there
+will find a parameter “txpower” .Then he/she has to write the wget command :</div>
+<div class="line"><strong>wget -qO- &#8221; http://wimaxrf:5054/wimaxrf/bs/set?txpower=40 &#8220;</strong></div>
+<div class="line">If the user wants to know the current transmission power then the only change he/she has to do in wget is replace the bs/set with bs/get
+and obviously no value required .</div>
+<div class="line"><strong>wget -qO- &#8221; http://wimaxrf:5054/wimaxrf/bs/get?txpower &#8220;</strong></div>
+</div>
+<div class="line-block">
+<div class="line"><strong>bs/default</strong></div>
+</div>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In order to setup the BS to the default settings.</p>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><strong>bs/info</strong></div>
+</div>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Get information about the Base Station</p>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><strong>bs/inservice</strong></div>
+</div>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Set Base Station in service state</p>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><strong>bs/maintenance</strong></div>
+</div>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Set Base Station to maintenance state</p>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><strong>bs/restart</strong></div>
+</div>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Restart the base station.</p>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><strong>bs/status</strong></div>
+</div>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Get status of WiMAX RF service</p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="services-for-mobile-clients">
+<h3>Services for mobile clients<a class="headerlink" href="#services-for-mobile-clients" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line"><strong>mobileclient</strong></div>
+</div>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You can set/get MOBILE parameters using the mobileclient service only</p>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><strong>mobileclient/monitor</strong></div>
+</div>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Get information about the mobile station</p>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><strong>mobileclient/reregister</strong></div>
+</div>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Reregister Mobile station</p>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><strong>mobileclient/showregister</strong></div>
+</div>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Get all register  mobiles stations</p>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line">Once you have logged in, you should setup the base station to the default settings, as its configuration might have been altered from its
+normal behavior by any previous experimenter. In order to setup the BS to the default settings you issue the following command:
+<strong>wget -qO- &#8221; http://wimaxrf:5054/wimaxrf/bs/default &#8220;</strong></div>
+</div>
+<div class="line-block">
+<div class="line">Since not all of the changes take place immediately, you will need to restart the base station for some of the changes to take effect. You
+can restart the BS with the following command:
+<strong>wget -qO- &#8221; http://wimaxrf:5054/wimaxrf/bs/restart &#8220;</strong></div>
+</div>
+<div class="line-block">
+<div class="line">Since the BS is back to its default settings, you can start experimenting with the WiMAX testbed.</div>
+</div>
+</div>
+</div>
+<div class="section" id="wimax-experiment-with-omf">
+<h2>3.WiMAX experiment with OMF<a class="headerlink" href="#wimax-experiment-with-omf" title="Permalink to this headline">¶</a></h2>
+<p>To run an experiment with OMF, you first need to describe it into an Experiment Description (ED). An ED is a file/script that is supplied as an input to the Experiment Controller (EC). It contains a detailed description of the resources involved in an experiment and the sets of actions to perform in order to realize that experiment. An ED is written using the OMF Experiment Description Language (OEDL).</p>
+<p>The ED for our experiment:</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">WiMax Example</a><ul>
+<li><a class="reference internal" href="#basics-prerequisties">1.Basics-Prerequisties</a><ul>
+<li><a class="reference internal" href="#accessing-provisioning-resources"><em>Accessing/Provisioning Resources</em></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#set-up-experimentation-properties-of-the-bs">2.Set up experimentation properties of the BS</a><ul>
+<li><a class="reference internal" href="#services-for-bs">Services for BS</a></li>
+<li><a class="reference internal" href="#services-for-mobile-clients">Services for mobile clients</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#wimax-experiment-with-omf">3.WiMAX experiment with OMF</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="wireless_example.html"
+                        title="previous chapter">WiFi Example</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/wiMax.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="wireless_example.html" title="WiFi Example"
+             >previous</a> |</li>
+        <li><a href="index.html">Nitlab 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Simos Iordanidis.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

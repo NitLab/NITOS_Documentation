@@ -3,9 +3,11 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-.. image:: _static/nitlab_logo.jpeg 
-   :align: center
-     
+.. image:: _static/new_nit_logo.png
+    :width: 400px  
+    :height: 100px
+    :alt: alternate text
+    :align: center
 
 NITlab documentation
 ====================================
@@ -34,19 +36,18 @@ OMF Example
    
    omf_example
 
-Wireless Example
+Using Wifi
 ----------------------------
 .. toctree::
    :maxdepth: 2
 
    wireless_example  
 
+Using WiMax
+----------------------------
+.. toctree::
+   :maxdepth: 2
 
+   wiMax
 
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
 
