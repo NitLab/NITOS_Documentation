@@ -235,3 +235,4 @@ If you would like to know more about the other options of the OMF EC software pl
 
 5.Accesing Results
 -------------------
+You can access your results by going to "tmp" file(i.e syiordan@nitlab:/tmp$ ) and type **ls**.

@@ -59,7 +59,7 @@ The ED for our experiment:
            |   # Define the OML2 measurement point that this application provides.
            |   # Here we have only one measurement point (MP) named 'ping'. Each measurement
            |   # sample from this MP will be composed of a 4-tuples (addr,ttl,rtt,rtt_unit)
-           |   app.defMeasurement('ping') do |m|
+           |   app.defMeasurement('ping') do | m |
            |     m.defMetric('dest_addr',:string)
            |     m.defMetric('ttl',:uint32)
            |     m.defMetric('rtt',:double)
@@ -70,10 +70,10 @@ The ED for our experiment:
            | # 2. Define a group of resources which will run the ping-oml2 application
            | # Here we define only one group (Sender), which has only one resource in it
            | #
-           | defGroup('Sender', 'node016') do |g|
+           | defGroup('Sender', 'node016') do | g |
            |   # Associate the application ping_oml2 defined above to each resources
            |   # in this group
-           |   g.addApplication("ping_oml2") do |app|
+           |   g.addApplication("ping_oml2") do | app |
            |     # Configure the parameters for the ping_oml2 application
            |     app.setProperty('target', '8.8.8.8')
            |     app.setProperty('count', 3)
@@ -87,7 +87,7 @@ The ED for our experiment:
            | # 3. Define the sequence of tasks to perform when the event
            | # "all resources are up and all applications are install" is being triggered
            | #
-           | onEvent(:ALL_UP_AND_INSTALLED) do |event|
+           | onEvent(:ALL_UP_AND_INSTALLED) do | event |
            |   # Print some information message
            |   info "This is my first OMF experiment"
            |   # Start all the Applications associated to all the Groups
