@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>WiMax Example &mdash; Nitlab 1.0 documentation</title>
+    <title>WiMax &mdash; Nitlab 1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -26,7 +26,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Nitlab 1.0 documentation" href="index.html" />
-    <link rel="prev" title="WiFi Example" href="wireless_example.html" /> 
+    <link rel="prev" title="WiFi" href="wireless_example.html" /> 
   </head>
   <body>
     <div class="related">
@@ -36,7 +36,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="wireless_example.html" title="WiFi Example"
+          <a href="wireless_example.html" title="WiFi"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">Nitlab 1.0 documentation</a> &raquo;</li> 
       </ul>
@@ -47,10 +47,14 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="wimax-example">
-<h1>WiMax Example<a class="headerlink" href="#wimax-example" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="basics-prerequisties">
-<h2>1.Basics-Prerequisties<a class="headerlink" href="#basics-prerequisties" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="wimax">
+<h1>WiMax<a class="headerlink" href="#wimax" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="basics">
+<h2>1.Basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h2>
+<p>Firstly,you will see how to connect and use WiMax.You&#8217;ll also see how to develop and run a simple experiment where the WiMAX interface is setup and generate traffic between two nodes.</p>
+</div>
+<div class="section" id="prerequisties">
+<h2>2.Prerequisties<a class="headerlink" href="#prerequisties" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="accessing-provisioning-resources">
 <h3><em>Accessing/Provisioning Resources</em><a class="headerlink" href="#accessing-provisioning-resources" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
@@ -76,12 +80,68 @@ with WIMAX connectivity, offered by the testbed (<strong>Icarus nodes41-49</stro
 <div class="line-block">
 <div class="line"><strong>Provisioning a Resource at NITOS</strong></div>
 <div class="line"><br /></div>
-<div class="line">You can use the method described on <a class="reference internal" href="loadOMF.html#label-name-2"><em>Loading an OMF-compatible image on your resource</em></a> for instruction on how to image resources at NITOS. Load on your resource a disk image that is compatitable for WiMax experimentation such as <strong>fgre_2014.ndz</strong>.</div>
+<div class="line">You can use the method described on <a class="reference internal" href="loadOMF.html#label-name-2"><em>Loading an OMF-compatible image on your resource</em></a> for instruction on how to image resources at NITOS. Load on your resource a disk image that is compatible for WiMax experimentation such as <strong>fgre_2014.ndz</strong>.</div>
 </div>
 </div>
+</div>
+<div class="section" id="experimental-topology">
+<h2>3.Experimental Topology<a class="headerlink" href="#experimental-topology" title="Permalink to this headline">¶</a></h2>
+<p>The topology that we are examining in this tutorial is a central Base Station unit, able to route requests from an internal WiMAX network to the internet.</p>
+<blockquote>
+<div><ul class="simple">
+<li>The Base Station is using the 192.168.55.1 IP address</li>
+<li>Multiple clients use the 192.168.55.0/24 subnet to communicate with the Base Station</li>
+<li>Packets routed through the Base Station are sent over the internet through a NAT translation</li>
+</ul>
+</div></blockquote>
+<img alt="_images/wimax-topo.png" src="_images/wimax-topo.png" />
+<p>However, the devices that we currently use do not allow us to interface directly the WiMAX device. If you send the following command</p>
+<p><strong>root&#64;node044:~# ifconfig tel0</strong></p>
+<p>you will all get an output similar to the following:</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line">tel0     Link encap:Ethernet  HWaddr 00:1e:42:02:18:72</div>
+<div class="line-block">
+<div class="line">inet addr:192.168.0.8 Bcast:192.168.0.255  Mask:255.255.255.0</div>
+<div class="line">inet6 addr: fe80::21e:42ff:fe02:1872/64 Scope:Link</div>
+<div class="line">UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1</div>
+<div class="line">RX packets:19939 errors:0 dropped:0 overruns:0 frame:0</div>
+<div class="line">TX packets:325172 errors:0 dropped:0 overruns:0 carrier:0</div>
+<div class="line">collisions:0 txqueuelen:1000</div>
+<div class="line">RX bytes:6477672 (6.4 MB)  TX bytes:486501878 (486.5 MB)</div>
+</div>
+</div>
+</div>
+<p>Since the WiMAX devices need a rather complex configuration in order to allow access to the WiMAX interfaces of another node,you have to issue the following command:</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line"><a class="reference external" href="mailto:root&#37;&#52;&#48;node044">root<span>&#64;</span>node044</a>:~# wmxfix</div>
+</div>
+</div>
+</div>
+<div class="section" id="connecting-to-the-wimax-network">
+<h2>4.Connecting to the WiMAX Network<a class="headerlink" href="#connecting-to-the-wimax-network" title="Permalink to this headline">¶</a></h2>
+<p>In order to connect to the Base Station, issue the following commands:</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line">wget &#8211;http-user admin &#8211;http-password admin -qO - &#8220;<a class="reference external" href="http://192.168.0.1/cgi/cli?stopSs">http://192.168.0.1/cgi/cli?stopSs</a>&#8220;</div>
+<div class="line">wget &#8211;http-user admin &#8211;http-password admin -qO - &#8220;<a class="reference external" href="http://192.168.0.1/cgi/cli?addChannel">http://192.168.0.1/cgi/cli?addChannel</a> frequency=2590000 bandwidth=10&#8221;</div>
+<div class="line">wget &#8211;http-user admin &#8211;http-password admin -qO - &#8220;<a class="reference external" href="http://192.168.0.1/cgi/cli?startSs">http://192.168.0.1/cgi/cli?startSs</a>&#8220;</div>
+</div>
+</div>
+<p>The first one, instructs the dongle to disconnect from any network that it is attached on. The second command, instructs the dongle to use the WiMAX channel at 2590MHz with a 10MHz channel bandwidth. Finally, with the third command the dongle connects to the NITOS WiMAX network.
+You can verify that the dongle has connected by sending the following command:</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">ping 192.168.55.3</p>
+</div>
+<p>If the host responds, you are connected to the Base Station. Host 192.168.55.3 is the server behind the Base Station, responsible for configuring it and routing the traffic coming from it.</p>
 </div>
 <div class="section" id="set-up-experimentation-properties-of-the-bs">
-<h2>2.Set up experimentation properties of the BS<a class="headerlink" href="#set-up-experimentation-properties-of-the-bs" title="Permalink to this headline">¶</a></h2>
+<h2>5.Set up experimentation properties of the BS<a class="headerlink" href="#set-up-experimentation-properties-of-the-bs" title="Permalink to this headline">¶</a></h2>
 <div class="line-block">
 <div class="line">Before user starts an experiment with WiMax he/she has to configure BS with the specific parameters he/she wants.There is a basic command
 available to get or set the required parameters to BS.This is the  <strong>&#8216;wget&#8217;</strong> command.</div>
@@ -283,10 +343,179 @@ can restart the BS with the following command:
 </div>
 </div>
 </div>
-<div class="section" id="wimax-experiment-with-omf">
-<h2>3.WiMAX experiment with OMF<a class="headerlink" href="#wimax-experiment-with-omf" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="developing-the-experiment">
+<h2>6.Developing the experiment<a class="headerlink" href="#developing-the-experiment" title="Permalink to this headline">¶</a></h2>
 <p>To run an experiment with OMF, you first need to describe it into an Experiment Description (ED). An ED is a file/script that is supplied as an input to the Experiment Controller (EC). It contains a detailed description of the resources involved in an experiment and the sets of actions to perform in order to realize that experiment. An ED is written using the OMF Experiment Description Language (OEDL).</p>
 <p>The ED for our experiment:</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="line-block">
+<div class="line">defProperty(&#8216;runtime&#8217;,20,&#8221;Time in second for the experiment is to run&#8221;)</div>
+<div class="line">defProperty(&#8216;client&#8217;,&#8221;192.168.55.48&#8221;,&#8221;IP address of iperf server&#8221;)</div>
+<div class="line">defProperty(&#8216;interval&#8217;, &#8220;1&#8221;, &#8220;Interval of Iperf measurements&#8221;)</div>
+<div class="line">defProperty(&#8216;sender&#8217;, &#8216;omf.nitos.node043&#8217;, &#8220;ID of sender node&#8221;)</div>
+<div class="line">defProperty(&#8216;receiver&#8217;, &#8216;omf.nitos.node048&#8217;, &#8220;ID of sender node&#8221;)</div>
+</div>
+<div class="line-block">
+<div class="line">defGroup(&#8216;Sender&#8217;, property.sender) do | node |</div>
+<div class="line-block">
+<div class="line">node.net.t0.channel = &#8220;2590000,10&#8221;</div>
+<div class="line">node.addApplication(&#8220;test:app:iperf-5.4&#8221;) do | app |</div>
+<div class="line-block">
+<div class="line">app.setProperty(&#8216;client&#8217;, property.client)</div>
+<div class="line">app.setProperty(&#8216;interval&#8217;, property.interval)</div>
+<div class="line">app.setProperty(&#8216;time&#8217;, property.runtime)</div>
+<div class="line">app.setProperty(&#8216;udp&#8217;, true)</div>
+<div class="line">app.measure(&#8216;transfer&#8217;, :samples =&gt;1)</div>
+</div>
+<div class="line">end</div>
+</div>
+<div class="line">end</div>
+</div>
+<div class="line-block">
+<div class="line">defGroup(&#8216;Receiver&#8217;, property.receiver) do | node |</div>
+<div class="line-block">
+<div class="line">node.net.t0.channel = &#8220;2590000,10&#8221;</div>
+<div class="line">node.addApplication(&#8220;test:app:iperf-5.4&#8221;) do | app |</div>
+<div class="line-block">
+<div class="line">app.setProperty(&#8216;server&#8217;, true)</div>
+<div class="line">app.setProperty(&#8216;interval&#8217;, property.interval)</div>
+<div class="line">app.setProperty(&#8216;udp&#8217;, true)</div>
+<div class="line">app.measure(&#8216;transfer&#8217;, :samples =&gt;1)</div>
+</div>
+<div class="line">end</div>
+</div>
+<div class="line">end</div>
+</div>
+<div class="last line-block">
+<div class="line">onEvent(:ALL_UP_AND_INSTALLED) do | event |</div>
+<div class="line-block">
+<div class="line">wait 50</div>
+<div class="line">info &#8220;This is an iperf  experiment using a teltonika modem&#8221;</div>
+<div class="line">allGroups.startApplications</div>
+<div class="line">wait property.runtime</div>
+<div class="line">wait 2</div>
+<div class="line">allGroups.stopApplications</div>
+<div class="line">wait 2</div>
+<div class="line">Experiment.done</div>
+</div>
+<div class="line">end</div>
+</div>
+</div>
+</div>
+<div class="section" id="running-experiment">
+<h2>7.Running Experiment<a class="headerlink" href="#running-experiment" title="Permalink to this headline">¶</a></h2>
+<p>You can run it from the testbed server with the following command:</p>
+<p><strong>omf exec experiment.rb &#8211;slice your_username</strong></p>
+<table border="1" class="docutils">
+<caption><strong>Screen Output</strong></caption>
+<colgroup>
+<col width="100%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">When running the EC with the above command, you should see an output similar to this :</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>INFO NodeHandler: OMF Experiment Controller 5.4 (git 3105a52)</td>
+</tr>
+<tr class="row-odd"><td>INFO NodeHandler: Slice ID: ardadouk</td>
+</tr>
+<tr class="row-even"><td>INFO NodeHandler: Experiment ID: ardadouk-2014-09-15t17.13.25+03.00</td>
+</tr>
+<tr class="row-odd"><td>INFO NodeHandler: Message authentication is disabled</td>
+</tr>
+<tr class="row-even"><td>INFO Experiment: load system:exp:stdlib</td>
+</tr>
+<tr class="row-odd"><td>INFO property.resetDelay: resetDelay = 90 (Fixnum)</td>
+</tr>
+<tr class="row-even"><td>INFO property.resetTries: resetTries = 1 (Fixnum)</td>
+</tr>
+<tr class="row-odd"><td>INFO Experiment: load system:exp:eventlib</td>
+</tr>
+<tr class="row-even"><td>INFO Experiment: load wimax_experiment.rb</td>
+</tr>
+<tr class="row-odd"><td>INFO property.runtime: runtime = 20 (Fixnum)</td>
+</tr>
+<tr class="row-even"><td>INFO property.client: client = 192.168.55.47&#8221; (String)&#8221;</td>
+</tr>
+<tr class="row-odd"><td>INFO property.interval: interval = 1&#8221; (String)&#8221;</td>
+</tr>
+<tr class="row-even"><td>INFO property.sender: sender = omf.nitos.node046&#8221; (String)&#8221;</td>
+</tr>
+<tr class="row-odd"><td>INFO property.receiver: receiver = omf.nitos.node047&#8221; (String)&#8221;</td>
+</tr>
+<tr class="row-even"><td>INFO Topology: Loading topology &#8216;omf.nitos.node046&#8217;.</td>
+</tr>
+<tr class="row-odd"><td>INFO Topology: Loading topology &#8216;omf.nitos.node047&#8217;.</td>
+</tr>
+<tr class="row-even"><td>INFO Experiment: Switching ON resources which are OFF</td>
+</tr>
+<tr class="row-odd"><td>INFO ALL_UP_AND_INSTALLED: Event triggered. Starting the associated tasks.</td>
+</tr>
+<tr class="row-even"><td>INFO exp: Request from Experiment Script: Wait for 50s....</td>
+</tr>
+<tr class="row-odd"><td>INFO exp: This is an iperf  experiment using a teltonika modem</td>
+</tr>
+<tr class="row-even"><td>INFO exp: Request from Experiment Script: Wait for 20s....</td>
+</tr>
+<tr class="row-odd"><td>INFO exp: Request from Experiment Script: Wait for 2s....</td>
+</tr>
+<tr class="row-even"><td>INFO exp: Request from Experiment Script: Wait for 2s....</td>
+</tr>
+<tr class="row-odd"><td>INFO EXPERIMENT_DONE: Event triggered. Starting the associated tasks.</td>
+</tr>
+<tr class="row-even"><td>INFO NodeHandler:</td>
+</tr>
+<tr class="row-odd"><td>INFO NodeHandler: Shutting down experiment, please wait...</td>
+</tr>
+<tr class="row-even"><td>INFO NodeHandler:</td>
+</tr>
+<tr class="row-odd"><td>INFO run: Experiment ardadouk-2014-09-15t17.13.25+03.00 finished after 1:20</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="accessing-results">
+<h2>8.Accessing Results<a class="headerlink" href="#accessing-results" title="Permalink to this headline">¶</a></h2>
+<p>You can access your results in /tmp file with sqlite3.</p>
+<p>Type a command similar to this:</p>
+<p><strong>ardadouk&#64;nitlab2:~# sqlite3 /tmp/ardadouk-2014-09-15t17.13.25+03.00.sq3</strong></p>
+<div class="line-block">
+<div class="line">SQLite version 3.7.9 2011-11-01 00:52:41</div>
+<div class="line">Enter &#8221;.help&#8221; for instructions</div>
+<div class="line">Enter SQL statements terminated with a &#8221;;&#8221;</div>
+<div class="line">sqlite&gt; .dump</div>
+<div class="line">PRAGMA foreign_keys=OFF;</div>
+<div class="line">BEGIN TRANSACTION;</div>
+<div class="line">CREATE TABLE _senders (name TEXT PRIMARY KEY, id INTEGER UNIQUE);</div>
+<div class="line">INSERT INTO &#8220;_senders&#8221; VALUES(&#8216;Sender&#8217;,1);</div>
+<div class="line">CREATE TABLE _experiment_metadata (key TEXT PRIMARY KEY, value TEXT);</div>
+<div class="line">INSERT INTO &#8220;_experiment_metadata&#8221; VALUES(&#8216;start_time&#8217;,&#8216;1410801183&#8217;);</div>
+<div class="line">CREATE TABLE &#8220;iperf_transfer&#8221; (oml_sender_id INTEGER, oml_seq INTEGER, oml_ts_client REAL, oml_ts_server REAL, &#8220;pid&#8221; INTEGER,</div>
+<div class="line">&#8220;connection_id&#8221; INTEGER, &#8220;begin_interval&#8221; REAL, &#8220;end_interval&#8221; REAL, &#8220;size&#8221; UNSIGNED BIGINT);</div>
+<div class="line">INSERT INTO &#8220;iperf_transfer&#8221; VALUES(1,1,1.12967199832201,-10720.634378,1305,4,0.0,1.0,132300);</div>
+<div class="line">INSERT INTO &#8220;iperf_transfer&#8221; VALUES(1,2,2.11843899637461,-10719.670295,1305,4,1.0,2.0,130830);</div>
+<div class="line">INSERT INTO &#8220;iperf_transfer&#8221; VALUES(1,3,3.11740499734879,-10718.671336,1305,4,2.0,3.0,130830);</div>
+<div class="line">INSERT INTO &#8220;iperf_transfer&#8221; VALUES(1,4,4.11637899279594,-10717.672453,1305,4,3.0,4.0,130830);</div>
+<div class="line">INSERT INTO &#8220;iperf_transfer&#8221; VALUES(1,5,5.11532099545002,-10716.673515,1305,4,4.0,5.0,130830);</div>
+<div class="line">INSERT INTO &#8220;iperf_transfer&#8221; VALUES(1,6,6.11408699303865,-10715.674698,1305,4,5.0,6.0,130830);</div>
+<div class="line">INSERT INTO &#8220;iperf_transfer&#8221; VALUES(1,7,7.12316399812698,-10714.665473,1305,4,6.0,7.0,132300);</div>
+<div class="line">INSERT INTO &#8220;iperf_transfer&#8221; VALUES(1,8,8.12204399704933,-10713.666893,1305,4,7.0,8.0,130830);</div>
+<div class="line">INSERT INTO &#8220;iperf_transfer&#8221; VALUES(1,9,9.120899990201,-10712.668072,1305,4,8.0,9.0,130830);</div>
+<div class="line">INSERT INTO &#8220;iperf_transfer&#8221; VALUES(1,10,10.1199389994144,-10711.668989,1305,4,9.0,10.0,130830);</div>
+<div class="line">INSERT INTO &#8220;iperf_transfer&#8221; VALUES(1,11,11.1189429908991,-10710.670015,1305,4,10.0,11.0,130830);</div>
+<div class="line">INSERT INTO &#8220;iperf_transfer&#8221; VALUES(1,12,12.1177649945021,-10709.671234,1305,4,11.0,12.0,130830);</div>
+<div class="line">INSERT INTO &#8220;iperf_transfer&#8221; VALUES(1,13,13.1268289983273,-10708.662183,1305,4,12.0,13.0,132300);</div>
+<div class="line">INSERT INTO &#8220;iperf_transfer&#8221; VALUES(1,14,14.1257529854774,-10707.663297,1305,4,13.0,14.0,130830);</div>
+<div class="line">INSERT INTO &#8220;iperf_transfer&#8221; VALUES(1,15,15.1244789958,-10706.664623,1305,4,14.0,15.0,130830);</div>
+<div class="line">INSERT INTO &#8220;iperf_transfer&#8221; VALUES(1,16,16.1233379840851,-10705.66573,1305,4,15.0,16.0,130830);</div>
+<div class="line">INSERT INTO &#8220;iperf_transfer&#8221; VALUES(1,17,17.1221949756145,-10704.66691,1305,4,16.0,17.0,130830);</div>
+<div class="line">INSERT INTO &#8220;iperf_transfer&#8221; VALUES(1,18,18.1109179854393,-10703.678253,1305,4,17.0,18.0,130830);</div>
+<div class="line">INSERT INTO &#8220;iperf_transfer&#8221; VALUES(1,19,19.1300239861012,-10702.659141,1305,4,18.0,19.0,132300);</div>
+<div class="line">INSERT INTO &#8220;iperf_transfer&#8221; VALUES(1,20,20.1187719702721,-10701.670474,1305,4,19.0,20.0,130830);</div>
+<div class="line">COMMIT;</div>
+</div>
 </div>
 </div>
 
@@ -298,24 +527,29 @@ can restart the BS with the following command:
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">WiMax Example</a><ul>
-<li><a class="reference internal" href="#basics-prerequisties">1.Basics-Prerequisties</a><ul>
+<li><a class="reference internal" href="#">WiMax</a><ul>
+<li><a class="reference internal" href="#basics">1.Basics</a></li>
+<li><a class="reference internal" href="#prerequisties">2.Prerequisties</a><ul>
 <li><a class="reference internal" href="#accessing-provisioning-resources"><em>Accessing/Provisioning Resources</em></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#set-up-experimentation-properties-of-the-bs">2.Set up experimentation properties of the BS</a><ul>
+<li><a class="reference internal" href="#experimental-topology">3.Experimental Topology</a></li>
+<li><a class="reference internal" href="#connecting-to-the-wimax-network">4.Connecting to the WiMAX Network</a></li>
+<li><a class="reference internal" href="#set-up-experimentation-properties-of-the-bs">5.Set up experimentation properties of the BS</a><ul>
 <li><a class="reference internal" href="#services-for-bs">Services for BS</a></li>
 <li><a class="reference internal" href="#services-for-mobile-clients">Services for mobile clients</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#wimax-experiment-with-omf">3.WiMAX experiment with OMF</a></li>
+<li><a class="reference internal" href="#developing-the-experiment">6.Developing the experiment</a></li>
+<li><a class="reference internal" href="#running-experiment">7.Running Experiment</a></li>
+<li><a class="reference internal" href="#accessing-results">8.Accessing Results</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="wireless_example.html"
-                        title="previous chapter">WiFi Example</a></p>
+                        title="previous chapter">WiFi</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/wiMax.txt"
@@ -345,7 +579,7 @@ can restart the BS with the following command:
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="wireless_example.html" title="WiFi Example"
+          <a href="wireless_example.html" title="WiFi"
              >previous</a> |</li>
         <li><a href="index.html">Nitlab 1.0 documentation</a> &raquo;</li> 
       </ul>

@@ -1,4 +1,4 @@
-WiFi Example
+WiFi
 =================
 
 1.Basics
@@ -16,7 +16,7 @@ This simple tutorial presents all the basic steps to develop, run, and access th
 2.Prerequisties
 ----------------
 
-*a) Accessing/Provisioning Resources*
+Accessing/Provisioning Resources
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 | **Accessing a Resource at NITOS**
 |

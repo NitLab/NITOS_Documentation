@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>NITlab documentation &mdash; home</title>
+    <title>NITlab documentation &mdash; Nitlab 1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.1',
+        VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="test_nit 0.1 documentation" href="#" />
+    <link rel="top" title="Nitlab 1.0 documentation" href="#" />
     <link rel="next" title="Creating a User Account" href="account_create.html" /> 
   </head>
   <body>
@@ -38,7 +38,7 @@
         <li class="right" >
           <a href="account_create.html" title="Creating a User Account"
              accesskey="N">next</a> |</li>
-        <li><a href="#">test_nit 0.1 documentation</a> &raquo;</li> 
+        <li><a href="#">Nitlab 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -46,12 +46,31 @@
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body">
-            
-  <img alt="alternate text" class="align-center" src="_images/new_nit_logo.png" style="width: 600px; height: 100px; " />
+
+<table width="500" border="0" cellpadding="0" >
+
+<tr>
+
+<td align="left" valign="left">
+<img src="_images/header-bg.png" alt="description here" />
+</td>
+
+<td align="center" valign="center">
+<img src="_images/new_nit_logo.png" alt="description here" />
+</td>
+
+<td align="right" valign="right">
+<img src="_images/header-bg.png" alt="description here" />
+</td>
+</tr>
+
+</table>
+
+<img alt="alternate text" class="align-center" src="_images/new_nit_logo.png" style="width: 400px; height: 100px;" />
 <div class="section" id="nitlab-documentation">
-<h1>NITlab documentation<a class="headerlink" href="#nitlab-documentation" title="Permalink to this headline">¶</a></h1>
+<h1>NITlab documentation<a class="headerlink" href="#nitlab-documentation" title="Permalink to this headline"></a></h1>
 <div class="section" id="first-steps-on-using-nitos">
-<h2>First Steps on using NITOS<a class="headerlink" href="#first-steps-on-using-nitos" title="Permalink to this headline">¶</a></h2>
+<h2>First Steps on using NITOS<a class="headerlink" href="#first-steps-on-using-nitos" title="Permalink to this headline"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="account_create.html">Creating a User Account</a></li>
@@ -66,7 +85,7 @@
 </div>
 </div>
 <div class="section" id="omf-example">
-<h2>OMF Example<a class="headerlink" href="#omf-example" title="Permalink to this headline">¶</a></h2>
+<h2>OMF Example<a class="headerlink" href="#omf-example" title="Permalink to this headline"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="omf_example.html">Simple OMF Example</a><ul>
@@ -80,11 +99,11 @@
 </ul>
 </div>
 </div>
-<div class="section" id="wireless-example">
-<h2>Wireless Example<a class="headerlink" href="#wireless-example" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="using-wifi">
+<h2>Using Wifi<a class="headerlink" href="#using-wifi" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="wireless_example.html">Wireless Example</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="wireless_example.html">WiFi Example</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="wireless_example.html#basics">1.Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wireless_example.html#prerequisties">2.Prerequisties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wireless_example.html#developing-the-experiment">3. Developing the Experiment</a></li>
@@ -95,14 +114,24 @@
 </ul>
 </div>
 </div>
-</div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
-<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
-<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+<div class="section" id="using-wimax">
+<h2>Using WiMax<a class="headerlink" href="#using-wimax" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="wiMax.html">WiMax Example</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wiMax.html#basics">1.Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiMax.html#prerequisties">2.Prerequisties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiMax.html#experimental-topology">3.Experimental Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiMax.html#connecting-to-the-wimax-network">4.Connecting to the WiMAX Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiMax.html#set-up-experimentation-properties-of-the-bs">5.Set up experimentation properties of the BS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiMax.html#developing-the-experiment">6.Developing the experiment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiMax.html#running-experiment">7.Running Experiment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiMax.html#accessing-results">8.Accessing Results</a></li>
 </ul>
+</li>
+</ul>
+</div>
+</div>
 </div>
 
 
@@ -120,12 +149,14 @@
 <li><a class="reference internal" href="#omf-example">OMF Example</a><ul>
 </ul>
 </li>
-<li><a class="reference internal" href="#wireless-example">Wireless Example</a><ul>
+<li><a class="reference internal" href="#using-wifi">Using Wifi</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#using-wimax">Using WiMax</a><ul>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
 
   <h4>Next topic</h4>
@@ -162,7 +193,7 @@
         <li class="right" >
           <a href="account_create.html" title="Creating a User Account"
              >next</a> |</li>
-        <li><a href="#">test_nit 0.1 documentation</a> &raquo;</li> 
+        <li><a href="#">Nitlab 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

@@ -3,11 +3,16 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-.. image:: _static/new_nit_logo.png
-    :width: 400px  
-    :height: 100px
-    :alt: alternate text
-    :align: center
+
+.. image:: _static/header-bg.png
+   :width: 30%
+   :height: 100px
+.. image:: _static/NITlab_logo_layers.png
+   :width: 30%
+   :height: 100px
+.. image:: _static/header-bg.png
+   :width: 30%
+   :height: 100px
 
 NITlab documentation
 ====================================
@@ -50,4 +55,9 @@ Using WiMax
 
    wiMax
 
+Using Openflow
+-----------------------------
+.. toctree::
+   :maxdepth: 2
 
+   openflow

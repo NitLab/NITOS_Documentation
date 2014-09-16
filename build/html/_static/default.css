@@ -36,7 +36,7 @@ div.bodywrapper {
 }
 
 div.body {
-    background-color: #305086;
+    background-color: #ffffff;
     color: #101010 ;
     padding: 0 20px 30px 20px;
 }
@@ -142,9 +142,9 @@ div.body h4,
 div.body h5,
 div.body h6 {
     font-family: Times New Roman;
-    background-color: #305086;
+    background-color: #f2f2f2;
     font-weight: normal;
-    color: #FFFFFF;
+    color: #305086;
     border-bottom: 1px solid #ccc;
     margin: 20px -20px 10px -20px;
     padding: 3px 0 3px 10px;
