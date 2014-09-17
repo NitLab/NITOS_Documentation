@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 
-.. image:: /header-bg.png
+.. image:: _static/header-bg.png
    :width: 30%
    :height: 100px
 .. image:: _static/NITlab_logo_layers.png
@@ -41,7 +41,7 @@ OMF Example
    
    omf_example
 
-Using Wifi
+Using Wifis
 ----------------------------
 .. toctree::
    :maxdepth: 2

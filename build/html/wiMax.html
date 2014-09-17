@@ -26,6 +26,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Nitlab 1.0 documentation" href="index.html" />
+    <link rel="next" title="Openflow" href="openflow.html" />
     <link rel="prev" title="WiFi" href="wireless_example.html" /> 
   </head>
   <body>
@@ -35,6 +36,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="openflow.html" title="Openflow"
+             accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="wireless_example.html" title="WiFi"
              accesskey="P">previous</a> |</li>
@@ -76,7 +80,14 @@ with WIMAX connectivity, offered by the testbed (<strong>Icarus nodes41-49</stro
 <p class="first admonition-title">Warning</p>
 <p class="last">You have to connect to <strong>Nitos Server2</strong>!</p>
 </div>
-<p>You can use your NITlab account to access the Nitos Server2.Just open a secure shell,write <strong>ssh slice_name&#64;nitlab2.inf.uth.gr</strong> (i.e <a class="reference external" href="mailto:syiordan&#37;&#52;&#48;nitlab2&#46;inf&#46;uth&#46;gr">syiordan<span>&#64;</span>nitlab2<span>&#46;</span>inf<span>&#46;</span>uth<span>&#46;</span>gr</a>) and log into the server.</p>
+<p>You can use your NITlab account to access the Nitos Server2.Just open a secure shell,write</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line"><strong>ssh slice_name&#64;nitlab2.inf.uth.gr</strong> (i.e <a class="reference external" href="mailto:syiordan&#37;&#52;&#48;nitlab2&#46;inf&#46;uth&#46;gr">syiordan<span>&#64;</span>nitlab2<span>&#46;</span>inf<span>&#46;</span>uth<span>&#46;</span>gr</a>)</div>
+</div>
+</div>
+<p>and log into the server.</p>
 <div class="line-block">
 <div class="line"><strong>Provisioning a Resource at NITOS</strong></div>
 <div class="line"><br /></div>
@@ -96,7 +107,12 @@ with WIMAX connectivity, offered by the testbed (<strong>Icarus nodes41-49</stro
 </div></blockquote>
 <img alt="_images/wimax-topo.png" src="_images/wimax-topo.png" />
 <p>However, the devices that we currently use do not allow us to interface directly the WiMAX device. If you send the following command</p>
-<p><strong>root&#64;node044:~# ifconfig tel0</strong></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line"><strong>root&#64;node044:~# ifconfig tel0</strong></div>
+</div>
+</div>
 <p>you will all get an output similar to the following:</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -152,8 +168,13 @@ submit it to OMF&#8217;s EC.</div>
 </div>
 <div class="line-block">
 <div class="line">WiMax services are seperated in two categories.The first one to configure the BS and the other one to configure the mobile clients.A
-description of these services is available to user,through the command :
-<strong>&#8216; wget -qO- &#8220;http://wimaxrf:5054/wimaxrf/&#8221; &#8216;</strong></div>
+description of these services is available to user,through the command :</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line"><strong>&#8216; wget -qO- &#8220;http://wimaxrf:5054/wimaxrf/&#8221; &#8216;</strong></div>
+</div>
 </div>
 <div class="section" id="services-for-bs">
 <h3>Services for BS<a class="headerlink" href="#services-for-bs" title="Permalink to this headline">¶</a></h3>
@@ -230,10 +251,22 @@ the name of parameters which the user can configure and provision to bs.</div>
 <div class="line-block">
 <div class="line">For example if the user wants to change the transmission power of Base station to 40 db then he/she has to go to wireless service and there
 will find a parameter “txpower” .Then he/she has to write the wget command :</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
 <div class="line"><strong>wget -qO- &#8221; http://wimaxrf:5054/wimaxrf/bs/set?txpower=40 &#8220;</strong></div>
+</div>
+</div>
+<div class="line-block">
 <div class="line">If the user wants to know the current transmission power then the only change he/she has to do in wget is replace the bs/set with bs/get
 and obviously no value required .</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
 <div class="line"><strong>wget -qO- &#8221; http://wimaxrf:5054/wimaxrf/bs/get?txpower &#8220;</strong></div>
+</div>
 </div>
 <div class="line-block">
 <div class="line"><strong>bs/default</strong></div>
@@ -330,13 +363,23 @@ and obviously no value required .</div>
 </div></blockquote>
 <div class="line-block">
 <div class="line">Once you have logged in, you should setup the base station to the default settings, as its configuration might have been altered from its
-normal behavior by any previous experimenter. In order to setup the BS to the default settings you issue the following command:
-<strong>wget -qO- &#8221; http://wimaxrf:5054/wimaxrf/bs/default &#8220;</strong></div>
+normal behavior by any previous experimenter. In order to setup the BS to the default settings you issue the following command:</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line"><strong>wget -qO- &#8221; http://wimaxrf:5054/wimaxrf/bs/default &#8220;</strong></div>
+</div>
 </div>
 <div class="line-block">
 <div class="line">Since not all of the changes take place immediately, you will need to restart the base station for some of the changes to take effect. You
-can restart the BS with the following command:
-<strong>wget -qO- &#8221; http://wimaxrf:5054/wimaxrf/bs/restart &#8220;</strong></div>
+can restart the BS with the following command:</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line"><strong>wget -qO- &#8221; http://wimaxrf:5054/wimaxrf/bs/restart &#8220;</strong></div>
+</div>
 </div>
 <div class="line-block">
 <div class="line">Since the BS is back to its default settings, you can start experimenting with the WiMAX testbed.</div>
@@ -347,66 +390,56 @@ can restart the BS with the following command:
 <h2>6.Developing the experiment<a class="headerlink" href="#developing-the-experiment" title="Permalink to this headline">¶</a></h2>
 <p>To run an experiment with OMF, you first need to describe it into an Experiment Description (ED). An ED is a file/script that is supplied as an input to the Experiment Controller (EC). It contains a detailed description of the resources involved in an experiment and the sets of actions to perform in order to realize that experiment. An ED is written using the OMF Experiment Description Language (OEDL).</p>
 <p>The ED for our experiment:</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<div class="line-block">
-<div class="line">defProperty(&#8216;runtime&#8217;,20,&#8221;Time in second for the experiment is to run&#8221;)</div>
-<div class="line">defProperty(&#8216;client&#8217;,&#8221;192.168.55.48&#8221;,&#8221;IP address of iperf server&#8221;)</div>
-<div class="line">defProperty(&#8216;interval&#8217;, &#8220;1&#8221;, &#8220;Interval of Iperf measurements&#8221;)</div>
-<div class="line">defProperty(&#8216;sender&#8217;, &#8216;omf.nitos.node043&#8217;, &#8220;ID of sender node&#8221;)</div>
-<div class="line">defProperty(&#8216;receiver&#8217;, &#8216;omf.nitos.node048&#8217;, &#8220;ID of sender node&#8221;)</div>
-</div>
-<div class="line-block">
-<div class="line">defGroup(&#8216;Sender&#8217;, property.sender) do | node |</div>
-<div class="line-block">
-<div class="line">node.net.t0.channel = &#8220;2590000,10&#8221;</div>
-<div class="line">node.addApplication(&#8220;test:app:iperf-5.4&#8221;) do | app |</div>
-<div class="line-block">
-<div class="line">app.setProperty(&#8216;client&#8217;, property.client)</div>
-<div class="line">app.setProperty(&#8216;interval&#8217;, property.interval)</div>
-<div class="line">app.setProperty(&#8216;time&#8217;, property.runtime)</div>
-<div class="line">app.setProperty(&#8216;udp&#8217;, true)</div>
-<div class="line">app.measure(&#8216;transfer&#8217;, :samples =&gt;1)</div>
-</div>
-<div class="line">end</div>
-</div>
-<div class="line">end</div>
-</div>
-<div class="line-block">
-<div class="line">defGroup(&#8216;Receiver&#8217;, property.receiver) do | node |</div>
-<div class="line-block">
-<div class="line">node.net.t0.channel = &#8220;2590000,10&#8221;</div>
-<div class="line">node.addApplication(&#8220;test:app:iperf-5.4&#8221;) do | app |</div>
-<div class="line-block">
-<div class="line">app.setProperty(&#8216;server&#8217;, true)</div>
-<div class="line">app.setProperty(&#8216;interval&#8217;, property.interval)</div>
-<div class="line">app.setProperty(&#8216;udp&#8217;, true)</div>
-<div class="line">app.measure(&#8216;transfer&#8217;, :samples =&gt;1)</div>
-</div>
-<div class="line">end</div>
-</div>
-<div class="line">end</div>
-</div>
-<div class="last line-block">
-<div class="line">onEvent(:ALL_UP_AND_INSTALLED) do | event |</div>
-<div class="line-block">
-<div class="line">wait 50</div>
-<div class="line">info &#8220;This is an iperf  experiment using a teltonika modem&#8221;</div>
-<div class="line">allGroups.startApplications</div>
-<div class="line">wait property.runtime</div>
-<div class="line">wait 2</div>
-<div class="line">allGroups.stopApplications</div>
-<div class="line">wait 2</div>
-<div class="line">Experiment.done</div>
-</div>
-<div class="line">end</div>
-</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">defProperty</span><span class="p">(</span><span class="s1">&#39;runtime&#39;</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="s2">&quot;Time in second for the experiment is to run&quot;</span><span class="p">)</span>
+        <span class="n">defProperty</span><span class="p">(</span><span class="s1">&#39;client&#39;</span><span class="p">,</span><span class="s2">&quot;192.168.55.48&quot;</span><span class="p">,</span><span class="s2">&quot;IP address of iperf server&quot;</span><span class="p">)</span>
+        <span class="n">defProperty</span><span class="p">(</span><span class="s1">&#39;interval&#39;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;Interval of Iperf measurements&quot;</span><span class="p">)</span>
+        <span class="n">defProperty</span><span class="p">(</span><span class="s1">&#39;sender&#39;</span><span class="p">,</span> <span class="s1">&#39;omf.nitos.node043&#39;</span><span class="p">,</span> <span class="s2">&quot;ID of sender node&quot;</span><span class="p">)</span>
+        <span class="n">defProperty</span><span class="p">(</span><span class="s1">&#39;receiver&#39;</span><span class="p">,</span> <span class="s1">&#39;omf.nitos.node048&#39;</span><span class="p">,</span> <span class="s2">&quot;ID of sender node&quot;</span><span class="p">)</span>
+
+        <span class="n">defGroup</span><span class="p">(</span><span class="s1">&#39;Sender&#39;</span><span class="p">,</span> <span class="n">property</span><span class="o">.</span><span class="n">sender</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span>
+         <span class="n">node</span><span class="o">.</span><span class="n">net</span><span class="o">.</span><span class="n">t0</span><span class="o">.</span><span class="n">channel</span> <span class="o">=</span> <span class="s2">&quot;2590000,10&quot;</span>
+         <span class="n">node</span><span class="o">.</span><span class="n">addApplication</span><span class="p">(</span><span class="s2">&quot;test:app:iperf-5.4&quot;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span> <span class="n">app</span> <span class="o">|</span>
+           <span class="n">app</span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="s1">&#39;client&#39;</span><span class="p">,</span> <span class="n">property</span><span class="o">.</span><span class="n">client</span><span class="p">)</span>
+           <span class="n">app</span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="s1">&#39;interval&#39;</span><span class="p">,</span> <span class="n">property</span><span class="o">.</span><span class="n">interval</span><span class="p">)</span>
+           <span class="n">app</span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">property</span><span class="o">.</span><span class="n">runtime</span><span class="p">)</span>
+           <span class="n">app</span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="s1">&#39;udp&#39;</span><span class="p">,</span> <span class="kp">true</span><span class="p">)</span>
+           <span class="n">app</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="s1">&#39;transfer&#39;</span><span class="p">,</span> <span class="ss">:samples</span> <span class="o">=&gt;</span><span class="mi">1</span><span class="p">)</span>
+         <span class="k">end</span>
+        <span class="k">end</span>
+
+        <span class="n">defGroup</span><span class="p">(</span><span class="s1">&#39;Receiver&#39;</span><span class="p">,</span> <span class="n">property</span><span class="o">.</span><span class="n">receiver</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span>
+         <span class="n">node</span><span class="o">.</span><span class="n">net</span><span class="o">.</span><span class="n">t0</span><span class="o">.</span><span class="n">channel</span> <span class="o">=</span> <span class="s2">&quot;2590000,10&quot;</span>
+         <span class="n">node</span><span class="o">.</span><span class="n">addApplication</span><span class="p">(</span><span class="s2">&quot;test:app:iperf-5.4&quot;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span> <span class="n">app</span> <span class="o">|</span>
+           <span class="n">app</span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="s1">&#39;server&#39;</span><span class="p">,</span> <span class="kp">true</span><span class="p">)</span>
+           <span class="n">app</span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="s1">&#39;interval&#39;</span><span class="p">,</span> <span class="n">property</span><span class="o">.</span><span class="n">interval</span><span class="p">)</span>
+           <span class="n">app</span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="s1">&#39;udp&#39;</span><span class="p">,</span> <span class="kp">true</span><span class="p">)</span>
+           <span class="n">app</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="s1">&#39;transfer&#39;</span><span class="p">,</span> <span class="ss">:samples</span> <span class="o">=&gt;</span><span class="mi">1</span><span class="p">)</span>
+         <span class="k">end</span>
+        <span class="k">end</span>
+
+
+        <span class="n">onEvent</span><span class="p">(</span><span class="ss">:ALL_UP_AND_INSTALLED</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span> <span class="n">event</span> <span class="o">|</span>
+         <span class="n">wait</span> <span class="mi">50</span>
+         <span class="n">info</span> <span class="s2">&quot;This is an iperf  experiment using a teltonika modem&quot;</span>
+         <span class="n">allGroups</span><span class="o">.</span><span class="n">startApplications</span>
+         <span class="n">wait</span> <span class="n">property</span><span class="o">.</span><span class="n">runtime</span>
+         <span class="n">wait</span> <span class="mi">2</span>
+         <span class="n">allGroups</span><span class="o">.</span><span class="n">stopApplications</span>
+         <span class="n">wait</span> <span class="mi">2</span>
+         <span class="no">Experiment</span><span class="o">.</span><span class="n">done</span>
+        <span class="k">end</span>
+</pre></div>
 </div>
 </div>
 <div class="section" id="running-experiment">
 <h2>7.Running Experiment<a class="headerlink" href="#running-experiment" title="Permalink to this headline">¶</a></h2>
 <p>You can run it from the testbed server with the following command:</p>
-<p><strong>omf exec experiment.rb &#8211;slice your_username</strong></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line"><strong>omf exec experiment.rb &#8211;slice your_username</strong></div>
+</div>
+</div>
 <table border="1" class="docutils">
 <caption><strong>Screen Output</strong></caption>
 <colgroup>
@@ -480,7 +513,12 @@ can restart the BS with the following command:
 <h2>8.Accessing Results<a class="headerlink" href="#accessing-results" title="Permalink to this headline">¶</a></h2>
 <p>You can access your results in /tmp file with sqlite3.</p>
 <p>Type a command similar to this:</p>
-<p><strong>ardadouk&#64;nitlab2:~# sqlite3 /tmp/ardadouk-2014-09-15t17.13.25+03.00.sq3</strong></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line"><strong>ardadouk&#64;nitlab2:~# sqlite3 /tmp/ardadouk-2014-09-15t17.13.25+03.00.sq3</strong></div>
+</div>
+</div>
 <div class="line-block">
 <div class="line">SQLite version 3.7.9 2011-11-01 00:52:41</div>
 <div class="line">Enter &#8221;.help&#8221; for instructions</div>
@@ -550,6 +588,9 @@ can restart the BS with the following command:
   <h4>Previous topic</h4>
   <p class="topless"><a href="wireless_example.html"
                         title="previous chapter">WiFi</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="openflow.html"
+                        title="next chapter">Openflow</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/wiMax.txt"
@@ -578,6 +619,9 @@ can restart the BS with the following command:
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="openflow.html" title="Openflow"
+             >next</a> |</li>
         <li class="right" >
           <a href="wireless_example.html" title="WiFi"
              >previous</a> |</li>

@@ -1,4 +1,4 @@
-WiMax Example
+WiMax
 =================
 
 1.Basics
@@ -23,7 +23,11 @@ Firstly,you will see how to connect and use WiMax.You'll also see how to develop
 
 .. warning:: You have to connect to **Nitos Server2**!
 
-You can use your NITlab account to access the Nitos Server2.Just open a secure shell,write **ssh slice_name@nitlab2.inf.uth.gr** (i.e syiordan@nitlab2.inf.uth.gr) and log into the server. 
+You can use your NITlab account to access the Nitos Server2.Just open a secure shell,write 
+
+.. note:: | **ssh slice_name@nitlab2.inf.uth.gr** (i.e syiordan@nitlab2.inf.uth.gr)
+
+and log into the server. 
 
 | **Provisioning a Resource at NITOS**
 |
@@ -42,7 +46,7 @@ The topology that we are examining in this tutorial is a central Base Station un
 
 However, the devices that we currently use do not allow us to interface directly the WiMAX device. If you send the following command
 
-**root@node044:~# ifconfig tel0** 
+.. note:: | **root@node044:~# ifconfig tel0** 
 
 you will all get an output similar to the following:
 
@@ -84,7 +88,8 @@ If the host responds, you are connected to the Base Station. Host 192.168.55.3 i
 
 | WiMax services are seperated in two categories.The first one to configure the BS and the other one to configure the mobile clients.A 
   description of these services is available to user,through the command :
-  **' wget -qO- "http://wimaxrf:5054/wimaxrf/" '**
+
+.. note:: |  **' wget -qO- "http://wimaxrf:5054/wimaxrf/" '**
 
 Services for BS
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -124,10 +129,13 @@ Services for BS
 
 | For example if the user wants to change the transmission power of Base station to 40 db then he/she has to go to wireless service and there  
   will find a parameter “txpower” .Then he/she has to write the wget command : 
-| **wget -qO- " http://wimaxrf:5054/wimaxrf/bs/set?txpower=40 "**
+
+.. note:: | **wget -qO- " http://wimaxrf:5054/wimaxrf/bs/set?txpower=40 "**
+
 | If the user wants to know the current transmission power then the only change he/she has to do in wget is replace the bs/set with bs/get   
   and obviously no value required .
-| **wget -qO- " http://wimaxrf:5054/wimaxrf/bs/get?txpower "** 
+
+.. note:: | **wget -qO- " http://wimaxrf:5054/wimaxrf/bs/get?txpower "** 
 
 | **bs/default**
 
@@ -173,11 +181,13 @@ Services for mobile clients
   
 | Once you have logged in, you should setup the base station to the default settings, as its configuration might have been altered from its   
   normal behavior by any previous experimenter. In order to setup the BS to the default settings you issue the following command:
-  **wget -qO- " http://wimaxrf:5054/wimaxrf/bs/default "** 
+ 
+.. note:: | **wget -qO- " http://wimaxrf:5054/wimaxrf/bs/default "** 
 
 | Since not all of the changes take place immediately, you will need to restart the base station for some of the changes to take effect. You  
   can restart the BS with the following command:
-  **wget -qO- " http://wimaxrf:5054/wimaxrf/bs/restart "**
+
+.. note:: | **wget -qO- " http://wimaxrf:5054/wimaxrf/bs/restart "**
 
 | Since the BS is back to its default settings, you can start experimenting with the WiMAX testbed. 
 
@@ -233,7 +243,7 @@ The ED for our experiment:
 ---------------------
 You can run it from the testbed server with the following command:
 
-**omf exec experiment.rb --slice your_username**
+.. note :: | **omf exec experiment.rb --slice your_username**
 
 .. csv-table:: **Screen Output**
    :header: "When running the EC with the above command, you should see an output similar to this :"
@@ -274,7 +284,7 @@ You can access your results in /tmp file with sqlite3.
 
 Type a command similar to this:
 
-**ardadouk@nitlab2:~# sqlite3 /tmp/ardadouk-2014-09-15t17.13.25+03.00.sq3**
+.. note:: | **ardadouk@nitlab2:~# sqlite3 /tmp/ardadouk-2014-09-15t17.13.25+03.00.sq3**
 
 | SQLite version 3.7.9 2011-11-01 00:52:41
 | Enter ".help" for instructions

@@ -85,139 +85,99 @@
 <h2>3. Developing the Experiment<a class="headerlink" href="#developing-the-experiment" title="Permalink to this headline">¶</a></h2>
 <p>To run an experiment with OMF, you first need to describe it into an Experiment Description (ED). An ED is a file/script that is supplied as an input to the Experiment Controller (EC). It contains a detailed description of the resources involved in an experiment and the sets of actions to perform in order to realize that experiment. An ED is written using the OMF Experiment Description Language (OEDL).</p>
 <p>The ED for our experiment:</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<div class="line-block">
-<div class="line">defApplication(&#8216;otr2&#8217;) do | a |</div>
-</div>
-<div class="line-block">
-<div class="line-block">
-<div class="line">a.binary_path = &#8220;/usr/bin/otr2&#8221;</div>
-<div class="line">a.description = &lt;&lt;TEXT</div>
-</div>
-<div class="line">otr is a configurable traffic sink. It contains port to receive</div>
-<div class="line">packet streams via various transport options, such as TCP and UDP.</div>
-<div class="line">This version 2 is compatible with OMLv2.</div>
-<div class="line">TEXT</div>
-</div>
-<div class="line-block">
-<div class="line-block">
-<div class="line">a.defProperty(&#8216;udp_local_host&#8217;, &#8216;IP address of this Destination node&#8217;, &#8216;&#8211;udp:local_host&#8217;, {:type =&gt; :string, :dynamic =&gt; false})</div>
-<div class="line">a.defProperty(&#8216;udp_local_port&#8217;, &#8216;Receiving Port of this Destination node&#8217;, &#8216;&#8211;udp:local_port&#8217;, {:type =&gt; :integer, :dynamic =&gt;</div>
-</div>
-<div class="line">false})</div>
-<div class="line-block">
-<div class="line">a.defMeasurement(&#8216;udp_in&#8217;) do | m |</div>
-<div class="line-block">
-<div class="line">m.defMetric(&#8216;ts&#8217;,:float)</div>
-<div class="line">m.defMetric(&#8216;flow_id&#8217;,:long)</div>
-<div class="line">m.defMetric(&#8216;seq_no&#8217;,:long)</div>
-<div class="line">m.defMetric(&#8216;pkt_length&#8217;,:long)</div>
-<div class="line">m.defMetric(&#8216;dst_host&#8217;,:string)</div>
-<div class="line">m.defMetric(&#8216;dst_port&#8217;,:long)</div>
-</div>
-<div class="line">end</div>
-</div>
-<div class="line">end</div>
-</div>
-<div class="line-block">
-<div class="line">defApplication(&#8216;otg2&#8217;) do | a |</div>
-</div>
-<div class="line-block">
-<div class="line-block">
-<div class="line">a.binary_path = &#8220;/usr/bin/otg2&#8221;</div>
-<div class="line">a.description = &lt;&lt;TEXT</div>
-</div>
-<div class="line">OTG is a configurable traffic generator. It contains generators</div>
-<div class="line">producing various forms of packet streams and port for sending</div>
-<div class="line">these packets via various transports, such as TCP and UDP.</div>
-<div class="line">This version 2 is compatible with OMLv2</div>
-<div class="line">TEXT</div>
-</div>
-<div class="line-block">
-<div class="line-block">
-<div class="line">a.defProperty(&#8216;generator&#8217;, &#8216;Type of packet generator to use (cbr or expo)&#8217;, &#8216;-g&#8217;, {:type =&gt; :string, :dynamic =&gt; false})</div>
-<div class="line">a.defProperty(&#8216;udp_broadcast&#8217;, &#8216;Broadcast&#8217;, &#8216;&#8211;udp:broadcast&#8217;, {:type =&gt; :integer, :dynamic =&gt; false})</div>
-<div class="line">a.defProperty(&#8216;udp_dst_host&#8217;, &#8216;IP address of the Destination&#8217;, &#8216;&#8211;udp:dst_host&#8217;, {:type =&gt; :string, :dynamic =&gt; false})</div>
-<div class="line">a.defProperty(&#8216;udp_dst_port&#8217;, &#8216;Destination Port to send to&#8217;, &#8216;&#8211;udp:dst_port&#8217;, {:type =&gt; :integer, :dynamic =&gt; false})</div>
-<div class="line">a.defProperty(&#8216;udp_local_host&#8217;, &#8216;IP address of this Source node&#8217;, &#8216;&#8211;udp:local_host&#8217;, {:type =&gt; :string, :dynamic =&gt; false})</div>
-<div class="line">a.defProperty(&#8216;udp_local_port&#8217;, &#8216;Local Port of this source node&#8217;, &#8216;&#8211;udp:local_port&#8217;, {:type =&gt; :integer, :dynamic =&gt; false})</div>
-<div class="line">a.defProperty(&#8220;cbr_size&#8221;, &#8220;Size of packet [bytes]&#8221;, &#8216;&#8211;cbr:size&#8217;, {:dynamic =&gt; true, :type =&gt; :integer})</div>
-<div class="line">a.defProperty(&#8220;cbr_rate&#8221;, &#8220;Data rate of the flow [kbps]&#8221;, &#8216;&#8211;cbr:rate&#8217;, {:dynamic =&gt; true, :type =&gt; :integer})</div>
-<div class="line">a.defProperty(&#8220;exp_size&#8221;, &#8220;Size of packet [bytes]&#8221;, &#8216;&#8211;exp:size&#8217;, {:dynamic =&gt; true, :type =&gt; :integer})</div>
-<div class="line">a.defProperty(&#8220;exp_rate&#8221;, &#8220;Data rate of the flow [kbps]&#8221;, &#8216;&#8211;exp:rate&#8217;, {:dynamic =&gt; true, :type =&gt; :integer})</div>
-<div class="line">a.defProperty(&#8220;exp_ontime&#8221;, &#8220;Average length of burst [msec]&#8221;, &#8216;&#8211;exp:ontime&#8217;, {:dynamic =&gt; true, :type =&gt; :integer})</div>
-<div class="line">a.defProperty(&#8220;exp_offtime&#8221;, &#8220;Average length of idle time [msec]&#8221;, &#8216;&#8211;exp:offtime&#8217;, {:dynamic =&gt; true, :type =&gt; :integer})</div>
-<div class="line">a.defMeasurement(&#8216;udp_out&#8217;) do | m |</div>
-<div class="line-block">
-<div class="line">m.defMetric(&#8216;ts&#8217;,:float)</div>
-<div class="line">m.defMetric(&#8216;flow_id&#8217;,:long)</div>
-<div class="line">m.defMetric(&#8216;seq_no&#8217;,:long)</div>
-<div class="line">m.defMetric(&#8216;pkt_length&#8217;,:long)</div>
-<div class="line">m.defMetric(&#8216;dst_host&#8217;,:string)</div>
-<div class="line">m.defMetric(&#8216;dst_port&#8217;,:long)</div>
-</div>
-<div class="line">end</div>
-</div>
-<div class="line">end</div>
-</div>
-<div class="line-block">
-<div class="line">defGroup(&#8216;Sender&#8217;, &#8220;node006&#8221;) do | node |</div>
-<div class="line-block">
-<div class="line">node.addApplication(&#8220;otg2&#8221;) do | app |</div>
-<div class="line-block">
-<div class="line">app.setProperty(&#8216;udp_local_host&#8217;, &#8216;192.168.0.2&#8217;)</div>
-<div class="line">app.setProperty(&#8216;udp_dst_host&#8217;, &#8216;192.168.0.3&#8217;)</div>
-<div class="line">app.setProperty(&#8216;udp_dst_port&#8217;, 3000)</div>
-<div class="line">app.measure(&#8216;udp_out&#8217;, :interval =&gt; 3)</div>
-</div>
-<div class="line">end</div>
-<div class="line">node.net.w0.mode = &#8220;adhoc&#8221;</div>
-<div class="line">node.net.w0.type = &#8216;g&#8217;</div>
-<div class="line">node.net.w0.channel = &#8220;6&#8221;</div>
-<div class="line">node.net.w0.essid = &#8220;helloworld&#8221;</div>
-<div class="line">node.net.w0.ip = &#8220;192.168.0.2/24&#8221;</div>
-</div>
-<div class="line">end</div>
-</div>
-<div class="line-block">
-<div class="line">defGroup(&#8216;Receiver&#8217;, &#8220;node007&#8221;) do | node |</div>
-<div class="line-block">
-<div class="line">node.addApplication(&#8220;otr2&#8221;) do | app |</div>
-<div class="line-block">
-<div class="line">app.setProperty(&#8216;udp_local_host&#8217;, &#8216;192.168.0.3&#8217;)</div>
-<div class="line">app.setProperty(&#8216;udp_local_port&#8217;, 3000)</div>
-<div class="line">app.measure(&#8216;udp_in&#8217;, :interval =&gt; 3)</div>
-</div>
-<div class="line">end</div>
-<div class="line">node.net.w0.mode = &#8220;adhoc&#8221;</div>
-<div class="line">node.net.w0.type = &#8216;g&#8217;</div>
-<div class="line">node.net.w0.channel = &#8220;6&#8221;</div>
-<div class="line">node.net.w0.essid = &#8220;helloworld&#8221;</div>
-<div class="line">node.net.w0.ip = &#8220;192.168.0.3/24&#8221;</div>
-</div>
-<div class="line">end</div>
-</div>
-<div class="last line-block">
-<div class="line">onEvent(:ALL_UP_AND_INSTALLED) do | event |</div>
-<div class="line-block">
-<div class="line">info &#8220;This is my first OMF experiment-simos&#8221;</div>
-<div class="line">after 5 do</div>
-<div class="line-block">
-<div class="line">allGroups.startApplications</div>
-<div class="line">info &#8220;All my Applications are started now...&#8221;</div>
-</div>
-<div class="line">end</div>
-<div class="line">after 40 do</div>
-<div class="line-block">
-<div class="line">allGroups.stopApplications</div>
-<div class="line">info &#8220;All my Applications are stopped now.&#8221;</div>
-<div class="line">Experiment.done</div>
-</div>
-<div class="line">end</div>
-</div>
-<div class="line">end</div>
-</div>
+<div class="highlight-ruby"><pre>defApplication('otr2') do | a |
+
+         a.binary_path = "/usr/bin/otr2"
+         a.description = &lt;&lt;TEXT
+        otr is a configurable traffic sink. It contains port to receive
+        packet streams via various transport options, such as TCP and UDP.
+        This version 2 is compatible with OMLv2.
+        TEXT
+
+          a.defProperty('udp_local_host', 'IP address of this Destination node', '--udp:local_host', {:type =&gt; :string, :dynamic =&gt; false})
+          a.defProperty('udp_local_port', 'Receiving Port of this Destination node', '--udp:local_port', {:type =&gt; :integer, :dynamic =&gt;
+        false})
+          a.defMeasurement('udp_in') do | m |
+            m.defMetric('ts',:float)
+            m.defMetric('flow_id',:long)
+            m.defMetric('seq_no',:long)
+            m.defMetric('pkt_length',:long)
+            m.defMetric('dst_host',:string)
+            m.defMetric('dst_port',:long)
+          end
+        end
+
+        defApplication('otg2') do | a |
+
+          a.binary_path = "/usr/bin/otg2"
+          a.description = &lt;&lt;TEXT
+        OTG is a configurable traffic generator. It contains generators
+        producing various forms of packet streams and port for sending
+        these packets via various transports, such as TCP and UDP.
+        This version 2 is compatible with OMLv2
+        TEXT
+
+          a.defProperty('generator', 'Type of packet generator to use (cbr or expo)', '-g', {:type =&gt; :string, :dynamic =&gt; false})
+          a.defProperty('udp_broadcast', 'Broadcast', '--udp:broadcast', {:type =&gt; :integer, :dynamic =&gt; false})
+          a.defProperty('udp_dst_host', 'IP address of the Destination', '--udp:dst_host', {:type =&gt; :string, :dynamic =&gt; false})
+          a.defProperty('udp_dst_port', 'Destination Port to send to', '--udp:dst_port', {:type =&gt; :integer, :dynamic =&gt; false})
+          a.defProperty('udp_local_host', 'IP address of this Source node', '--udp:local_host', {:type =&gt; :string, :dynamic =&gt; false})
+          a.defProperty('udp_local_port', 'Local Port of this source node', '--udp:local_port', {:type =&gt; :integer, :dynamic =&gt; false})
+          a.defProperty("cbr_size", "Size of packet [bytes]", '--cbr:size', {:dynamic =&gt; true, :type =&gt; :integer})
+          a.defProperty("cbr_rate", "Data rate of the flow [kbps]", '--cbr:rate', {:dynamic =&gt; true, :type =&gt; :integer})
+          a.defProperty("exp_size", "Size of packet [bytes]", '--exp:size', {:dynamic =&gt; true, :type =&gt; :integer})
+          a.defProperty("exp_rate", "Data rate of the flow [kbps]", '--exp:rate', {:dynamic =&gt; true, :type =&gt; :integer})
+          a.defProperty("exp_ontime", "Average length of burst [msec]", '--exp:ontime', {:dynamic =&gt; true, :type =&gt; :integer})
+          a.defProperty("exp_offtime", "Average length of idle time [msec]", '--exp:offtime', {:dynamic =&gt; true, :type =&gt; :integer})
+          a.defMeasurement('udp_out') do | m |
+            m.defMetric('ts',:float)
+            m.defMetric('flow_id',:long)
+            m.defMetric('seq_no',:long)
+            m.defMetric('pkt_length',:long)
+            m.defMetric('dst_host',:string)
+            m.defMetric('dst_port',:long)
+          end
+        end
+
+        defGroup('Sender', "node006") do | node |
+          node.addApplication("otg2") do | app |
+            app.setProperty('udp_local_host', '192.168.0.2')
+            app.setProperty('udp_dst_host', '192.168.0.3')
+            app.setProperty('udp_dst_port', 3000)
+            app.measure('udp_out', :interval =&gt; 3)
+          end
+          node.net.w0.mode = "adhoc"
+          node.net.w0.type = 'g'
+          node.net.w0.channel = "6"
+          node.net.w0.essid = "helloworld"
+          node.net.w0.ip = "192.168.0.2/24"
+        end
+
+       defGroup('Receiver', "node007") do | node |
+          node.addApplication("otr2") do | app |
+            app.setProperty('udp_local_host', '192.168.0.3')
+            app.setProperty('udp_local_port', 3000)
+            app.measure('udp_in', :interval =&gt; 3)
+          end
+          node.net.w0.mode = "adhoc"
+          node.net.w0.type = 'g'
+          node.net.w0.channel = "6"
+          node.net.w0.essid = "helloworld"
+          node.net.w0.ip = "192.168.0.3/24"
+        end
+
+        onEvent(:ALL_UP_AND_INSTALLED) do | event |
+          info "This is my first OMF experiment-simos"
+          after 5 do
+            allGroups.startApplications
+            info "All my Applications are started now..."
+          end
+          after 40 do
+            allGroups.stopApplications
+            info "All my Applications are stopped now."
+            Experiment.done
+          end
+        end</pre>
 </div>
 <p>You can see <a class="reference external" href="http://omf.mytestbed.net/projects/omf6/wiki/OEDLOMF6">here</a>  more about (OMF6-OEDL)</p>
 </div>

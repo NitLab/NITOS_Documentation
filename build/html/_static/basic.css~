@@ -336,7 +336,7 @@ th {
 
 table.citation {
     border-left: solid 1px gray;
-    margin-left: 1px;
+    margin-left: -10px;
 }
 
 table.citation td {

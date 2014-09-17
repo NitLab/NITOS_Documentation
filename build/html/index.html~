@@ -47,26 +47,13 @@
         <div class="bodywrapper">
           <div class="body">
 
-<table width="500" border="0" cellpadding="0" >
 
-<tr>
 
-<td align="left" valign="left">
-<img src="_images/header-bg.png" alt="description here" />
-</td>
 
-<td align="center" valign="center">
-<img src="_images/new_nit_logo.png" alt="description here" />
-</td>
 
-<td align="right" valign="right">
-<img src="_images/header-bg.png" alt="description here" />
-</td>
-</tr>
+<img alt="alternate text" class="align-left" src="_images/NITlab_logo_layers.png" />
 
-</table>
 
-<img alt="alternate text" class="align-center" src="_images/new_nit_logo.png" style="width: 400px; height: 100px;" />
 <div class="section" id="nitlab-documentation">
 <h1>NITlab documentation<a class="headerlink" href="#nitlab-documentation" title="Permalink to this headline"></a></h1>
 <div class="section" id="first-steps-on-using-nitos">

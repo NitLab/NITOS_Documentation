@@ -87,90 +87,69 @@
 <h2>3. Developing the Experiment<a class="headerlink" href="#developing-the-experiment" title="Permalink to this headline">¶</a></h2>
 <p>To run an experiment with OMF, you first need to describe it into an Experiment Description (ED). An ED is a file/script that is supplied as an input to the Experiment Controller (EC). It contains a detailed description of the resources involved in an experiment and the sets of actions to perform in order to realize that experiment. An ED is written using the OMF Experiment Description Language (OEDL).</p>
 <p>The ED for our experiment:</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<div class="line-block">
-<div class="line"># 1. Define an OMF Application Definition for the ping-oml2 application</div>
-<div class="line"># The OMF entities are using this definition to know where to find the</div>
-<div class="line"># application, what are its configurable parameters, and what are the</div>
-<div class="line"># OML2 measurement points that it provides.</div>
-<div class="line"># This ping-oml2 application will be known by OMF entities as &#8216;ping_oml2&#8217;</div>
-<div class="line">#</div>
-<div class="line">defApplication(&#8216;ping_oml2&#8217;) do | app |</div>
-<div class="line-block">
-<div class="line">app.description = &#8216;Simple Definition for the ping-oml2 application&#8217;</div>
-<div class="line"># Define the path to the binary executable for this application</div>
-<div class="line">app.binary_path = &#8216;/usr/bin/ping-oml2&#8217;</div>
-<div class="line"># Define the configurable parameters for this application</div>
-<div class="line"># For example if target is set to foo.com and count is set to 2, then the</div>
-<div class="line"># application will be started with the command line:</div>
-<div class="line"># /usr/bin/ping-oml2 -a foo.com -c 2</div>
-<div class="line">app.defProperty(&#8216;target&#8217;, &#8216;Address to ping&#8217;, &#8216;&#8217;, {:type =&gt; :string})</div>
-<div class="line">app.defProperty(&#8216;count&#8217;, &#8216;Number of times to ping&#8217;, &#8216;-c&#8217;, {:type =&gt; :integer})</div>
-<div class="line"># Define the OML2 measurement point that this application provides.</div>
-<div class="line"># Here we have only one measurement point (MP) named &#8216;ping&#8217;. Each measurement</div>
-<div class="line"># sample from this MP will be composed of a 4-tuples (addr,ttl,rtt,rtt_unit)</div>
-<div class="line">app.defMeasurement(&#8216;ping&#8217;) do | m |</div>
-<div class="line-block">
-<div class="line">m.defMetric(&#8216;dest_addr&#8217;,:string)</div>
-<div class="line">m.defMetric(&#8216;ttl&#8217;,:uint32)</div>
-<div class="line">m.defMetric(&#8216;rtt&#8217;,:double)</div>
-<div class="line">m.defMetric(&#8216;rtt_unit&#8217;,:string)</div>
-</div>
-<div class="line">end</div>
-</div>
-<div class="line">end</div>
-</div>
-<div class="line-block">
-<div class="line"># 2. Define a group of resources which will run the ping-oml2 application</div>
-<div class="line"># Here we define only one group (Sender), which has only one resource in it</div>
-<div class="line">#</div>
-<div class="line">defGroup(&#8216;Sender&#8217;, &#8216;node016&#8217;) do | g |</div>
-<div class="line-block">
-<div class="line"># Associate the application ping_oml2 defined above to each resources</div>
-<div class="line"># in this group</div>
-<div class="line">g.addApplication(&#8220;ping_oml2&#8221;) do | app |</div>
-<div class="line-block">
-<div class="line"># Configure the parameters for the ping_oml2 application</div>
-<div class="line">app.setProperty(&#8216;target&#8217;, &#8216;8.8.8.8&#8217;)</div>
-<div class="line">app.setProperty(&#8216;count&#8217;, 3)</div>
-<div class="line"># Request the ping_oml2 application to collect measurement samples</div>
-<div class="line"># from the &#8216;ping&#8217; measuremnt point (as defined above), and send them</div>
-<div class="line"># to an OML2 collection point</div>
-<div class="line">app.measure(&#8216;ping&#8217;, :samples =&gt; 1)</div>
-</div>
-<div class="line">end</div>
-</div>
-<div class="line">end</div>
-</div>
-<div class="last line-block">
-<div class="line"># 3. Define the sequence of tasks to perform when the event</div>
-<div class="line"># &#8220;all resources are up and all applications are install&#8221; is being triggered</div>
-<div class="line">#</div>
-<div class="line">onEvent(:ALL_UP_AND_INSTALLED) do | event |</div>
-<div class="line-block">
-<div class="line"># Print some information message</div>
-<div class="line">info &#8220;This is my first OMF experiment&#8221;</div>
-<div class="line"># Start all the Applications associated to all the Groups</div>
-<div class="line">allGroups.startApplications</div>
-<div class="line"># Wait for 5 sec</div>
-<div class="line"># Stop all the Applications associated to all the Groups</div>
-<div class="line">after 15 do</div>
-<div class="line-block">
-<div class="line-block">
-<div class="line">allGroups.stopApplications</div>
-</div>
-<div class="line">end</div>
-</div>
-<div class="line"># Tell the Experiment Controller to terminate the experiment now</div>
-<div class="line">after 10 do</div>
-<div class="line-block">
-<div class="line">Experiment.done</div>
-</div>
-<div class="line">end</div>
-</div>
-<div class="line">end</div>
-</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="c1"># 1.Define an OMF Application Definition for the ping-oml2 application</span>
+         <span class="c1"># The OMF entities are using this definition to know where to find the</span>
+         <span class="c1"># application, what are its configurable parameters, and what are the</span>
+         <span class="c1"># OML2 measurement points that it provides.</span>
+         <span class="c1"># This ping-oml2 application will be known by OMF entities as &#39;ping_oml2&#39;</span>
+         <span class="c1">#</span>
+         <span class="n">defApplication</span><span class="p">(</span><span class="s1">&#39;ping_oml2&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span> <span class="n">app</span> <span class="o">|</span>
+           <span class="n">app</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s1">&#39;Simple Definition for the ping-oml2 application&#39;</span>
+           <span class="c1"># Define the path to the binary executable for this application</span>
+           <span class="n">app</span><span class="o">.</span><span class="n">binary_path</span> <span class="o">=</span> <span class="s1">&#39;/usr/bin/ping-oml2&#39;</span>
+           <span class="c1"># Define the configurable parameters for this application</span>
+           <span class="c1"># For example if target is set to foo.com and count is set to 2, then the</span>
+           <span class="c1"># application will be started with the command line:</span>
+           <span class="c1"># /usr/bin/ping-oml2 -a foo.com -c 2</span>
+           <span class="n">app</span><span class="o">.</span><span class="n">defProperty</span><span class="p">(</span><span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="s1">&#39;Address to ping&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="p">{</span><span class="ss">:type</span> <span class="o">=&gt;</span> <span class="ss">:string</span><span class="p">})</span>
+           <span class="n">app</span><span class="o">.</span><span class="n">defProperty</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="s1">&#39;Number of times to ping&#39;</span><span class="p">,</span> <span class="s1">&#39;-c&#39;</span><span class="p">,</span> <span class="p">{</span><span class="ss">:type</span> <span class="o">=&gt;</span> <span class="ss">:integer</span><span class="p">})</span>
+           <span class="c1"># Define the OML2 measurement point that this application provides.</span>
+           <span class="c1"># Here we have only one measurement point (MP) named &#39;ping&#39;. Each measurement</span>
+           <span class="c1"># sample from this MP will be composed of a 4-tuples (addr,ttl,rtt,rtt_unit)</span>
+           <span class="n">app</span><span class="o">.</span><span class="n">defMeasurement</span><span class="p">(</span><span class="s1">&#39;ping&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span> <span class="n">m</span> <span class="o">|</span>
+             <span class="n">m</span><span class="o">.</span><span class="n">defMetric</span><span class="p">(</span><span class="s1">&#39;dest_addr&#39;</span><span class="p">,</span><span class="ss">:string</span><span class="p">)</span>
+             <span class="n">m</span><span class="o">.</span><span class="n">defMetric</span><span class="p">(</span><span class="s1">&#39;ttl&#39;</span><span class="p">,</span><span class="ss">:uint32</span><span class="p">)</span>
+             <span class="n">m</span><span class="o">.</span><span class="n">defMetric</span><span class="p">(</span><span class="s1">&#39;rtt&#39;</span><span class="p">,</span><span class="ss">:double</span><span class="p">)</span>
+             <span class="n">m</span><span class="o">.</span><span class="n">defMetric</span><span class="p">(</span><span class="s1">&#39;rtt_unit&#39;</span><span class="p">,</span><span class="ss">:string</span><span class="p">)</span>
+           <span class="k">end</span>
+         <span class="k">end</span>
+
+         <span class="c1"># 2. Define a group of resources which will run the ping-oml2 application</span>
+         <span class="c1"># Here we define only one group (Sender), which has only one resource in it</span>
+         <span class="c1">#</span>
+         <span class="n">defGroup</span><span class="p">(</span><span class="s1">&#39;Sender&#39;</span><span class="p">,</span> <span class="s1">&#39;node016&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span> <span class="n">g</span> <span class="o">|</span>
+           <span class="c1"># Associate the application ping_oml2 defined above to each resources</span>
+           <span class="c1"># in this group</span>
+           <span class="n">g</span><span class="o">.</span><span class="n">addApplication</span><span class="p">(</span><span class="s2">&quot;ping_oml2&quot;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span> <span class="n">app</span> <span class="o">|</span>
+             <span class="c1"># Configure the parameters for the ping_oml2 application</span>
+             <span class="n">app</span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="s1">&#39;8.8.8.8&#39;</span><span class="p">)</span>
+             <span class="n">app</span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+             <span class="c1"># Request the ping_oml2 application to collect measurement samples</span>
+             <span class="c1"># from the &#39;ping&#39; measuremnt point (as defined above), and send them</span>
+             <span class="c1"># to an OML2 collection point</span>
+             <span class="n">app</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="s1">&#39;ping&#39;</span><span class="p">,</span> <span class="ss">:samples</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">)</span>
+           <span class="k">end</span>
+         <span class="k">end</span>
+
+         <span class="c1"># 3. Define the sequence of tasks to perform when the event</span>
+         <span class="c1"># &quot;all resources are up and all applications are install&quot; is being triggered</span>
+         <span class="c1">#</span>
+         <span class="n">onEvent</span><span class="p">(</span><span class="ss">:ALL_UP_AND_INSTALLED</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span> <span class="n">event</span> <span class="o">|</span>
+           <span class="c1"># Print some information message</span>
+           <span class="n">info</span> <span class="s2">&quot;This is my first OMF experiment&quot;</span>
+           <span class="c1"># Start all the Applications associated to all the Groups</span>
+           <span class="n">allGroups</span><span class="o">.</span><span class="n">startApplications</span>
+           <span class="c1"># Wait for 5 sec</span>
+           <span class="c1"># Stop all the Applications associated to all the Groups</span>
+           <span class="n">after</span> <span class="mi">15</span> <span class="k">do</span>
+             <span class="n">allGroups</span><span class="o">.</span><span class="n">stopApplications</span>
+            <span class="k">end</span>
+           <span class="c1"># Tell the Experiment Controller to terminate the experiment now</span>
+           <span class="n">after</span> <span class="mi">10</span> <span class="k">do</span>
+             <span class="no">Experiment</span><span class="o">.</span><span class="n">done</span>
+           <span class="k">end</span>
+         <span class="k">end</span>
+</pre></div>
 </div>
 <p>You can see <a class="reference external" href="http://omf.mytestbed.net/projects/omf6/wiki/OEDLOMF6">here</a>  more about (OMF6-OEDL)</p>
 </div>
