@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -15,7 +13,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    './',
         VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -26,7 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Nitlab 1.0 documentation" href="index.html" />
-    <link rel="next" title="NITlab Video Tutorials" href="video_tutorials.html" />
+    <link rel="next" title="NITOS Video Tutorials" href="video_tutorials.html" />
     <link rel="prev" title="Controlling the status of the nodes" href="control_Nodes_Status.html" /> 
   </head>
   <body>
@@ -37,7 +35,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="video_tutorials.html" title="NITlab Video Tutorials"
+          <a href="video_tutorials.html" title="NITOS Video Tutorials"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="control_Nodes_Status.html" title="Controlling the status of the nodes"
@@ -54,7 +52,9 @@
   <div class="section" id="saving-an-omf-image-from-the-resources-to-the-server">
 <h1>Saving an OMF image from the resources to the server<a class="headerlink" href="#saving-an-omf-image-from-the-resources-to-the-server" title="Permalink to this headline">¶</a></h1>
 <p>You can save your modified image, in order to maintain the changes you&#8217;ve made and be able to use it again issuing the omf save command. For example, issuing</p>
-<p><strong>$ omf save -n omf.nitos.node005</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>omf save -n omf.nitos.node005
+</pre></div>
+</div>
 <p>will save the current image of node 5 to the server. The image is saved as an <em>.ndz</em> file in the directory <em>/var/lib/omf-images-5.4</em> of the NITOS server with a name containing the date and time of the <em>`omf save`</em> command. You can then load this image to your resources using the omf load command and the name of the image. You can also rename the image, so that its name is more meaningful to you.</p>
 </div>
 
@@ -69,7 +69,7 @@
                         title="previous chapter">Controlling the status of the nodes</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="video_tutorials.html"
-                        title="next chapter">NITlab Video Tutorials</a></p>
+                        title="next chapter">NITOS Video Tutorials</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/save_OMFimage.txt"
@@ -99,7 +99,7 @@
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="video_tutorials.html" title="NITlab Video Tutorials"
+          <a href="video_tutorials.html" title="NITOS Video Tutorials"
              >next</a> |</li>
         <li class="right" >
           <a href="control_Nodes_Status.html" title="Controlling the status of the nodes"
@@ -109,7 +109,7 @@
     </div>
     <div class="footer">
         &copy; Copyright 2014, Simos Iordanidis.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

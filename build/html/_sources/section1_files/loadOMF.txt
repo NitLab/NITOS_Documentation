@@ -1,2 +1,0 @@
-Loading an OMF-compatible image on your resource
-================================================

@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -15,7 +13,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    './',
         VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -54,11 +52,11 @@
   <div class="section" id="connecting-to-nitos-server">
 <h1>Connecting to NITOS Server<a class="headerlink" href="#connecting-to-nitos-server" title="Permalink to this headline">¶</a></h1>
 <p>You will need ssh public-key authentication to connect to the Server in the NITOS testbed. If you do not already have a ssh keypair, or would like to create a new one specifically for NITOS, perform the following commands. We will assume that <strong>~/.ssh/id_rsa</strong> is the private key that you will use for NITOS authentication.</p>
-<div class="line-block">
-<div class="line"><strong>$ ssh-keygen -t rsa -f ~/.ssh/id_rsa</strong></div>
-<div class="line"><strong>Generating public/private rsa key pair.</strong></div>
-<div class="line"><strong>Enter passphrase (empty for no passphrase):</strong></div>
-<div class="line"><strong>Enter same passphrase again:</strong></div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>ssh-keygen -t rsa -f ~/.ssh/id_rsa
+Generating public/private rsa key pair.
+Enter passphrase <span class="o">(</span>empty <span class="k">for </span>no passphrase<span class="o">)</span>:
+Enter same passphrase again:
+</pre></div>
 </div>
 <img alt="_images/ssh_key.png" src="_images/ssh_key.png" />
 <p>Once you have created your ssh keypair, you will need to upload your public key to the NITlab database. You can do this easily through the NITlab website. Go to the NITlab home-page and log in using your newly created account. In the User Menu on the right, click <strong>“Your ssh-keys”</strong>. Choose the slice to which you want to associate this public key, click <strong>&#8220;Submit&#8221;</strong> and after that, click <strong>“Browse”</strong> and navigate to your public key file <strong>(i.e. ~/.ssh/id_rsa.pub).</strong> Click <strong>“Upload.”</strong> You should see your key appearing in the list.</p>
@@ -66,10 +64,17 @@
 <p>Open a secure shell to &#8220;nitlab.inf.uth.gr&#8221; (NITOS server) using your slice name as username. You do not need a password if you have uploaded your rsa public key in the server. You can log into the server at anytime you want to. However, you can only access the nodes you booked through the Reservation page.</p>
 <p>It&#8217;s time to connect to NITOS Server!
 Perform the following command:</p>
-<div class="line-block">
-<div class="line"><strong>$ ssh slice_name&#64;nitlab.inf.uth.gr</strong></div>
-<div class="line">i.e <em>$ ssh syiordan&#64;nitlab.inf.uth.gr</em></div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>ssh slice_name@nitlab.inf.uth.gr
+</pre></div>
 </div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><em>$ ssh syiordan&#64;nitlab.inf.uth.gr</em></td>
+</tr>
+</tbody>
+</table>
 </div>
 
 
@@ -123,7 +128,7 @@ Perform the following command:</p>
     </div>
     <div class="footer">
         &copy; Copyright 2014, Simos Iordanidis.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

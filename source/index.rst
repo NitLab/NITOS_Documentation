@@ -4,17 +4,8 @@
    contain the root `toctree` directive.
 
 
-.. image:: _static/header-bg.png
-   :width: 30%
-   :height: 100px
-.. image:: _static/NITlab_logo_layers.png
-   :width: 30%
-   :height: 100px
-.. image:: _static/header-bg.png
-   :width: 30%
-   :height: 100px
 
-NITlab documentation
+NITOS documentation
 ====================================
 
 
@@ -30,15 +21,15 @@ First Steps on using NITOS
    runOMF
    control_Nodes_Status
    save_OMFimage
-   video_tutorials 
-      
+   video_tutorials
+
 
 OMF Example
 ---------------------------
 
 .. toctree::
    :maxdepth: 2
-   
+
    omf_example
 
 Using Wifi
@@ -46,7 +37,7 @@ Using Wifi
 .. toctree::
    :maxdepth: 2
 
-   wireless_example  
+   wireless_example
 
 Using WiMax
 ----------------------------

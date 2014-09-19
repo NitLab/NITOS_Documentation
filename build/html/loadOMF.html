@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -15,7 +13,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    './',
         VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -57,11 +55,17 @@
 <p>Beginners can load a &#8220;baseline&#8221; distribution on their resources and later modify it according to their needs. There are two types of nodes supporting hard drive images at NITOS, the older Orbit-like nodes (the &#8216;yellow&#8217; nodes) and the newer Commell nodes (the &#8216;grid&#8217; nodes). For Orbit-like nodes the user should load the&#8221;baseline_orbit.ndz&#8221; image. For the grid nodes, the user should  use&#8221;baseline_grid.ndz&#8221;.</p>
 <p>At any time you can look at <strong>MyReservations</strong>, to see all of your scheduled reservations, or at <strong>Node Status</strong> to see the status of your reserved nodes as well as to turn them on/off.</p>
 <p>You can then load a &#8220;baseline&#8221; image for nodes you have reserved using the omf load command. For example, to load the baseline_grid.ndz image to node 16 of NITOS, issue in a terminal where you are connected to the NITOS Server:</p>
-<p><strong>$ omf load -i baseline_grid.ndz -t omf.nitos.node016</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>omf load -i baseline_grid.ndz -t omf.nitos.node016
+</pre></div>
+</div>
 <p>You can load an image to many nodes simultaneously using a comma separated list, for example:</p>
-<p><strong>$ omf load -i baseline_grid.ndz -t omf.nitos.node016,omf.nitos.node017</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>omf load -i baseline_grid.ndz -t omf.nitos.node016,omf.nitos.node017
+</pre></div>
+</div>
 <p>Once the loading process of one of the &#8216;baseline&#8217; images is succesfully completed, you can ssh into these nodes as root with no password. In a terminal where you are connected to the NITOS console server, issue</p>
-<p><strong>$ ssh root&#64;node016</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>ssh root@node016
+</pre></div>
+</div>
 <p>You can configure the image as you wish, since you have root privileges. One modification that you have to make is edit the file <em>/etc/omf-resctl-5.3/omf-resctl.yaml</em> and change the <em>:slice</em> section by putting your username instead of the entry <em>default_slice</em>. Another modification that you have to make to ensure no other user has access to your resource during your reservation is to add a root password to the image (using the <em>passwd command</em>). Note that you only need to do these changes once for each of the two types of nodes, since you can then save your modified image, so that you can load your &#8220;own&#8221; image each of the subsequent times you use some resources. This process of saving images is described in the next section.</p>
 </div>
 
@@ -116,7 +120,7 @@
     </div>
     <div class="footer">
         &copy; Copyright 2014, Simos Iordanidis.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

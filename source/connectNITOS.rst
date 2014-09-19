@@ -3,10 +3,12 @@ Connecting to NITOS Server
 
 You will need ssh public-key authentication to connect to the Server in the NITOS testbed. If you do not already have a ssh keypair, or would like to create a new one specifically for NITOS, perform the following commands. We will assume that **~/.ssh/id_rsa** is the private key that you will use for NITOS authentication.
 
-| **$ ssh-keygen -t rsa -f ~/.ssh/id_rsa**
-| **Generating public/private rsa key pair.**
-| **Enter passphrase (empty for no passphrase):** 
-| **Enter same passphrase again:**
+.. code-block:: bash
+
+  $ ssh-keygen -t rsa -f ~/.ssh/id_rsa
+  Generating public/private rsa key pair.
+  Enter passphrase (empty for no passphrase):
+  Enter same passphrase again:
 
 .. image:: _static/ssh_key.png
 
@@ -20,5 +22,9 @@ Open a secure shell to "nitlab.inf.uth.gr" (NITOS server) using your slice name 
 It's time to connect to NITOS Server!
 Perform the following command:
 
-| **$ ssh slice_name@nitlab.inf.uth.gr**
-| i.e *$ ssh syiordan@nitlab.inf.uth.gr*
+.. code-block:: bash
+
+ $ ssh slice_name@nitlab.inf.uth.gr
+
+:Example: *$ ssh syiordan@nitlab.inf.uth.gr*
+

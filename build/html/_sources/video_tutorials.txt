@@ -1,4 +1,4 @@
-NITlab Video Tutorials
+NITOS Video Tutorials
 =======================
 **Video1**: How to register at NITOS testbed
 
