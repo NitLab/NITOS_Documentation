@@ -1,9 +1,9 @@
-WiMax
+WiMAX
 =================
 
 1.Basics
 ----------
-Firstly,you will see how to connect and use WiMax.You'll also see how to develop and run a simple experiment where the WiMAX interface is setup and generate traffic between two nodes.
+At the beggining, you will see how to connect and use the WiMAX testbed. You'll also see how to develop and run a simple experiment where the WiMAX interface is properly configured and how to generate traffic between two nodes.
 
 2.Prerequisties
 -----------------------
@@ -14,16 +14,16 @@ Firstly,you will see how to connect and use WiMax.You'll also see how to develop
 |
 | Firstly, you have to reserve a node at NITOS: :ref:`label-name`
 
-| In order to use the WiMAX testbed resources offered by the NITOS facility, you will have to reserve the WiMAX base station and the nodes
-  with WIMAX connectivity, offered by the testbed (**Icarus nodes41-49**).
+| In order to use the WiMAX testbed resources offered by the NITOS facility, you will have to reserve the WiMAX Base Station (BS) and the nodes
+  with WiMAX connectivity, offered by the testbed (**Icarus nodes41-49**).
 
-| Reserving the base station will render rights to the experimenter to access the WiMAXrf services of the testbed, used to configure and setup  the base station at the experimenter's will.
+| Reserving the BS will render rights to the experimenter to access the WiMAXrf services of the testbed, used to configure and setup the BS at the experimenter's will.
 
-| *After your reservation has started,login to Server.*
+| *After your reservation has started, login to Server.*
 
-.. warning:: You have to connect to **Nitos Server2**!
+.. warning:: You have to connect to **NITOS Server 2**!
 
-You can use your NITlab account to access the Nitos Server2.Just open a secure shell,write
+You can use your NITlab account to access the NITOS Server 2. Just open a secure shell and write:
 
 .. code-block:: bash
 
@@ -31,15 +31,13 @@ You can use your NITlab account to access the Nitos Server2.Just open a secure s
 
 :Example: *i.e syiordan@nitlab2.inf.uth.gr*
 
-and log into the server.
-
 | **Provisioning a Resource at NITOS**
 |
-| You can use the method described on :ref:`label-name-2` for instruction on how to image resources at NITOS. Load on your resource a disk image that is compatible for WiMax experimentation such as **fgre_2014.ndz**.
+| You can use the method described on :ref:`label-name-2` for instructions on how to load images on resources at NITOS. Load your resource with a disk image that is compatible for WiMAX experimentation such as **fgre_2014.ndz**.
 
 3.Experimental Topology
 -------------------------------
-The topology that we are examining in this tutorial is a central Base Station unit, able to route requests from an internal WiMAX network to the internet.
+The topology we are examining in this tutorial is a central Base Station unit, able to route requests from an internal WiMAX network to the internet.
 
  * The Base Station is using the 192.168.55.1 IP address
  * Multiple clients use the 192.168.55.0/24 subnet to communicate with the Base Station
@@ -67,7 +65,7 @@ you will all get an output similar to the following:
             collisions:0 txqueuelen:1000
             RX bytes:6477672 (6.4 MB)  TX bytes:486501878 (486.5 MB)
 
-Since the WiMAX devices need a rather complex configuration in order to allow access to the WiMAX interfaces of another node,you have to issue the following command:
+Since the WiMAX devices need a rather complex configuration in order to allow access to the WiMAX interfaces of another node, you have to issue the following command:
 
 .. code-block:: bash
 
@@ -84,7 +82,7 @@ In order to connect to the Base Station, issue the following commands:
    wget --http-user admin --http-password admin -qO - "http://192.168.0.1/cgi/cli?startSs"
 
 The first one, instructs the dongle to disconnect from any network that it is attached on. The second command, instructs the dongle to use the WiMAX channel at 2590MHz with a 10MHz channel bandwidth. Finally, with the third command the dongle connects to the NITOS WiMAX network.
-You can verify that the dongle has connected by sending the following command:
+You can verify that the dongle has been connected, by sending the following command:
 
 .. code-block:: bash
 
@@ -94,14 +92,13 @@ If the host responds, you are connected to the Base Station. Host 192.168.55.3 i
 
 5.Set up experimentation properties of the BS
 ----------------------------------------------
-| Before user starts an experiment with WiMax he/she has to configure BS with the specific parameters he/she wants.There is a basic command
-  available to get or set the required parameters to BS.This is the  **'wget'** command.
+| Before starting an experiment with the WiMAX testbed, the user has to configure the BS with his/her desired parameters. There is a basic command
+  available to get or set the required parameters to the BS. This is the **'wget'** command.
 
-| As soon as the parameters set,the experimenter can submit a new Experiment Definition(ED) written in OMF Experiment Description Language
-  submit it to OMF's EC.
+| As soon as the parameters are set, the experimenter can submit a new Experiment Definition(ED) written in OMF Experiment Description Language to the OMF's EC.
 
-| WiMax services are seperated in two categories.The first one to configure the BS and the other one to configure the mobile clients.A
-  description of these services is available to user,through the command :
+| WiMAX services are seperated in two categories. The services of the first one are used to configure the BS and those of the other one are used to configure the mobile clients. A
+  description of these services is available to the user, through the command:
 
 .. code-block:: bash
 

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Connecting to NITOS Server &mdash; Nitlab 1.0 documentation</title>
+    <title>Connecting to NITOS Server &mdash; NITlab 1.0.1 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1.0',
+        VERSION:     '1.0.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Nitlab 1.0 documentation" href="index.html" />
+    <link rel="top" title="NITlab 1.0.1 documentation" href="index.html" />
     <link rel="next" title="Loading an OMF-compatible image on your resource" href="loadOMF.html" />
     <link rel="prev" title="Getting a Slice and Reserving Resources" href="get_reserve.html" /> 
   </head>
@@ -40,7 +40,7 @@
         <li class="right" >
           <a href="get_reserve.html" title="Getting a Slice and Reserving Resources"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Nitlab 1.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">NITlab 1.0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -51,7 +51,7 @@
             
   <div class="section" id="connecting-to-nitos-server">
 <h1>Connecting to NITOS Server<a class="headerlink" href="#connecting-to-nitos-server" title="Permalink to this headline">¶</a></h1>
-<p>You will need ssh public-key authentication to connect to the Server in the NITOS testbed. If you do not already have a ssh keypair, or would like to create a new one specifically for NITOS, perform the following commands. We will assume that <strong>~/.ssh/id_rsa</strong> is the private key that you will use for NITOS authentication.</p>
+<p>You will need ssh public-key authentication to connect to the server of the NITOS testbed. If you do not already have a ssh keypair, or would like to create a new one specifically for NITOS, perform the following commands. We will assume that <strong>~/.ssh/id_rsa</strong> is the private key that you will use for NITOS authentication.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>ssh-keygen -t rsa -f ~/.ssh/id_rsa
 Generating public/private rsa key pair.
 Enter passphrase <span class="o">(</span>empty <span class="k">for </span>no passphrase<span class="o">)</span>:
@@ -61,9 +61,9 @@ Enter same passphrase again:
 <img alt="_images/ssh_key.png" src="_images/ssh_key.png" />
 <p>Once you have created your ssh keypair, you will need to upload your public key to the NITlab database. You can do this easily through the NITlab website. Go to the NITlab home-page and log in using your newly created account. In the User Menu on the right, click <strong>“Your ssh-keys”</strong>. Choose the slice to which you want to associate this public key, click <strong>&#8220;Submit&#8221;</strong> and after that, click <strong>“Browse”</strong> and navigate to your public key file <strong>(i.e. ~/.ssh/id_rsa.pub).</strong> Click <strong>“Upload.”</strong> You should see your key appearing in the list.</p>
 <img alt="_images/ssh_key2.png" src="_images/ssh_key2.png" />
-<p>Open a secure shell to &#8220;nitlab.inf.uth.gr&#8221; (NITOS server) using your slice name as username. You do not need a password if you have uploaded your rsa public key in the server. You can log into the server at anytime you want to. However, you can only access the nodes you booked through the Reservation page.</p>
+<p>Open a secure shell to &#8220;nitlab.inf.uth.gr&#8221; (NITOS server) using your slice name as username. You do not need a password if you have already uploaded your rsa public key in the server. You can log into the server at anytime you want to. However, you can only access the nodes you booked through the Reservation page.</p>
 <p>It&#8217;s time to connect to NITOS Server!
-Perform the following command:</p>
+Execute the following command:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>ssh slice_name@nitlab.inf.uth.gr
 </pre></div>
 </div>
@@ -123,7 +123,7 @@ Perform the following command:</p>
         <li class="right" >
           <a href="get_reserve.html" title="Getting a Slice and Reserving Resources"
              >previous</a> |</li>
-        <li><a href="index.html">Nitlab 1.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">NITlab 1.0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

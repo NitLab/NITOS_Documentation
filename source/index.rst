@@ -32,21 +32,21 @@ OMF Example
 
    omf_example
 
-Using Wifi
+Using Wi-Fi
 ----------------------------
 .. toctree::
    :maxdepth: 2
 
    wireless_example
 
-Using WiMax
+Using WiMAX
 ----------------------------
 .. toctree::
    :maxdepth: 2
 
    wiMax
 
-Using Openflow
+Using OpenFlow
 -----------------------------
 .. toctree::
    :maxdepth: 2

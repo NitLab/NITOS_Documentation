@@ -1,4 +1,4 @@
-WiFi
+Wi-Fi
 =================
 
 1.Basics
@@ -24,9 +24,9 @@ Accessing/Provisioning Resources
 
 | **Provisioning a Resource at NITOS**
 |
-| You can use the method described on :ref:`label-name-2` for instruction on how to image resources at NITOS. Load on your resource a disk image that contains OMF6. For example load the image *baseline_grid_omf6_1_1.ndz*.
+| You can use the method described on :ref:`label-name-2` for instructions on how to load images on resources at NITOS. Load your resource with a disk image that contains OMF6. For example load the image *baseline_grid_omf6_1_1.ndz*.
 
-3. Developing the Experiment
+3.Developing the Experiment
 -------------------------------------------
 
 To run an experiment with OMF, you first need to describe it into an Experiment Description (ED). An ED is a file/script that is supplied as an input to the Experiment Controller (EC). It contains a detailed description of the resources involved in an experiment and the sets of actions to perform in order to realize that experiment. An ED is written using the OMF Experiment Description Language (OEDL).
@@ -40,7 +40,7 @@ The ED for our experiment:
 
 You can see `here <http://omf.mytestbed.net/projects/omf6/wiki/OEDLOMF6>`_  more about (OMF6-OEDL)
 
-4. Running Experiment
+4.Running Experiment
 -----------------------
 
 *a) How do you run it?*
@@ -195,5 +195,5 @@ If you would like to know more about the other options of the OMF EC software pl
 
 5.Accesing Results
 -------------------
-You can access your results by going to "tmp" file(i.e syiordan@nitlab:/tmp$ ) and type **ls**.
+You can access your results by going to "tmp" file (i.e syiordan@nitlab:/tmp$ ) and type **ls**.
 

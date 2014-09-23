@@ -3,11 +3,11 @@ Simple OMF Example
 
 1.Basics
 ---------
-This simple example introduces you to OMF6.It presents all the basic steps to develop, run, and access the result of an experiment with OMF 6.
+This simple example introduces you to OMF6. It presents all the basic steps to develop, run, and access the results of an experiment executed with OMF 6.
 
 **Experiment Senario**
 
- This simple experiment involves a single resource of type PC, which has an active network interface. In this experiment, we will instruct that resource to start an instance of the 'ping-oml2' application to probe another host on the network attached to that interface (e.g. another host on the Internet, the LAN, or the resource's itself).
+ This simple experiment involves a single resource, which has an active network interface. In this experiment, we will instruct that resource to start an instance of the 'ping-oml2' application to probe another host on the network attached to that interface (e.g. another host on the Internet, the LAN, or the resource's itself).
 
  This 'ping-oml2' application is a wrapper around the traditional ping application. It captures the ping outputs and sends them as measurement streams to an OML2 collection point (an OML2 server in this case), which then stores them in a database available to the experimenter.
 
@@ -24,19 +24,19 @@ This simple example introduces you to OMF6.It presents all the basic steps to de
 
 | **Provisioning a Resource at NITOS**
 |
-| You can use the method described on :ref:`label-name-2` for instruction on how to image resources at NITOS. Load on your resource a disk image that contains OMF6. For example load the image *baseline_grid_omf6_1_1.ndz*.
+| You can use the method described on :ref:`label-name-2` for instructions on how to load images on resources at NITOS. Load your resource with a disk image that contains OMF6. For example load the image "*baseline_grid_omf6_1_1.ndz*".
 
 *b) Installing the Experiment Controller*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The OMF Experiment Controller (EC) is the software that will interpret your Experiment Description (ED) and interact with the resources to execute it accordingly.
 
-You can install your own EC on your machine, by following the instructions for users on `OMF 6 Installation Guide <http://mytestbed.net/doc/omf/file.INSTALLATION.html>`_
+You can install your own EC on your machine, by following the instructions for users on `OMF 6 Installation Guide <http://mytestbed.net/doc/omf/file.INSTALLATION.html>`_.
 
-3. Developing the Experiment
+3.Developing the Experiment
 -------------------------------------------
 
-To run an experiment with OMF, you first need to describe it into an Experiment Description (ED). An ED is a file/script that is supplied as an input to the Experiment Controller (EC). It contains a detailed description of the resources involved in an experiment and the sets of actions to perform in order to realize that experiment. An ED is written using the OMF Experiment Description Language (OEDL).
+In order to run an experiment using OMF, you first need to describe it with an Experiment Description (ED). An ED is a file/script that is supplied as an input to the Experiment Controller (EC). It contains a detailed description of the resources involved in the experiment and the sets of actions to perform in order to realize that experiment. An ED is written using the OMF Experiment Description Language (OEDL).
 
 The ED for our experiment:
 
@@ -46,7 +46,7 @@ The ED for our experiment:
 
 You can see `here <http://omf.mytestbed.net/projects/omf6/wiki/OEDLOMF6>`_  more about (OMF6-OEDL)
 
-4. Running Experiment
+4.Running Experiment
 -----------------------
 
 *a) How do you run it?*
@@ -186,4 +186,4 @@ If you would like to know more about the other options of the OMF EC software pl
 
 5.Accesing Results
 -------------------
-You can access your results by going to "tmp" file(i.e syiordan@nitlab:/tmp$ ) and type **ls**.
+You can access your results by going to "tmp" file (i.e syiordan@nitlab:/tmp$ ) and type **ls**.
