@@ -1,3 +1,5 @@
+.. _simple-omf:
+
 Simple OMF Example
 ===================
 
@@ -7,34 +9,33 @@ This simple example introduces you to OMF6. It presents all the basic steps to d
 
 **Experiment Senario**
 
- This simple experiment involves a single resource, which has an active network interface. In this experiment, we will instruct that resource to start an instance of the 'ping-oml2' application to probe another host on the network attached to that interface (e.g. another host on the Internet, the LAN, or the resource's itself).
+ This simple experiment involves a single resource, which has an active network interface. In this experiment, we will instruct that resource to start an instance of the 'ping-oml2' application to probe another host on the network attached to that interface (e.g. another host in the Internet, the LAN, or the resource's itself).
 
- This 'ping-oml2' application is a wrapper around the traditional ping application. It captures the ping outputs and sends them as measurement streams to an OML2 collection point (an OML2 server in this case), which then stores them in a database available to the experimenter.
+ The 'ping-oml2' application is a wrapper around the traditional ping application. It captures the ping outputs and sends them as measurement streams to an OML2 collection point (an OML2 server in this case), which then stores them in a database available to the experimenter.
 
 
 
 2.Prerequisties
 ----------------
 
-*a) Accessing/Provisioning Resources*
+Accessing/Provisioning Resources*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 | **Accessing a Resource at NITOS**
 |
-| Firstly, you have to reserve a node at NITOS: :ref:`label-name`
+| Firstly, you have to reserve a node at NITOS: :ref:`getting-slice`
 
+|
 | **Provisioning a Resource at NITOS**
 |
-| You can use the method described on :ref:`label-name-2` for instructions on how to load images on resources at NITOS. Load your resource with a disk image that contains OMF6. For example load the image "*baseline_grid_omf6_1_1.ndz*".
+| You can use the method described in :ref:`loading-omf` for instructions on how to load disk images on resources at NITOS. Load your resource with a disk image that contains OMF6 RC. For example load the image "*baseline_omf6.ndz*". More baseline images available |base|.
 
-*b) Installing the Experiment Controller*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. |base| raw:: html
 
-The OMF Experiment Controller (EC) is the software that will interpret your Experiment Description (ED) and interact with the resources to execute it accordingly.
-
-You can install your own EC on your machine, by following the instructions for users on `OMF 6 Installation Guide <http://mytestbed.net/doc/omf/file.INSTALLATION.html>`_.
+	<a href="http://nitlab.inf.uth.gr/nitlab_baseline_images.pdf" target="_blank">here</a>
+ 
 
 3.Developing the Experiment
--------------------------------------------
+----------------------------
 
 In order to run an experiment using OMF, you first need to describe it with an Experiment Description (ED). An ED is a file/script that is supplied as an input to the Experiment Controller (EC). It contains a detailed description of the resources involved in the experiment and the sets of actions to perform in order to realize that experiment. An ED is written using the OMF Experiment Description Language (OEDL).
 
@@ -44,7 +45,11 @@ The ED for our experiment:
    :language: ruby
    :linenos:
 
-You can see `here <http://omf.mytestbed.net/projects/omf6/wiki/OEDLOMF6>`_  more about (OMF6-OEDL)
+You can see |oedl| more about (OMF6-OEDL)
+
+.. |oedl| raw:: html
+
+	<a href="http://omf.mytestbed.net/projects/omf6/wiki/OEDLOMF6" target="_blank">here</a>
 
 4.Running Experiment
 -----------------------
@@ -54,11 +59,11 @@ You can see `here <http://omf.mytestbed.net/projects/omf6/wiki/OEDLOMF6>`_  more
 
 To run your experiment you have to:
 
-  * **save its description in a file on your computer, thus either**
+  * **save its description in a file in NITOS server, thus either**
      * cut-and-paste the above ED listing into a new file named 'tutorial000.rb'
      * download the ED directly: :download:`ED_script <tutorial000.rb>`
 
-  * **open a terminal and navigate to the folder/directory where you saved that file**
+  * **open a terminal in NITOS and navigate to the folder/directory where you saved that file**
 
   * **start the EC software and tell it to execute the experiment described in your ED file, using the command line:**
 
@@ -67,13 +72,16 @@ To run your experiment you have to:
         omf_ec -u xmpp://usr:pwd@my_xmpp.com exec --oml_uri tcp:srv:port tutorial000.rb
 
      * replace xmpp://usr:pwd@srv with the credentials for your user on the xmpp pubsub server that is used to communicate with the resources
-     * replace tcp:srv:port with the hostname/IP and port of the OML2 server which will collect the experiment's measurement
+     * replace tcp:srv:port with the hostname/IP and port of the OML2 server which will collect the experiment's measurements (More information :ref:`accessing-measurements`)
 
   * **So for our example, xmpp server and OML server run at nitlab.inf.uth.gr. Then you would use the command:**
 
      .. code-block:: bash
 
         omf_ec -u xmpp://nitlab.inf.uth.gr exec --oml_uri tcp:nitlab.inf.uth.gr:3003 tutorial000.rb
+
+.. note:: There is one XMPP server deployed in each of the NITOS testbeds. Although, you can use the *nitlab.inf.uth.gr* for the whole NITOS Facility, even if you are using nodes from *nitlab2.inf.uth.gr* or *nitlab3.inf.uth.gr*. In case you want to use another domain as your XMPP server, you should also configure accordingly the yaml file of the OMF RC of each of the involved nodes. 
+
 
 If you would like to know more about the other options of the OMF EC software please run the commands:
 
@@ -86,6 +94,7 @@ If you would like to know more about the other options of the OMF EC software pl
 *b) What will happen next?*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+**When running the EC with the above command, you should see an output similar to this :**
 
 .. code-block:: console
 
@@ -186,4 +195,8 @@ If you would like to know more about the other options of the OMF EC software pl
 
 5.Accesing Results
 -------------------
-You can access your results by going to "tmp" file (i.e syiordan@nitlab:/tmp$ ) and type **ls**.
+You can access your results |here| More information about accessing the results of your experiment: :ref:`accessing-measurements` 
+
+.. |here| raw:: html
+
+	<a href="http://nitlab.inf.uth.gr/phppgadmin" target="_blank">here</a>

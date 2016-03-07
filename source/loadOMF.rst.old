@@ -1,0 +1,39 @@
+.. _loading-omf-old:
+
+Loading an OMF-compatible image on your resource
+================================================
+
+Ubuntu distributions, stored at the NITOS server as binary .ndz files can be loaded on the resources overwriting any existing data on the disks of these resources.
+
+Beginners can load a "baseline" distribution on their resources and later modify it according to their needs. NITlab provides several types of baseline images serving the different experimentation capabilities of NITOS. You can choose any of them according to your experiment. `baseline images <http://nitlab.inf.uth.gr>`_ 
+
+At any time you can look at `My Reservations <http://nitos.inf.uth.gr/my_reservations>`_, to see all of your scheduled reservations, or at `Node Status <http://nitos.inf.uth.gr/node_status>`_ to see the status of your reserved nodes.
+
+You can then load a "baseline" image for nodes you have already reserved, using the omf load command. For example, to load the "baseline.ndz" image to node 16 of NITOS, issue in a terminal where you are already connected to the NITOS Server the following command:
+
+.. code-block:: bash
+
+  $ omf load -i baseline.ndz -t node016
+
+You can load an image to many nodes simultaneously using a comma separated list, for example:
+
+.. code-block:: bash
+
+  $ omf load -i baseline.ndz -t node016,node017
+
+
+You can use the help menu in order to check other available options of the omf load command.
+
+.. code-block:: bash
+
+	$ omf load --help
+
+Once the loading process of one of the "baseline" images is succesfully completed, you can ssh into these nodes as root with no password. In a terminal where you are connected to the NITOS server, issue the following command:
+
+.. code-block:: bash
+
+  $ ssh root@node016
+
+You can configure the image as you wish, since you have root privileges. In case you want to ensure no other user has access to your resource during your reservation, you should add a root password to the image (using the *passwd command*). Note that you only need to do this change once, since you can then save your modified image, so that you can load your "own" image whenever you use NITOS. 
+
+The process of saving images is described in the section :ref:`saving-omf`.

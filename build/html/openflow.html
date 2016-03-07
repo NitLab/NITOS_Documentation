@@ -1,127 +1,232 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>OpenFlow &mdash; NITlab 1.0.1 documentation</title>
-    
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '1.0.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="NITlab 1.0.1 documentation" href="index.html" />
-    <link rel="prev" title="WiMAX" href="wiMax.html" /> 
-  </head>
-  <body>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="wiMax.html" title="WiMAX"
-             accesskey="P">previous</a> |</li>
-        <li><a href="index.html">NITlab 1.0.1 documentation</a> &raquo;</li> 
-      </ul>
-    </div>  
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OpenFlow &mdash;  2.0.1 documentation</title>
+  
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title=" 2.0.1 documentation" href="index.html"/>
+        <link rel="next" title="Intelligent Transport System (ITS)" href="its.html"/>
+        <link rel="prev" title="LTE" href="lte.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> 
+          
+
+          
+            
+            <img src="_static/nitos-logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="accessing_nitos.html">Accessing NITOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="load_saveOMF.html">Loading and Saving an OMF-compatible image on your resource</a></li>
+<li class="toctree-l1"><a class="reference internal" href="control_Nodes_Status.html">Controlling the status of the nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="runOMF.html">Using your slice to run OMF experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resultsOML.html">Accessing the measurements gathered from your OMF experiment</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="omf_example.html">Simple OMF Example</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="wireless_example.html">Wi-Fi</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="wimax.html">WiMAX</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="lte.html">LTE</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">OpenFlow</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="its.html">Intelligent Transport System (ITS)</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html"></a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>OpenFlow</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/openflow.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="openflow">
 <h1>OpenFlow<a class="headerlink" href="#openflow" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="openflow-testbed-topology">
-<h2>OpenFlow testbed- Topology<a class="headerlink" href="#openflow-testbed-topology" title="Permalink to this headline">¶</a></h2>
-<p>NITOS facility provides remote access to OpenFlow switches, enabling the user to create an OpenFlow slice, related to an experiment slice that has already available. The OpenFlow slice is implemented by the FlowVisor, a Stanford&#8217;s software tool that creates slices on the OpenFlow switches, enabling the parallel access to them by separate users. In a transparent way from the user perspective, the switches ports, which are used by the user&#8217;s reserved nodes, are assigned to the user&#8217;s OpenFlow slice. The whole process is orchestrated by the NITOS scheduler, configuring appropriately the FlowVisor at the beggining of a new reservation slot.</p>
-<p>In summary, the remote user of the NITOS facility is able to reserve nodes for his slice (through the NITOS scheduler) and run an OpenFlow experiment with use of this slice. In particular, the testbed provides transparently an abstract OpenFlow switch for his slice, that conceptually is equivalent to a physical OpenFlow switch that includes only the ports of the nodes that he has reserved. The OpenFlow controller that defines the functionality of this abstract switch, should listen both on the host machine and the TCP port that are illustrated in the OpenFlow settings, in the User Menu on the right of the page (requires registration). The following figure illustrates the NITOS OpenFlow testbed topology, as well as the slicing mechanism.</p>
+<p>NITOS facility provides remote access to OpenFlow switches, enabling the user to create an OpenFlow slice, related to an experiment slice that has already available. The OpenFlow slice is implemented by the FlowVisor, a Stanford&#8217;s software tool that creates slices on the OpenFlow switches, enabling the parallel access to them by separate users.</p>
 <img alt="_images/openflow_arch.png" src="_images/openflow_arch.png" />
-</div>
-<div class="section" id="openflow-settings">
-<h2>OpenFlow settings<a class="headerlink" href="#openflow-settings" title="Permalink to this headline">¶</a></h2>
-<p><strong>Current Slices: syiordan.</strong></p>
-<p>Along with the reservation of NITOS nodes, the related ports of the OpenFlow switches are also included in the corresponding experimentation slice. Please provide the IP address of the appropriate OpenFlow controller to perform an OpenFlow experiment with the use of this slice.</p>
-<p>The current IP addresses of the OpenFlow controllers of each of your slices are depicted in the following table:</p>
-<div class="line-block">
-<div class="line">syiordan</div>
-<div class="line">IP:</div>
-<div class="line">Port:</div>
-</div>
-<p>In case that one of the above IP addresses is 127.0.0.1, you can raise your OpenFlow controller at the NITOS FlowVisor server machine at 83.212.32.137. You are able to connect to the FlowVisor server machine through ssh, using the same ssh-keys that you use to connect to the NITOS server machine.</p>
-</div>
+<p>As you have already experienced, the NITOS users have to create their own slices for their experimentation. These slices include multiple resources, reserved by them for a specific time interval. Along with the reservation of the NITOS nodes, the related ports of the OpenFlow switches connecting these nodes are also included in their experimentation slice. As soon as the experimenter reserves NITOS nodes  he can observe that their eth1 interfaces are connected to a virtual OpenFlow switch. This virtual OpenFlow switch is behaving as a physical OpenFlow switch, connecting exclusively the nodes reserved by the experimenter.
+The virtual switch of each slice is configurable regarding the IP address and TCP port of its OpenFlow controller. You can raise your OpenFlow controller in any host machine you want, since you have previously configured your OpenFlow settings in the corresponding tool of the NITOS portal. More specifically, the only configuration that needs to be made is to set the public IP address and the TCP port of your controller. In case that you want to use our FlowVisor server machine (at 83.212.32.137) as host of your OpenFlow controller, you are able to connect to the FlowVisor server through ssh, using the same ssh-keys that you use to connect to NITOS. In this case, the IP address given to our OpenFlow settings tool should be 127.0.0.1 and the port could be whichever you want.</p>
 </div>
 
 
+           </div>
           </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">OpenFlow</a><ul>
-<li><a class="reference internal" href="#openflow-testbed-topology">OpenFlow testbed- Topology</a></li>
-<li><a class="reference internal" href="#openflow-settings">OpenFlow settings</a></li>
-</ul>
-</li>
-</ul>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="its.html" class="btn btn-neutral float-right" title="Intelligent Transport System (ITS)" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lte.html" class="btn btn-neutral" title="LTE" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="wiMax.html"
-                        title="previous chapter">WiMAX</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/openflow.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, NITlab team.
+
     </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+  </div> 
+
+</footer>
+
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="wiMax.html" title="WiMAX"
-             >previous</a> |</li>
-        <li><a href="index.html">NITlab 1.0.1 documentation</a> &raquo;</li> 
-      </ul>
-    </div>
-    <div class="footer">
-        &copy; Copyright 2014, Simos Iordanidis.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
-    </div>
-  </body>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>

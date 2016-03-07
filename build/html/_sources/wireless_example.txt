@@ -20,16 +20,22 @@ Accessing/Provisioning Resources
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 | **Accessing a Resource at NITOS**
 |
-| Firstly, you have to reserve a node at NITOS: :ref:`label-name`
+| Firstly, you have to reserve a node at NITOS: :ref:`getting-slice`
 
 | **Provisioning a Resource at NITOS**
 |
-| You can use the method described on :ref:`label-name-2` for instructions on how to load images on resources at NITOS. Load your resource with a disk image that contains OMF6. For example load the image *baseline_grid_omf6_1_1.ndz*.
+| You can use the method described on :ref:`loading-omf` for instructions on how to load disk images on resources at NITOS. Load your resource with a disk image that contains OMF6. For example load the image *baseline_omf6.ndz*. More baseline images available |base|.
+
+.. |base| raw:: html
+
+	<a href="http://nitlab.inf.uth.gr/nitlab_baseline_images.pdf" target="_blank">here</a>
+
+
 
 3.Developing the Experiment
 -------------------------------------------
 
-To run an experiment with OMF, you first need to describe it into an Experiment Description (ED). An ED is a file/script that is supplied as an input to the Experiment Controller (EC). It contains a detailed description of the resources involved in an experiment and the sets of actions to perform in order to realize that experiment. An ED is written using the OMF Experiment Description Language (OEDL).
+In order to run an experiment with OMF, you first need to describe it into an Experiment Description (ED). An ED is a file/script that is supplied as an input to the Experiment Controller (EC). It contains a detailed description of the resources involved in an experiment and the sets of actions to perform in order to realize that experiment. An ED is written using the OMF Experiment Description Language (OEDL).
 
 The ED for our experiment:
 
@@ -38,7 +44,13 @@ The ED for our experiment:
    :linenos:
 
 
-You can see `here <http://omf.mytestbed.net/projects/omf6/wiki/OEDLOMF6>`_  more about (OMF6-OEDL)
+You can see |oedl| more about (OMF6-OEDL)
+
+
+.. |oedl| raw:: html
+  
+    <a href="http://omf.mytestbed.net/projects/omf6/wiki/OEDLOMF6" target="_blank">here</a>
+
 
 4.Running Experiment
 -----------------------
@@ -46,9 +58,9 @@ You can see `here <http://omf.mytestbed.net/projects/omf6/wiki/OEDLOMF6>`_  more
 *a) How do you run it?*
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-To run your experiment you have to:
+In order to run your experiment you have to:
 
- * **save its description in a file on your computer, thus either**
+ * **save its description in a file on your computer or in the NITOS server, thus either**
      * cut-and-paste the above ED listing into a new file named 'tutorial01.rb'
      * download the ED directly: :download:`ED_script <tutorial01.rb>`
 
@@ -58,16 +70,16 @@ To run your experiment you have to:
 
      .. code-block:: bash
 
-        omf_ec -u xmpp://usr:pwd@my_xmpp.com exec --oml_uri tcp:srv:port tutorial000.rb
+        omf_ec -u xmpp://usr:pwd@my_xmpp.com exec --oml_uri tcp:srv:port tutorial01.rb
 
      * replace xmpp://usr:pwd@srv with the credentials for your user on the xmpp pubsub server that is used to communicate with the resources
-     * replace tcp:srv:port with the hostname/IP and port of the OML2 server which will collect the experiment's measurement
+     * replace tcp:srv:port with the hostname/IP and port of the OML2 server which will collect the experiment's measurements (More information :ref:`accessing-measurements`)
 
  * **So for our example, xmpp server and OML server run at nitlab.inf.uth.gr. Then you would use the command:**
 
      .. code-block:: bash
 
-        omf_ec -u xmpp://nitlab.inf.uth.gr exec --oml_uri tcp:nitlab.inf.uth.gr:3003 tutorial000.rb
+        omf_ec -u xmpp://nitlab.inf.uth.gr exec --oml_uri tcp:nitlab.inf.uth.gr:3003 tutorial01.rb
 
 If you would like to know more about the other options of the OMF EC software please run the commands:
 
@@ -195,5 +207,8 @@ If you would like to know more about the other options of the OMF EC software pl
 
 5.Accesing Results
 -------------------
-You can access your results by going to "tmp" file (i.e syiordan@nitlab:/tmp$ ) and type **ls**.
+You can access your results |here| More information about accessing the results of your experiment: :ref:`accessing-measurements`
 
+.. |here| raw:: html
+ 
+   <a href="http://nitlab.inf.uth.gr/phppgadmin" target="_blank">here</a>

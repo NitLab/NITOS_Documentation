@@ -12,16 +12,13 @@ NITOS documentation
 First Steps on using NITOS
 ---------------------------
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
-   account_create
-   get_reserve
-   connectNITOS
-   loadOMF
-   runOMF
+   accessing_nitos
+   load_saveOMF
    control_Nodes_Status
-   save_OMFimage
-   video_tutorials
+   runOMF
+   resultsOML
 
 
 OMF Example
@@ -44,7 +41,14 @@ Using WiMAX
 .. toctree::
    :maxdepth: 2
 
-   wiMax
+   wimax
+
+Using LTE
+----------------------------
+.. toctree::
+   :maxdepth: 2
+
+   lte
 
 Using OpenFlow
 -----------------------------
@@ -52,3 +56,12 @@ Using OpenFlow
    :maxdepth: 2
 
    openflow
+
+
+ITS Experimentation
+-----------------------------
+.. toctree::
+   :maxdepth: 2
+
+   its
+
