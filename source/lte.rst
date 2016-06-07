@@ -91,6 +91,12 @@ The Indoor testbed is using the 192.168.200.0/24 network for the network between
 
 4.Restart Base Station
 ----------------------------------
+As a first step, you should turn on the base station. By default, the base station is turned off when not used. To do so, issue the following command:
+
+.. code-block:: bash
+
+	omf tell -a on -t e_node_b_001
+
 
 It is important to setup the eNBs to the default settings, as their configuration might have been altered from their normal behavior by any previous experimenter. In order to setup the eNB to the default settings you issue the following commands:
 
