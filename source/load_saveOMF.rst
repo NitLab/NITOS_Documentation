@@ -4,7 +4,7 @@ Loading and Saving an OMF-compatible image on your resource
 ===========================================================
 Ubuntu distributions, stored at the NITOS server as binary .ndz files can be loaded on the resources overwriting any existing data on the disks of these resources.
 
-Beginners can load a "baseline" distribution on their resources and later modify it according to their needs. NITlab provides several types of baseline images serving the different experimentation capabilities of NITOS. You can choose any of them according to your experiment. `baseline images <http://nitlab.inf.uth.gr>`_ 
+Beginners can load a "baseline" distribution on their resources and later modify it according to their needs. NITlab provides several types of baseline images serving the different experimentation capabilities of NITOS. You can choose any of them according to your experiment. `baseline images <_images/NITOS_base_imgs.pdf>`_ 
 
 At any time you can look at |my-reservations|, to see all of your scheduled reservations, or at |node-status| to see the status of your reserved nodes.
 
@@ -21,7 +21,7 @@ At any time you can look at |my-reservations|, to see all of your scheduled rese
 1.Loading an image
 ---------------------------------
 
-You can then load a "baseline" image for nodes you have already reserved, using the omf load command. For example, to load the "baseline.ndz" image to node 16 of NITOS, issue **in a terminal where you are connected to NITOS Server** the following command:
+You can then load a `baseline <_images/NITOS_base_imgs.pdf>`_ image for nodes you have already reserved, using the omf load command. For example, to load the "baseline.ndz" image to node 16 of NITOS, issue **in a terminal where you are connected to NITOS Server** the following command:
 
 .. code-block:: bash
 
