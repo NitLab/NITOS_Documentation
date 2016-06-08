@@ -102,7 +102,7 @@ It is important to setup the eNBs to the default settings, as their configuratio
 
 .. code-block:: bash
 
-	wget -qO- 'http://lterf:5054/lterf/bs/config/load?name=reset&&node=2'
+	wget -qO- 'http://lterf:5054/lterf/bs/default&&node=2'
 
 Since not all of the changes take place immediately, you will need to restart the eNB for some of the changes to take effect. You can restart the eNB with the following command:
 
