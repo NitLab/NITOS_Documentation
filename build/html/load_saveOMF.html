@@ -161,11 +161,11 @@
   <div class="section" id="loading-and-saving-an-omf-compatible-image-on-your-resource">
 <span id="loading-saving-omf"></span><h1>Loading and Saving an OMF-compatible image on your resource<a class="headerlink" href="#loading-and-saving-an-omf-compatible-image-on-your-resource" title="Permalink to this headline">¶</a></h1>
 <p>Ubuntu distributions, stored at the NITOS server as binary .ndz files can be loaded on the resources overwriting any existing data on the disks of these resources.</p>
-<p>Beginners can load a &#8220;baseline&#8221; distribution on their resources and later modify it according to their needs. NITlab provides several types of baseline images serving the different experimentation capabilities of NITOS. You can choose any of them according to your experiment. <a class="reference external" href="http://nitlab.inf.uth.gr">baseline images</a></p>
+<p>Beginners can load a &#8220;baseline&#8221; distribution on their resources and later modify it according to their needs. NITlab provides several types of baseline images serving the different experimentation capabilities of NITOS. You can choose any of them according to your experiment. <a class="reference external" href="_images/NITOS_base_imgs.pdf">baseline images</a></p>
 <p>At any time you can look at <a href="http://nitos.inf.uth.gr/my_reservations" target="_blank">My Reservations</a>, to see all of your scheduled reservations, or at <a href="http://nitos.inf.uth.gr/node_status" target="_blank">Node Status</a> to see the status of your reserved nodes.</p>
 <div class="section" id="loading-an-image">
 <span id="loading-omf"></span><h2>1.Loading an image<a class="headerlink" href="#loading-an-image" title="Permalink to this headline">¶</a></h2>
-<p>You can then load a &#8220;baseline&#8221; image for nodes you have already reserved, using the omf load command. For example, to load the &#8220;baseline.ndz&#8221; image to node 16 of NITOS, issue <strong>in a terminal where you are connected to NITOS Server</strong> the following command:</p>
+<p>You can then load a <a class="reference external" href="_images/NITOS_base_imgs.pdf">baseline</a> image for nodes you have already reserved, using the omf load command. For example, to load the &#8220;baseline.ndz&#8221; image to node 16 of NITOS, issue <strong>in a terminal where you are connected to NITOS Server</strong> the following command:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>omf load -i baseline.ndz -t node016
 </pre></div>
 </div>

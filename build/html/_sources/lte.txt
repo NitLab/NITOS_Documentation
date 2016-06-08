@@ -12,15 +12,42 @@ At the beggining, you will see how to connect and use the LTE testbed. You'll al
 
 | **Accessing a Resource at NITOS**
 |
-| Firstly, you have to reserve a node at NITOS: :ref:`getting-slice`
+| Initially, you have to reserve a node at NITOS: :ref:`getting-slice`
 
 | In order to use the LTE testbed resources offered by the NITOS facility, you will have to reserve one of the LTE eNBs and the nodes
-  with LTE connectivity, offered by the testbed (**node054,node058,node067,node074,node076,node077,node083,node084**).
+  with LTE connectivity, offered by the testbed.
+  
+| There are a number of different LTE dongles available in the testbed, with different capabilities, but they roughly come down to the following configurations:
+|
+| 1. Dongles with IMSIs for the PLMNID 46099 (NITOS PLMN)
+| 2. Dongles with IMSIs for the PLMNID 20398 (Default PLMN for OpenAirInterface - OAI)
+|
+| The available dongles in the testbed are the following:
+|
+| 1. Huawei E392, configurable with AT Commands
+| 2. Huawei E3272, configurable with AT Commands
+| 3. Huawei E3372, configurable with HiLink REST interface
+| 4. ZTE MF831, configurable with the ZTE REST interface
+|
+| Generally, the E392 and E3272 dongles support connecting to the network and direct bridging with the network interface available in the dongle (wwan0 interface).
+| This means that the nodes can be configured to ping each other, or do downlink experiments directly on the network interface of the node.
+|
+| The nodes with such interface and the NITOS PLMN are (**node054, node058, node067, node074, node076, node077, node083, node084**), whereas with the OAI PLMN are (**node050, node052**).
+|
+| For the HiLink/ZTE nodes, you will be able to conect to the LTE network and generate traffic, but a NAT process is running on the LTE stick.
+| In order to run downlink experiments, you will need to initiate traffic from the node (e.g. using dual test with iperf), whereas running experiments where traffic is exchanged between two nodes is not feasible with them.
+|
+| The nodes with HiLink/ZTE interface and the NITOS PLMN are (**node057, node065, node069, node079, node085, node089, node092**), whereas with the OAI PLMN are (**node059, node063, node068, node071, node086**).
+|
+.. warning:: Always know what nodes you are reserving and what their capabilities are! You can check the characteristics of each dongle by expanding each "node" tab at the NITOS portal **http://nitos.inf.uth.gr**!
 
-| 
+| Reserving a node configured for using the OpenAirInterface PLMNID does not mean that you will not be able to connect it to the NITOS network. You will need to add the client to the EPC, and the dongle will connect as a "Roaming" client, or you can completely change the configurations of the EPC and Base Stations in order to provision this network. 
+| If you need any help in setting up this process, please consult the NITlab team or raise a ticket at **http://repo.nitlab.inf.uth.gr/tickets**
+
 | Reserving the eNBs will render rights to the experimenter to access the LTErf service of the NITOS facility, used to configure and setup the eNBs and the EPC at the experimenter's will.
 
 | *After your reservation has started, login to Server.*
+|
 
 .. warning:: You have to connect to **NITOS Server 3 nitlab3.inf.uth.gr**!
 
@@ -64,12 +91,18 @@ The Indoor testbed is using the 192.168.200.0/24 network for the network between
 
 4.Restart Base Station
 ----------------------------------
+As a first step, you should turn on the base station. By default, the base station is turned off when not used. To do so, issue the following command:
+
+.. code-block:: bash
+
+	omf tell -a on -t e_node_b_001
+
 
 It is important to setup the eNBs to the default settings, as their configuration might have been altered from their normal behavior by any previous experimenter. In order to setup the eNB to the default settings you issue the following commands:
 
 .. code-block:: bash
 
-	wget -qO- 'http://lterf:5054/lterf/bs/config/load?name=reset&&node=2'
+	wget -qO- 'http://lterf:5054/lterf/bs/default&&node=2'
 
 Since not all of the changes take place immediately, you will need to restart the eNB for some of the changes to take effect. You can restart the eNB with the following command:
 
@@ -162,13 +195,13 @@ Login to the node0xx with the following command:
 
 	ssh root@node0xx
 
-You will have to first turn the LTE dongle on. You can do this by running the following command on the node console:
+You will have to first turn the LTE dongle on. You can do this by running the following command on the node console in order to switch it on and connect it to the available networks (NITOS/EURECOM):
 
 .. code-block:: bash
 
-	root@node0XX:~# lte_dongle -o -v
+	root@node0XX:~# lte_dongle -o -v -c NITOS
 
-The "-o" argument can be used to turn the USB on/off, while the -v is used for the verbose output at the console. You can use the "-h" argument for a complete list of the available commands.
+The "-o" argument can be used to turn the USB on/off, while the -v is used for the verbose output at the console. The "-c" argument is instructing the node to connect to the provided network (currently supported are NITOS/EURECOM).  You can use the "-h" argument for a complete list of the available commands.
 
 Once the dongle is connected, you can see it listed with the lsusb command. The output should look like the following:
 
@@ -177,7 +210,8 @@ Once the dongle is connected, you can see it listed with the lsusb command. The 
 	root@node0XX:~# lsusb | grep Huawei
 	Bus 001 Device 008: ID 12d1:1506 Huawei Technologies Co., Ltd. E398 LTE/UMTS/GSM Modem/Networkcard
 
-And a wwan0 device should be attached on the node.
+And a wwan0 device should be attached on the node for the E392/E3272 dongles, or an eth2 for the E3372 dongles and a usb0 device for the ZTE dongles.
+If you are able to ping the PGW IP (10.0.3.1 for the NITOS network), you can skip the configuration over the serial port, as it is provided for debugging purposes
 
 .. warning:: Multiple restarts of the dongle might cause the huawei_cdc_ncm driver not to attach correctly and therefore no wwan0 interface will be available. In such a case, reboot the node.
 
@@ -194,7 +228,7 @@ The "ATE" command will enable the local-echo to the output console, so that you 
 The following dongles are available in NITOS, with the respective ports that can be used for configuring them:
 
 LTE Dongle type 	--> 	Port used for configuration
-	Huawei E398   	-->		/dev/ttyUSB
+	Huawei E398   	-->	/dev/ttyUSB0
 
 	Huawei E3272    --> 	/dev/ttyUSB1
 
