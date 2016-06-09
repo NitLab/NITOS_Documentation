@@ -41,6 +41,60 @@ At the beggining, you will see how to connect and use the LTE testbed. You'll al
 |
 .. warning:: Always know what nodes you are reserving and what their capabilities are! You can check the characteristics of each dongle by expanding each "node" tab at the NITOS portal **http://nitos.inf.uth.gr**!
 
+| Here is a detailed list with the types of dongles, configuration method, nodes and IMSIs that they have: 
+|
+
+  +----------------+-------------------+---------------+-----------------+
+  | Testbed Node   | LTE Dongle Type   | Config Method | IMSI            |
+  +================+===================+===============+=================+
+  | node050        | HW - E392         | AT-Commands   | 208930000000001 |
+  +----------------+-------------------+---------------+-----------------+
+  | node052        | HW - E392         | AT-Commands   | 208930000000002 |
+  +----------------+-------------------+---------------+-----------------+
+  | node054        | HW - E3272        | AT-Commands   | 460990010001009 |
+  +----------------+-------------------+---------------+-----------------+
+  | node057        | HW - E3372        | HiLink-REST   | 460990010001006 |
+  +----------------+-------------------+---------------+-----------------+
+  | node058        | HW - E3272        | HiLink-REST   | 460990010001013 |
+  +----------------+-------------------+---------------+-----------------+
+  | node059        | ZTE - MF831       | ZTE-REST      | 208930000000003 |
+  +----------------+-------------------+---------------+-----------------+
+  | node063        | ZTE - MF831       | ZTE-REST      | 208930000000004 |
+  +----------------+-------------------+---------------+-----------------+
+  | node065        | HW - E3372        | HiLink-REST   | 460990010001042 |
+  +----------------+-------------------+---------------+-----------------+
+  | node068        | HW - E3372        | HiLink-REST   | 208930000000005 |
+  +----------------+-------------------+---------------+-----------------+
+  | node069        | HW - E3372        | HiLink-REST   | 460990010001045 |
+  +----------------+-------------------+---------------+-----------------+
+  | node071        | HW - E3372        | HiLink-REST   | 208930000000006 |
+  +----------------+-------------------+---------------+-----------------+
+  | node074        | HW - E3272        | AT-Commands   | 460990010001011 |
+  +----------------+-------------------+---------------+-----------------+
+  | node076        | HW - E3272        | AT-Commands   | 460990010001014 |
+  +----------------+-------------------+---------------+-----------------+
+  | node077        | HW - E3272        | AT-Commands   | 460990010001007 |
+  +----------------+-------------------+---------------+-----------------+
+  | node079        | HW - E3372        | HiLink-REST   | 460990010001046 |
+  +----------------+-------------------+---------------+-----------------+
+  | node083        | HW - E3272        | AT-Commands   | 460990010001008 |
+  +----------------+-------------------+---------------+-----------------+
+  | node084        | HW - E3272        | AT-Commands   | 460990010001010 |
+  +----------------+-------------------+---------------+-----------------+
+  | node085        | HW - E3372        | HiLink-REST   | 460990010001047 |
+  +----------------+-------------------+---------------+-----------------+
+  | node086        | HW - E3372        | HiLink-REST   | 208930000000007 |
+  +----------------+-------------------+---------------+-----------------+
+  | node087        | ZTE - MF831       | ZTE-REST      | 460990010001048 |
+  +----------------+-------------------+---------------+-----------------+
+  | node089        | ZTE - MF831       | ZTE-REST      | 460990010001049 |
+  +----------------+-------------------+---------------+-----------------+
+  | node091        | HW - E3372        | HiLink-REST   | 460990010001018 |
+  +----------------+-------------------+---------------+-----------------+
+  | node092        | HW - E3372        | HiLink-REST   | 460990010001012 |
+  +----------------+-------------------+---------------+-----------------+
+
+
 | Reserving a node configured for using the OpenAirInterface PLMNID does not mean that you will not be able to connect it to the NITOS network. You will need to add the client to the EPC, and the dongle will connect as a "Roaming" client, or you can completely change the configurations of the EPC and Base Stations in order to provision this network. 
 | If you need any help in setting up this process, please consult the NITlab team or raise a ticket at **http://repo.nitlab.inf.uth.gr/tickets**
 
