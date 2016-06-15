@@ -21,5 +21,5 @@ The geonetwrapper uses the gnconf.txt file as a configuration file. The experime
 
 The provided facility layer has an API to interact with UDP port 1504 with the upper application layer. Therefore, if any new applications needed to be executed over the ITS stack, you need to point them using the localhost:1504 UDP port as their outgoing interface.
 
-More information on the architecture is provided in the following publication here.
+More information on the architecture is provided in the following publication `here <http://nitlab.inf.uth.gr/NITlab/index.php/about/publications.html?id=450>`_.
 

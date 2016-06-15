@@ -117,7 +117,7 @@ You can use your NITOS account to access the NITOS Server 3. Just open a secure 
 
 | **Provisioning a Resource at NITOS**
 |
-| Once you have logged in, you have to load the image **baseline_icarus_lte.ndz** on your reserved nodes. You can use the method described on :ref:`loading-omf` for instructions on how to load images on resources at NITOS. You can find `here <http://nitlab.inf.uth.gr>`_ all the available baseline images provided by NITlab.
+| Once you have logged in, you have to load the image **baseline_icarus_lte.ndz** on your reserved nodes. You can use the method described on :ref:`loading-omf` for instructions on how to load images on resources at NITOS. You can find `here <_images/NITOS_base_imgs.pdf>`_ all the available baseline images provided by NITlab.
 
 
 
@@ -156,7 +156,7 @@ It is important to setup the eNBs to the default settings, as their configuratio
 
 .. code-block:: bash
 
-	wget -qO- 'http://lterf:5054/lterf/bs/default&&node=2'
+	wget -qO- 'http://lterf:5054/lterf/bs/default?node=2'
 
 Since not all of the changes take place immediately, you will need to restart the eNB for some of the changes to take effect. You can restart the eNB with the following command:
 
@@ -304,6 +304,8 @@ Add a new APN and activate the PDP context:
 
 .. code-block:: bash
 
+	at+cops=1,2,"46099"  # only for the E398 LTE sticks
+
 	at+cgdcont=1,"IP","default"
 
 	at^ndisdup=1,1,"default"
@@ -343,6 +345,8 @@ Once the dhclient command exits, the wwan0 interface should have an IP address. 
 .. code-block:: bash
 
 	root@node0XX:~# ifconfig wwan0 netmask 255.255.255.0 -arp up
+
+For the E398 dongles, no DHCP server is running on the dongle. Try setting directly the IP address that the EPC is sending with ifconfig.
 
 Now you should be able to ping the PDN-GW component of the EPC network (the default configuration uses the 10.0.3.1 IP address) or any other LTE client connected to the network. 
 
