@@ -124,7 +124,7 @@ You can use your NITOS account to access the NITOS Server 3. Just open a secure 
 3.Check which Base Station you are using
 -----------------------------------------
 
-In order to start experimenting with the LTE components in NITOS, you have first to find out which eNodeB you will be using. In general, node 1 is the eNB in the NITOS Outdoor deployment (currently offline for maintenance) and node 2 is the Indoor one. Other entries might exist for test purposes with OAI.
+In order to start experimenting with the LTE components in NITOS, you have first to find out which eNodeB you will be using. In general, node 1 is the indoor eNB and node 2 is the femtocell in the NITOS Outdoor deployment (currently offline for maintenance). Other entries might exist for test purposes with OAI.
 
 In order to check the available eNodeBs and their IP addresses, you have to send the following command to the service:
 
@@ -136,11 +136,11 @@ which should reply something like the following:
 
 .. code-block:: bash
 
-	AP Number : 1 | Type of BS : ipaccess | Ip : 10.64.44.52 | Management Iterface : eth1
-	AP Number : 2 | Type of BS : ipaccess | Ip : 192.168.200.1 | Management Iterface : eth0
+	AP Number : 1 | Type of BS : ipaccess | Ip : 192.168.200.1 | Management Iterface : eth0
+	AP Number : 2 | Type of BS : ipaccess | Ip : 10.64.44.52 | Management Iterface : eth1
 	AP Number : 3 | Type of BS : oai | Ip : 10.64.44.56 | Management Iterface : eth1
  
-The Indoor testbed is using the 192.168.200.0/24 network for the network between the eNodeB and the EPC network. For the indoor testbed, AP number = 2 should be used for altering the base station components, by appending node=2 to all the commands sent to the LTErf service.
+The Indoor testbed is using the 192.168.200.0/24 network for the network between the eNodeB and the EPC network. For the indoor testbed, AP number = 1 should be used for altering the base station components, by appending node=1 to all the commands sent to the LTErf service.
 
 
 4.Restart Base Station
@@ -156,13 +156,13 @@ It is important to setup the eNBs to the default settings, as their configuratio
 
 .. code-block:: bash
 
-	wget -qO- 'http://lterf:5054/lterf/bs/default?node=2'
+	wget -qO- 'http://lterf:5054/lterf/bs/default?node=1'
 
 Since not all of the changes take place immediately, you will need to restart the eNB for some of the changes to take effect. You can restart the eNB with the following command:
 
 .. code-block:: bash
 
-	wget -qO- 'http://lterf:5054/lterf/bs/restart?node=2'
+	wget -qO- 'http://lterf:5054/lterf/bs/restart?node=1'
 
 Which will return you the message:
 
