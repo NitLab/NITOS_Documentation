@@ -177,7 +177,7 @@ In order to setup the EPC to the default settings you issue the following comman
 
 .. code-block:: bash
 
-	wget -qO- 'http://lterf:5054/lterf/epc/config/load?name=setDefaultEpc'
+	wget -qO- 'http://lterf:5054/lterf/epc/default'
 
 .. warning:: As NITOS is currently upgrading to control multiple remote femtocells, please issue the following command to switch using the indoor testbed before restarting it. You can do this with the following command:
 
