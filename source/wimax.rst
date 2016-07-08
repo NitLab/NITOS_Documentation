@@ -37,6 +37,15 @@ You can use your NITOS account to access the NITOS Server 2. Just open a secure 
 |
 | You can use the method described on :ref:`loading-omf` for instructions on how to load images on resources at NITOS. Load your resource with a disk image that is compatible for WiMAX experimentation such as **fgre_2014.ndz**. You can find `here <http://nitlab.inf.uth.gr>`_ all the available baseline images provided by NITlab.
 
+In order to load a WiMAX enabled image at the office testbed please use the following command:
+
+.. code-block:: bash
+
+   omf load -t omf.nitos.node0XX -i baseline_icarus_wimax.ndz
+
+.. warning:: Please use the omf.nitos.node0XX hrn in order to address NITOS nodes located at the office testbed!!
+
+
 3.Experimental Topology
 -------------------------------
 The topology we are examining in this tutorial is a central Base Station unit, able to route requests from an internal WiMAX network to the internet.
