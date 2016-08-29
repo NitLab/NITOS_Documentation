@@ -26,10 +26,10 @@ At the beggining, you will see how to connect and use the LTE testbed. You'll al
 |
 | 1. Huawei E392, configurable with AT Commands
 | 2. Huawei E3272, configurable with AT Commands
-| 3. Huawei E3372, configurable with HiLink REST interface
+| 3. Huawei E3372, configurable with AT Commands
 | 4. ZTE MF831, configurable with the ZTE REST interface
 |
-| Generally, the E392 and E3272 dongles support connecting to the network and direct bridging with the network interface available in the dongle (wwan0 interface).
+| Generally, the E392, E3272 and E3372 dongles support connecting to the network and direct bridging with the network interface available in the dongle (wwan0 interface).
 | This means that the nodes can be configured to ping each other, or do downlink experiments directly on the network interface of the node.
 |
 | The nodes with such interface and the NITOS PLMN are (**node054, node058, node067, node074, node076, node077, node083, node084**), whereas with the OAI PLMN are (**node050, node052**).
@@ -37,7 +37,7 @@ At the beggining, you will see how to connect and use the LTE testbed. You'll al
 | For the HiLink/ZTE nodes, you will be able to conect to the LTE network and generate traffic, but a NAT process is running on the LTE stick.
 | In order to run downlink experiments, you will need to initiate traffic from the node (e.g. using dual test with iperf), whereas running experiments where traffic is exchanged between two nodes is not feasible with them.
 |
-| The nodes with HiLink/ZTE interface and the NITOS PLMN are (**node057, node065, node069, node079, node085, node089, node092**), whereas with the OAI PLMN are (**node059, node063, node068, node071, node086**).
+#| The nodes with HiLink/ZTE interface and the NITOS PLMN are (**node057, node065, node069, node079, node085, node089, node092**), whereas with the OAI PLMN are (**node059, node063, node068, node071, node086**).
 |
 .. warning:: Always know what nodes you are reserving and what their capabilities are! You can check the characteristics of each dongle by expanding each "node" tab at the NITOS portal **http://nitos.inf.uth.gr**!
 
@@ -53,21 +53,21 @@ At the beggining, you will see how to connect and use the LTE testbed. You'll al
   +----------------+-------------------+---------------+-----------------+
   | node054        | HW - E3272        | AT-Commands   | 460990010001009 |
   +----------------+-------------------+---------------+-----------------+
-  | node057        | HW - E3372        | HiLink-REST   | 460990010001006 |
+  | node057        | HW - E3272        | AT-Commands   | 460990010001006 |
   +----------------+-------------------+---------------+-----------------+
-  | node058        | HW - E3272        | HiLink-REST   | 460990010001013 |
+  | node058        | HW - E3272        | AT-Commands   | 460990010001013 |
   +----------------+-------------------+---------------+-----------------+
   | node059        | ZTE - MF831       | ZTE-REST      | 208930000000003 |
   +----------------+-------------------+---------------+-----------------+
   | node063        | ZTE - MF831       | ZTE-REST      | 208930000000004 |
   +----------------+-------------------+---------------+-----------------+
-  | node065        | HW - E3372        | HiLink-REST   | 460990010001042 |
+  | node065        | HW - E3372        | AT-Commands   | 460990010001042 |
   +----------------+-------------------+---------------+-----------------+
-  | node068        | HW - E3372        | HiLink-REST   | 208930000000005 |
+  | node068        | HW - E3372        | AT-Commands   | 208930000000005 |
   +----------------+-------------------+---------------+-----------------+
-  | node069        | HW - E3372        | HiLink-REST   | 460990010001045 |
+  | node069        | HW - E3372        | AT-Commands   | 460990010001045 |
   +----------------+-------------------+---------------+-----------------+
-  | node071        | HW - E3372        | HiLink-REST   | 208930000000006 |
+  | node071        | HW - E3372        | AT-Commands   | 208930000000006 |
   +----------------+-------------------+---------------+-----------------+
   | node074        | HW - E3272        | AT-Commands   | 460990010001011 |
   +----------------+-------------------+---------------+-----------------+
@@ -75,23 +75,23 @@ At the beggining, you will see how to connect and use the LTE testbed. You'll al
   +----------------+-------------------+---------------+-----------------+
   | node077        | HW - E3272        | AT-Commands   | 460990010001007 |
   +----------------+-------------------+---------------+-----------------+
-  | node079        | HW - E3372        | HiLink-REST   | 460990010001046 |
+  | node079        | HW - E3372        | AT-Commands   | 460990010001046 |
   +----------------+-------------------+---------------+-----------------+
   | node083        | HW - E3272        | AT-Commands   | 460990010001008 |
   +----------------+-------------------+---------------+-----------------+
   | node084        | HW - E3272        | AT-Commands   | 460990010001010 |
   +----------------+-------------------+---------------+-----------------+
-  | node085        | HW - E3372        | HiLink-REST   | 460990010001047 |
+  | node085        | HW - E3372        | AT-Commands   | 460990010001047 |
   +----------------+-------------------+---------------+-----------------+
-  | node086        | HW - E3372        | HiLink-REST   | 208930000000007 |
+  | node086        | HW - E3372        | AT-Commands   | 208930000000007 |
   +----------------+-------------------+---------------+-----------------+
   | node087        | ZTE - MF831       | ZTE-REST      | 460990010001048 |
   +----------------+-------------------+---------------+-----------------+
   | node089        | ZTE - MF831       | ZTE-REST      | 460990010001049 |
   +----------------+-------------------+---------------+-----------------+
-  | node091        | HW - E3372        | HiLink-REST   | 460990010001018 |
+  | node091        | HW - E3372        | AT-Commands   | 460990010001018 |
   +----------------+-------------------+---------------+-----------------+
-  | node092        | HW - E3372        | HiLink-REST   | 460990010001012 |
+  | node092        | HW - E3372        | AT-Commands   | 460990010001003 |
   +----------------+-------------------+---------------+-----------------+
 
 

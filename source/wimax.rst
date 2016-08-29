@@ -41,7 +41,7 @@ In order to load a WiMAX enabled image at the office testbed please use the foll
 
 .. code-block:: bash
 
-   omf load -t omf.nitos.node0XX -i baseline_icarus_wimax.ndz
+   omf load -t omf.nitos.node0XX -i baseline_wimax_teltonika.ndz
 
 .. warning:: Please use the omf.nitos.node0XX hrn in order to address NITOS nodes located at the office testbed!!
 
@@ -50,7 +50,7 @@ In order to load a WiMAX enabled image at the office testbed please use the foll
 -------------------------------
 The topology we are examining in this tutorial is a central Base Station unit, able to route requests from an internal WiMAX network to the internet.
 
- * The Base Station is using the 192.168.55.1 IP address
+ * The Base Station is using the 192.168.55.10 IP address
  * Multiple clients use the 192.168.55.0/24 subnet to communicate with the Base Station
  * Packets routed through the Base Station are sent over the internet through a NAT translation
 
