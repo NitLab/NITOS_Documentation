@@ -181,7 +181,7 @@ In order to setup the EPC to the default settings you issue the following comman
 
 .. warning:: As NITOS is currently upgrading to control multiple remote femtocells, please issue the following command to switch using the indoor testbed before restarting it. You can do this with the following command:
 
-	  wget -qO- 'http://lterf:5054/lterf/epc/config/testbed?name=indoor'
+	  wget -qO- http://lterf:5054/lterf/epc/config/testbed?name=indoor
 
 You will need to restart the EPC twice in order for some of the changes to take effect. You can restart the EPC with the following command:
 
