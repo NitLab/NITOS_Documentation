@@ -5,7 +5,7 @@ LTE
 ----------
 At the beggining, you will see how to connect and use the LTE testbed. You'll also see how to develop and run a simple experiment where the LTE interface is properly configured and how to generate traffic between two nodes.
 
-2.Prerequisties
+2.Prerequisites
 -----------------------
 *Accessing/Provisioning Resources*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -37,8 +37,7 @@ At the beggining, you will see how to connect and use the LTE testbed. You'll al
 | For the HiLink/ZTE nodes, you will be able to conect to the LTE network and generate traffic, but a NAT process is running on the LTE stick.
 | In order to run downlink experiments, you will need to initiate traffic from the node (e.g. using dual test with iperf), whereas running experiments where traffic is exchanged between two nodes is not feasible with them.
 |
-#| The nodes with HiLink/ZTE interface and the NITOS PLMN are (**node057, node065, node069, node079, node085, node089, node092**), whereas with the OAI PLMN are (**node059, node063, node068, node071, node086**).
-|
+
 .. warning:: Always know what nodes you are reserving and what their capabilities are! You can check the characteristics of each dongle by expanding each "node" tab at the NITOS portal **http://nitos.inf.uth.gr**!
 
 | Here is a detailed list with the types of dongles, configuration method, nodes and IMSIs that they have: 

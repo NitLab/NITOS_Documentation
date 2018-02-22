@@ -21,7 +21,7 @@ At any time you can look at |my-reservations|, to see all of your scheduled rese
 1.Loading an image
 ---------------------------------
 
-You can then load a `baseline <_images/NITOS_base_imgs.pdf>`_ image for nodes you have already reserved, using the omf load command. For example, to load the "baseline.ndz" image to node 16 of NITOS, issue **in a terminal where you are connected to NITOS Server** the following command:
+You can then load a `baseline <_static/NITOS_base_imgs.pdf>`_ image for nodes you have already reserved, using the omf load command. For example, to load the "baseline.ndz" image to node 16 of NITOS, issue **in a terminal where you are connected to NITOS Server** the following command:
 
 .. code-block:: bash
 

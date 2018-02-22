@@ -50,6 +50,14 @@ Using LTE
 
    lte
 
+Using the USRPs
+----------------
+.. toctree::
+   :maxdepth: 2
+
+   usrp
+
+
 Using OpenFlow
 -----------------------------
 .. toctree::

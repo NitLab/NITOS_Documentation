@@ -5,7 +5,7 @@ WiMAX
 ----------
 At the beggining, you will see how to connect and use the WiMAX testbed. You'll also see how to develop and run a simple experiment where the WiMAX interface is properly configured and how to generate traffic between two nodes.
 
-2.Prerequisties
+2.Prerequisites
 -----------------------
 *Accessing/Provisioning Resources*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
