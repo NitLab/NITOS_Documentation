@@ -13,23 +13,29 @@ This simple tutorial presents all the basic steps to develop, run, and access th
 * Node 1 is the “Sender” and will generate and send traffic to the “Receiver” node 2, over a wireless (IEEE 802.11g) channel.
 * OTG and OTR are OML-enabled applications and are configured to report statistics about the sent and received traffic to an OML server.
 
-2.Prerequisties
+2.Prerequisites
 ----------------
 
 Accessing/Provisioning Resources
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-| **Accessing a Resource at NITOS**
-|
-| Firstly, you have to reserve a node at NITOS: :ref:`getting-slice`
+**Accessing a Resource at NITOS**
 
-| **Provisioning a Resource at NITOS**
-|
-| You can use the method described on :ref:`loading-omf` for instructions on how to load disk images on resources at NITOS. Load your resource with a disk image that contains OMF6. For example load the image *baseline_omf6.ndz*. More baseline images available |base|.
+Firstly, you have to reserve a node at NITOS: :ref:`getting-slice`
+
+**Provisioning a Resource at NITOS**
+
+You can use the method described on :ref:`loading-omf` for instructions on how to load disk images on resources at NITOS. Load your resource with a disk image that contains OMF6. For example load the image *baseline_omf6.ndz*. More baseline images available |base|.
 
 .. |base| raw:: html
 
-	<a href="http://nitlab.inf.uth.gr/nitlab_baseline_images.pdf" target="_blank">here</a>
+       <a href="http://nitlab.inf.uth.gr/nitlab_baseline_images.pdf" target="_blank">here</a>
 
+.. note:: 
+   Please note that the following nodes are equipped with attenuators:
+
+   * node050 - 20dB
+   * node087 - 10dB
+   * node091 - 16dB
 
 
 3.Developing the Experiment
