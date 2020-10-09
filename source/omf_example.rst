@@ -27,7 +27,7 @@ Accessing/Provisioning Resources*
 |
 | **Provisioning a Resource at NITOS**
 |
-| You can use the method described in :ref:`loading-omf` for instructions on how to load disk images on resources at NITOS. Load your resource with a disk image that contains OMF6 RC. For example load the image "*baseline_omf6.ndz*". More baseline images available |base|.
+| You can use the method described in :ref:`loading-omf` for instructions on how to load disk images on resources at NITOS. Load your resource with a disk image that contains OMF6 RC. For example load the image "*baseline_trusty_omf6.ndz*". More baseline images available |base|.
 
 .. |base| raw:: html
 
